@@ -22,15 +22,15 @@ export default {
   ],
   external: Object.keys(pkg.dependencies),
   plugins: [
-    external(),
-    babel({
-      babelHelpers: "bundled",
-      exclude: "node_modules/**",
-      plugins: ["external-helpers"],
-    }),
-    resolve(),
-    commonjs(),
-    terser(),
+    // external(),
+    // babel({
+    //   babelHelpers: "bundled",
+    //   exclude: "node_modules/**",
+    //   plugins: ["external-helpers"],
+    // }),
+    // resolve(),
+    // commonjs(),
+    // terser(),
     typescript(),
   ],
 };

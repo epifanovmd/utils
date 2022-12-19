@@ -7,7 +7,7 @@ import getDecorators from "inversify-inject-decorators";
 import "reflect-metadata";
 import { v4 } from "uuid";
 
-interface IIoCInterface<T> {
+export interface IIoCInterface<T> {
   readonly Tid: string;
 
   (options?: { inSingleton?: boolean }): (

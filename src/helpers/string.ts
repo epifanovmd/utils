@@ -21,10 +21,12 @@ export const toLowerCase = (str: string): string =>
 
 export function pluralize(
   count: number,
-  { one, two, five = two }: PluralOptions,
+  plurals: PluralOptions,
   withNumber?: boolean,
   hideZero?: boolean,
 ) {
+  const { one, two, five = two } = plurals;
+
   if (count === 0 && hideZero) {
     return "";
   }
