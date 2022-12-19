@@ -11,11 +11,10 @@ export const genId = (opt?: IGenIdOptions) => {
     default:
       return Number(
         Math.floor(Number(Math.random().toString(8)) * 10000).toString() +
-        Math.floor(Number(Math.random().toString(10)) * 10000).toString(),
+          Math.floor(Number(Math.random().toString(10)) * 10000).toString(),
       );
   }
 };
-
 
 const toDivide = (num: number, opt?: { separator?: string }) => {
   const int = String(Math.trunc(Number(num || 0)));
