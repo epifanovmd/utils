@@ -1,14 +1,15 @@
 {
   "name": "@force-dev/utils",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Utils library for typescript",
-  "main": "lib/index.js",
-  "module": "lib/index.mjs.js",
-  "types": "lib/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "types": "lib/types/index.d.ts",
   "files": [
     "lib/",
     "README.md"
   ],
+  "sideEffects": false,
   "license": "MIT",
   "engines": {
     "npm": ">=8.5.0",
@@ -28,8 +29,9 @@
     "VERSION:PATCH": "npm version patch",
     "VERSION:MINOR": "npm version minor",
     "VERSION:MAJOR": "npm version major",
-    "build": "rollup -c",
-    "start": "rollup -c -w",
+    "build": "rollup -c --bundleConfigAsCjs && npm run types",
+    "start": "rollup -c -w --bundleConfigAsCjs",
+    "types": "tsc --emitDeclarationOnly",
     "prepare": "npm run build",
     "gen:doc": "typedoc --out docs src/index.ts --plugin typedoc-plugin-markdown",
     "lint": "eslint \"src/**/*{.ts,.tsx}\"",

@@ -1,36 +1,39 @@
-import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
-import external from "rollup-plugin-peer-deps-external";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
-import pkg from "./package.json" assert { type: "json" };
+import { defineConfig } from "rollup";
+// @ts-ignore
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
 
-export default {
+const config = defineConfig({
   input: "src/index.ts",
   output: [
     {
-      file: "lib/index.js",
+      dir: "./lib/cjs",
       format: "cjs",
+      exports: "named",
+      preserveModules: true,
+      preserveModulesRoot: "src",
       sourcemap: true,
     },
     {
-      file: "lib/index.mjs.js",
+      dir: "./lib/esm",
       format: "es",
+      exports: "named",
+      preserveModules: true,
+      preserveModulesRoot: "src",
       sourcemap: true,
     },
   ],
-  external: Object.keys(pkg.dependencies),
+  external: /node_modules/,
   plugins: [
-    external(),
-    babel({
-      babelHelpers: "bundled",
-      exclude: "node_modules/**",
-      plugins: ["external-helpers"],
-    }),
+    peerDepsExternal(),
     resolve(),
     commonjs(),
     terser(),
-    typescript(),
+    typescript({ declaration: false, declarationDir: undefined }),
   ],
-};
+});
+
+export default config;

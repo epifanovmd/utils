@@ -8,7 +8,7 @@
       "dom"
     ],
     "declaration": true,
-    "declarationDir": "/",
+    "declarationDir": "./lib/types",
     "jsx": "react",
     "removeComments": true,
     "importHelpers": true,
@@ -32,7 +32,7 @@
   },
   "exclude": [
     "node_modules",
-    "build"
+    "lib",
   ],
   "include": [
     "src"
