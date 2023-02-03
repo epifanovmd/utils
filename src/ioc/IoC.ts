@@ -5,7 +5,7 @@ import {
 } from "inversify";
 import getDecorators from "inversify-inject-decorators";
 import "reflect-metadata";
-import { v4 } from "uuid";
+import shortid from "shortid";
 
 export interface IIoCInterface<T> {
   readonly Tid: string;
@@ -27,7 +27,7 @@ const instance: { [key: string]: any } = {};
 const iocHook = <T>(ioc: IIoCInterface<T>) => ioc.getInstance;
 
 function iocDecorator<TInterface>(name?: string): IIoCInterface<TInterface> {
-  const tid = name || v4();
+  const tid = name || shortid.generate();
 
   function iocDecoratorFactory(options?: { inSingleton?: boolean }) {
     return function iocDecorator(

@@ -1,13 +1,16 @@
 import { v4 } from "uuid";
+import shortid from "shortid";
 
 export interface IGenIdOptions {
-  type?: "numeric" | "uuid";
+  type?: "numeric" | "uuid" | "shortid";
 }
 
 export const genId = (opt?: IGenIdOptions) => {
   switch (opt?.type) {
     case "uuid":
       return v4();
+    case "shortid":
+      return shortid.generate();
     default:
       return Number(
         Math.floor(Number(Math.random().toString(8)) * 10000).toString() +
