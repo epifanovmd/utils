@@ -6,4 +6,4 @@ export * from "./lambdaValue";
 export * from "./number";
 export * from "./string";
 export * from "./typeGuards";
-export * from "./typeUtils";
+export * from "./types";

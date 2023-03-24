@@ -34,3 +34,10 @@ export interface IEmpty {
   [key: string]: any;
   [key: number]: any;
 }
+
+export type Maybe<T> = T | undefined;
+
+export interface SupportInitialize<T = never> {
+  initialize(arg?: T): Promise<void>;
+  focusScreen(isFocused: boolean): void;
+}
