@@ -38,6 +38,6 @@ export interface IEmpty {
 export type Maybe<T> = T | undefined;
 
 export interface SupportInitialize<T = never> {
-  initialize(arg?: T): Promise<void>;
-  focusScreen(isFocused: boolean): void;
+  initialize(props?: T): undefined | (() => void);
+  onFocusScreen(isFocused: boolean): void;
 }
