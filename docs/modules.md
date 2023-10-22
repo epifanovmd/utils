@@ -4,24 +4,50 @@
 
 ## Table of contents
 
+### Enumerations
+
+- [CollectionLoadState](enums/CollectionLoadState.md)
+- [ListCollectionLoadState](enums/ListCollectionLoadState.md)
+
+### Classes
+
+- [ArrayHolder](classes/ArrayHolder.md)
+- [CollectionHolder](classes/CollectionHolder.md)
+- [DataHolder](classes/DataHolder.md)
+- [FormHolder](classes/FormHolder.md)
+- [ListCollectionHolder](classes/ListCollectionHolder.md)
+- [PropsHolder](classes/PropsHolder.md)
+- [TextHolder](classes/TextHolder.md)
+- [ValueHolder](classes/ValueHolder.md)
+
 ### Interfaces
 
 - [DateOptions](interfaces/DateOptions.md)
+- [IDataHolderState](interfaces/IDataHolderState.md)
 - [IEmpty](interfaces/IEmpty.md)
 - [IGenIdOptions](interfaces/IGenIdOptions.md)
 - [IIoCInterface](interfaces/IIoCInterface.md)
 - [PluralOptions](interfaces/PluralOptions.md)
+- [RefreshArgs](interfaces/RefreshArgs.md)
+- [SupportInitialize](interfaces/SupportInitialize.md)
 
 ### Type Aliases
 
 - [CheckArray](modules.md#checkarray)
+- [FormPartial](modules.md#formpartial)
 - [Join](modules.md#join)
 - [LambdaValue](modules.md#lambdavalue)
+- [Maybe](modules.md#maybe)
 - [PartialKeys](modules.md#partialkeys)
 - [PartialObject](modules.md#partialobject)
 - [RecursiveObjectType](modules.md#recursiveobjecttype)
 - [RequiredKeys](modules.md#requiredkeys)
 - [SubType](modules.md#subtype)
+
+### Variables
+
+- [passwordRegex](modules.md#passwordregex)
+- [usernameRegex](modules.md#usernameregex)
 
 ### Functions
 
@@ -63,8 +89,12 @@
 - [parseDate](modules.md#parsedate)
 - [pluralize](modules.md#pluralize)
 - [resolveLambdaValue](modules.md#resolvelambdavalue)
+- [toDivide](modules.md#todivide)
 - [toLowerCase](modules.md#tolowercase)
 - [toUpperCase](modules.md#touppercase)
+- [validateLength](modules.md#validatelength)
+- [validateRegex](modules.md#validateregex)
+- [validateRequired](modules.md#validaterequired)
 
 ## Type Aliases
 
@@ -80,7 +110,23 @@
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:1](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L1)
+[src/helpers/types.ts:1](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L1)
+
+___
+
+### FormPartial
+
+Ƭ **FormPartial**<`T`\>: { [K in keyof T]: T[K] extends FormHolder ? T[K] : T[K] extends TextHolder \| ArrayHolder ? T[K] : T[K] \| undefined }
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+[src/store/holders/FormHolder.ts:34](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L34)
 
 ___
 
@@ -97,7 +143,7 @@ ___
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:12](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L12)
+[src/helpers/types.ts:12](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L12)
 
 ___
 
@@ -114,7 +160,23 @@ ___
 
 #### Defined in
 
-[src/helpers/lambdaValue.ts:3](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/lambdaValue.ts#L3)
+[src/helpers/lambdaValue.ts:3](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/lambdaValue.ts#L3)
+
+___
+
+### Maybe
+
+Ƭ **Maybe**<`T`\>: `T` \| `undefined`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Defined in
+
+[src/helpers/types.ts:38](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L38)
 
 ___
 
@@ -131,7 +193,7 @@ ___
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:28](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L28)
+[src/helpers/types.ts:28](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L28)
 
 ___
 
@@ -147,7 +209,7 @@ ___
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:3](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L3)
+[src/helpers/types.ts:3](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L3)
 
 ___
 
@@ -164,7 +226,7 @@ ___
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:18](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L18)
+[src/helpers/types.ts:18](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L18)
 
 ___
 
@@ -181,7 +243,7 @@ ___
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:30](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L30)
+[src/helpers/types.ts:30](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L30)
 
 ___
 
@@ -198,7 +260,27 @@ ___
 
 #### Defined in
 
-[src/helpers/typeUtils.ts:5](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeUtils.ts#L5)
+[src/helpers/types.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L5)
+
+## Variables
+
+### passwordRegex
+
+• `Const` **passwordRegex**: `RegExp`
+
+#### Defined in
+
+[src/store/holders/validations.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/validations.ts#L5)
+
+___
+
+### usernameRegex
+
+• `Const` **usernameRegex**: `RegExp`
+
+#### Defined in
+
+[src/store/holders/validations.ts:3](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/validations.ts#L3)
 
 ## Functions
 
@@ -297,7 +379,7 @@ ___
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:1](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L1)
+[src/helpers/typeGuards.ts:1](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L1)
 
 ___
 
@@ -317,7 +399,7 @@ ___
 
 #### Defined in
 
-[src/helpers/string.ts:7](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/string.ts#L7)
+[src/helpers/string.ts:7](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L7)
 
 ___
 
@@ -331,7 +413,7 @@ ___
 
 #### Defined in
 
-[src/helpers/date.ts:12](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/date.ts#L12)
+[src/helpers/date.ts:15](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/date.ts#L15)
 
 ___
 
@@ -352,7 +434,7 @@ ___
 
 #### Defined in
 
-[src/helpers/debounce.ts:3](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/debounce.ts#L3)
+[src/helpers/debounce.ts:3](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/debounce.ts#L3)
 
 ___
 
@@ -379,7 +461,7 @@ ___
 
 #### Defined in
 
-[src/helpers/delayPromise.ts:1](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/delayPromise.ts#L1)
+[src/helpers/delayPromise.ts:1](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/delayPromise.ts#L1)
 
 ___
 
@@ -400,7 +482,7 @@ ___
 
 #### Defined in
 
-[src/helpers/date.ts:8](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/date.ts#L8)
+[src/helpers/date.ts:8](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/date.ts#L8)
 
 ___
 
@@ -420,7 +502,7 @@ ___
 
 #### Defined in
 
-[src/helpers/number.ts:7](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/number.ts#L7)
+[src/helpers/number.ts:8](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/number.ts#L8)
 
 ___
 
@@ -448,7 +530,7 @@ ___
 
 #### Defined in
 
-[src/helpers/array.ts:1](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/array.ts#L1)
+[src/helpers/array.ts:1](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/array.ts#L1)
 
 ___
 
@@ -474,7 +556,7 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:29](https://github.com/epifanovmd/utils/blob/f69d513/src/ioc/IoC.ts#L29)
+[src/ioc/IoC.ts:29](https://github.com/epifanovmd/utils/blob/4aca669/src/ioc/IoC.ts#L29)
 
 ___
 
@@ -506,7 +588,7 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:27](https://github.com/epifanovmd/utils/blob/f69d513/src/ioc/IoC.ts#L27)
+[src/ioc/IoC.ts:27](https://github.com/epifanovmd/utils/blob/4aca669/src/ioc/IoC.ts#L27)
 
 ___
 
@@ -533,7 +615,7 @@ term is T[]
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:39](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L39)
+[src/helpers/typeGuards.ts:39](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L39)
 
 ___
 
@@ -559,7 +641,7 @@ term is bigint
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:24](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L24)
+[src/helpers/typeGuards.ts:24](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L24)
 
 ___
 
@@ -585,7 +667,7 @@ term is boolean
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:15](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L15)
+[src/helpers/typeGuards.ts:15](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L15)
 
 ___
 
@@ -611,7 +693,7 @@ term is Date
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:56](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L56)
+[src/helpers/typeGuards.ts:56](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L56)
 
 ___
 
@@ -638,7 +720,7 @@ term is T
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:32](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L32)
+[src/helpers/typeGuards.ts:32](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L32)
 
 ___
 
@@ -664,7 +746,7 @@ term is number
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:70](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L70)
+[src/helpers/typeGuards.ts:70](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L70)
 
 ___
 
@@ -692,7 +774,7 @@ term is Map<K, V\>
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:42](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L42)
+[src/helpers/typeGuards.ts:42](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L42)
 
 ___
 
@@ -718,7 +800,7 @@ term is number
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:79](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L79)
+[src/helpers/typeGuards.ts:79](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L79)
 
 ___
 
@@ -745,7 +827,7 @@ term is T[]
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:61](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L61)
+[src/helpers/typeGuards.ts:61](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L61)
 
 ___
 
@@ -771,7 +853,7 @@ term is string
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:64](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L64)
+[src/helpers/typeGuards.ts:64](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L64)
 
 ___
 
@@ -797,7 +879,7 @@ term is number
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:76](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L76)
+[src/helpers/typeGuards.ts:76](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L76)
 
 ___
 
@@ -823,7 +905,7 @@ term is null
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:30](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L30)
+[src/helpers/typeGuards.ts:30](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L30)
 
 ___
 
@@ -849,7 +931,7 @@ term is number
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:18](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L18)
+[src/helpers/typeGuards.ts:18](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L18)
 
 ___
 
@@ -875,7 +957,7 @@ term is number
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:67](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L67)
+[src/helpers/typeGuards.ts:67](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L67)
 
 ___
 
@@ -902,7 +984,7 @@ term is NonNullable<T\>
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:35](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L35)
+[src/helpers/typeGuards.ts:35](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L35)
 
 ___
 
@@ -929,7 +1011,7 @@ term is T
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:58](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L58)
+[src/helpers/typeGuards.ts:58](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L58)
 
 ___
 
@@ -955,7 +1037,7 @@ term is number
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:73](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L73)
+[src/helpers/typeGuards.ts:73](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L73)
 
 ___
 
@@ -982,7 +1064,7 @@ term is Set<T\>
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:45](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L45)
+[src/helpers/typeGuards.ts:45](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L45)
 
 ___
 
@@ -1008,7 +1090,7 @@ term is string
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:21](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L21)
+[src/helpers/typeGuards.ts:21](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L21)
 
 ___
 
@@ -1034,7 +1116,7 @@ term is symbol
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:27](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L27)
+[src/helpers/typeGuards.ts:27](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L27)
 
 ___
 
@@ -1060,7 +1142,7 @@ term is undefined
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:12](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L12)
+[src/helpers/typeGuards.ts:12](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L12)
 
 ___
 
@@ -1088,7 +1170,7 @@ term is WeakMap<K, V\>
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:48](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L48)
+[src/helpers/typeGuards.ts:48](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L48)
 
 ___
 
@@ -1115,7 +1197,7 @@ term is WeakSet<T\>
 
 #### Defined in
 
-[src/helpers/typeGuards.ts:52](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/typeGuards.ts#L52)
+[src/helpers/typeGuards.ts:52](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/typeGuards.ts#L52)
 
 ___
 
@@ -1136,7 +1218,7 @@ ___
 
 #### Defined in
 
-[src/helpers/date.ts:11](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/date.ts#L11)
+[src/helpers/date.ts:13](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/date.ts#L13)
 
 ___
 
@@ -1159,7 +1241,7 @@ ___
 
 #### Defined in
 
-[src/helpers/string.ts:22](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/string.ts#L22)
+[src/helpers/string.ts:22](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L22)
 
 ___
 
@@ -1187,7 +1269,29 @@ ___
 
 #### Defined in
 
-[src/helpers/lambdaValue.ts:7](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/lambdaValue.ts#L7)
+[src/helpers/lambdaValue.ts:7](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/lambdaValue.ts#L7)
+
+___
+
+### toDivide
+
+▸ **toDivide**(`num`, `opt?`): `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `num` | `number` |
+| `opt?` | `Object` |
+| `opt.separator?` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/helpers/number.ts:22](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/number.ts#L22)
 
 ___
 
@@ -1207,7 +1311,7 @@ ___
 
 #### Defined in
 
-[src/helpers/string.ts:19](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/string.ts#L19)
+[src/helpers/string.ts:19](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L19)
 
 ___
 
@@ -1227,4 +1331,116 @@ ___
 
 #### Defined in
 
-[src/helpers/string.ts:16](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/string.ts#L16)
+[src/helpers/string.ts:16](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L16)
+
+___
+
+### validateLength
+
+▸ **validateLength**(`length`, `message?`): <T\>(`value?`: `T`) => `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `length` | `Object` |
+| `length.max?` | `number` |
+| `length.min?` | `number` |
+| `message?` | `string` |
+
+#### Returns
+
+`fn`
+
+▸ <`T`\>(`value?`): `string`
+
+##### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `unknown` |
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value?` | `T` |
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[src/store/holders/validations.ts:9](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/validations.ts#L9)
+
+___
+
+### validateRegex
+
+▸ **validateRegex**(`regex`, `message?`): (`value`: `string`) => `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `regex` | `RegExp` |
+| `message?` | `string` |
+
+#### Returns
+
+`fn`
+
+▸ (`value?`): `string`
+
+##### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `value` | `string` | `""` |
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[src/store/holders/validations.ts:43](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/validations.ts#L43)
+
+___
+
+### validateRequired
+
+▸ **validateRequired**(`message?`): <T\>(`value?`: `T`) => `string`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `message?` | `string` |
+
+#### Returns
+
+`fn`
+
+▸ <`T`\>(`value?`): `string`
+
+##### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `unknown` |
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value?` | `T` |
+
+##### Returns
+
+`string`
+
+#### Defined in
+
+[src/store/holders/validations.ts:33](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/validations.ts#L33)
