@@ -19,6 +19,7 @@ interface IDataHolderError {
 
 type Collection<T> = T[];
 
+// eslint-disable-next-line symbol-description
 const ITEM_KEY = Symbol();
 
 type KeyExtractor<T> = (item: T) => string;

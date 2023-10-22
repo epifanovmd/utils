@@ -85,7 +85,7 @@ export class TextHolder {
     this._error = resolveLambdaValue(error);
   }
 
-  setValidate(validator: typeof this._validate) {
+  setValidate(validator: ((text: string) => string) | null) {
     this._validate = validator;
   }
 }
