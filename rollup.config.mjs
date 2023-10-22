@@ -1,7 +1,8 @@
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
-import typescript from "@rollup/plugin-typescript";
+import typescript from 'rollup-plugin-typescript2';
+
 import { defineConfig } from "rollup";
 // @ts-ignore
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -32,7 +33,7 @@ const config = defineConfig({
     resolve(),
     commonjs(),
     terser(),
-    typescript({ declaration: false, declarationDir: undefined }),
+    typescript({ useTsconfigDeclarationDir: true }),
   ],
 });
 
