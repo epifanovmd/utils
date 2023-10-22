@@ -12,8 +12,8 @@
 
 ### type
 
-• `Optional` **type**: ``"numeric"`` \| ``"uuid"``
+• `Optional` **type**: ``"numeric"`` \| ``"uuid"`` \| ``"shortid"``
 
 #### Defined in
 
-[src/helpers/number.ts:4](https://github.com/epifanovmd/utils/blob/f69d513/src/helpers/number.ts#L4)
+[src/helpers/number.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/number.ts#L5)
