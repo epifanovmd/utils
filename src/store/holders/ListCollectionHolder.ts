@@ -267,11 +267,11 @@ export class ListCollectionHolder<T> implements IListEvents {
     }
   }
 
-  public performChangeVisibleRange(index: number, count: number): void {
+  public performChangeVisibleRange = (index: number, count: number) => {
     this._visibleRange.index = index;
     this._visibleRange.count = count;
     this._raiseOnFetchData().then();
-  }
+  };
 
   public performRefresh() {
     if (this.isLoadingAllowed) {
