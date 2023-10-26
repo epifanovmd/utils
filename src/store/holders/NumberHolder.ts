@@ -1,18 +1,26 @@
 import { LambdaValue, resolveLambdaValue } from "../../helpers";
 import { makeAutoObservable } from "mobx";
+import { FormHolder } from "./FormHolder";
+import { TextHolder } from "./TextHolder";
+
+const textToNumber = (value: LambdaValue<string> = () => "") => {
+  const text = resolveLambdaValue(value);
+
+  return +text.replace(/[^0-9]+/g, "");
+};
 
 type Opts = {
-  initialValue?: LambdaValue<string>;
+  initialValue?: LambdaValue<number>;
   validateOnInit?: boolean;
 };
 
-export class TextHolder {
+export class NumberHolder {
   private opts?: Opts;
-  private _validate: ((text: string) => string) | null = null;
+  private _validate: ((text: number | undefined) => string) | null = null;
   private _error: LambdaValue<string> = "";
   private _placeholder: LambdaValue<string> = "";
-  private _initialValue: LambdaValue<string> = "";
-  private _value: LambdaValue<string> = "";
+  private _initialValue: LambdaValue<number | undefined>;
+  private _value: LambdaValue<number | undefined>;
 
   constructor(opts?: Opts) {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -48,13 +56,13 @@ export class TextHolder {
   }
 
   onChangeText(text: LambdaValue<string>) {
-    const value = resolveLambdaValue(text);
+    const value = textToNumber(resolveLambdaValue(text));
 
     this.setError(this._validate?.(value) ?? "");
-    this._value = text;
+    this._value = value;
   }
 
-  setValue(text: LambdaValue<string>) {
+  setValue(text: LambdaValue<number>) {
     const value = resolveLambdaValue(text);
 
     this.setError(this._validate?.(value) ?? "");
@@ -69,7 +77,7 @@ export class TextHolder {
     this._error = resolveLambdaValue(error);
   }
 
-  setValidate(validator: ((text: string) => string) | null) {
+  setValidate(validator: ((text: number | undefined) => string) | null) {
     this._validate = validator;
   }
 }

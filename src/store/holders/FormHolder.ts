@@ -2,11 +2,13 @@ import { makeAutoObservable } from "mobx";
 import { identity, pickBy, toUpper } from "lodash";
 import { ArrayHolder } from "./ArrayHolder";
 import { TextHolder } from "./TextHolder";
+import { NumberHolder } from "./NumberHolder";
 
 type Setter<T> = Required<{
   [K in keyof T as `set${Capitalize<string & K>}`]: T[K] extends
     | FormHolder
     | TextHolder
+    | NumberHolder
     | ArrayHolder
     ? T[K]["setValue"]
     : (value: T[K]) => void;
@@ -25,7 +27,10 @@ type SubType<Base, Condition> = Pick<
   }[keyof Base]
 >;
 
-type ExtractFields<T> = SubType<T, FormHolder | TextHolder | ArrayHolder>;
+type ExtractFields<T> = SubType<
+  T,
+  FormHolder | TextHolder | NumberHolder | ArrayHolder
+>;
 
 type Validation<T, V = ExtractFields<T>> = {
   [Key in keyof V]?: (value: V[Key]) => string;
@@ -34,7 +39,7 @@ type Validation<T, V = ExtractFields<T>> = {
 export type FormPartial<T> = {
   [K in keyof T]: T[K] extends FormHolder
     ? T[K]
-    : T[K] extends TextHolder | ArrayHolder
+    : T[K] extends TextHolder | NumberHolder | ArrayHolder
     ? T[K]
     : T[K] | undefined;
 };
@@ -78,11 +83,15 @@ export class FormHolder<T extends object = object> {
         value.hasOwnProperty(key) &&
         (value[key] instanceof FormHolder ||
           value[key] instanceof TextHolder ||
+          value[key] instanceof NumberHolder ||
           value[key] instanceof ArrayHolder)
       ) {
         const field = value[key];
 
-        if (!(field as FormHolder | TextHolder | ArrayHolder).isValid) {
+        if (
+          !(field as FormHolder | TextHolder | NumberHolder | ArrayHolder)
+            .isValid
+        ) {
           _isValid = false;
           break;
         }
@@ -107,10 +116,15 @@ export class FormHolder<T extends object = object> {
             this._initialValue[key] &&
             (this._initialValue[key] instanceof FormHolder ||
               this._initialValue[key] instanceof TextHolder ||
+              this._initialValue[key] instanceof NumberHolder ||
               this._initialValue[key] instanceof ArrayHolder)
           ) {
             (
-              this._initialValue[key] as FormHolder | TextHolder | ArrayHolder
+              this._initialValue[key] as
+                | FormHolder
+                | TextHolder
+                | NumberHolder
+                | ArrayHolder
             )?.resetData?.();
           }
         }
@@ -137,6 +151,8 @@ export class FormHolder<T extends object = object> {
           setters[_key] = (value[key] as FormHolder).setValue;
         } else if (value[key] instanceof TextHolder) {
           setters[_key] = (value[key] as TextHolder).setValue;
+        } else if (value[key] instanceof NumberHolder) {
+          setters[_key] = (value[key] as NumberHolder).setValue;
         } else if (value[key] instanceof ArrayHolder) {
           setters[_key] = (value[key] as ArrayHolder).setValue;
         } else {
