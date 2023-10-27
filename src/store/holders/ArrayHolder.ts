@@ -46,9 +46,14 @@ export class ArrayHolder<T = any> {
 
   remove(value: number | ((item: T) => boolean)) {
     if (isFunction(value)) {
-      this._value = () => this.value.filter(value);
+      const _value = this.value.filter(value);
+
+      this._value = () => _value;
+    } else {
+      const _value = this.value.filter((_item, index) => index !== value);
+
+      this._value = () => _value;
     }
-    this._value = () => this.value.filter((_item, index) => index !== value);
   }
 
   push(value: LambdaValue<T>) {
