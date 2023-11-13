@@ -1,5 +1,6 @@
 import { isFunction, LambdaValue, resolveLambdaValue } from "../../helpers";
 import { makeAutoObservable } from "mobx";
+import { isEqual } from "lodash";
 
 type Validator<T> = (items: T[]) => string;
 
@@ -42,6 +43,7 @@ export class ArrayHolder<T = any> {
 
   setValue(value: LambdaValue<T[]>) {
     this._value = value;
+    this.validate();
   }
 
   remove(value: number | ((item: T) => boolean)) {
@@ -54,6 +56,7 @@ export class ArrayHolder<T = any> {
 
       this._value = () => _value;
     }
+    this.validate();
   }
 
   push(value: LambdaValue<T>) {
@@ -61,7 +64,7 @@ export class ArrayHolder<T = any> {
     const newValue = [...resolveLambdaValue(this._value), _value];
 
     this._value = () => newValue;
-    this.setError(this._validate?.(newValue) ?? "");
+    this.validate();
   }
 
   onReplaceValue(value: LambdaValue<T>, index: number) {
@@ -71,7 +74,7 @@ export class ArrayHolder<T = any> {
     );
 
     this._value = () => newValue;
-    this.setError(this._validate?.(newValue) ?? "");
+    this.validate();
   }
 
   setError(error: LambdaValue<string>) {
@@ -84,5 +87,24 @@ export class ArrayHolder<T = any> {
 
   resetData() {
     this._value = () => [...(resolveLambdaValue(this._initialValue) || [])];
+  }
+
+  validate() {
+    const error = this._validate?.(this.value) ?? "";
+
+    this.setError(error);
+
+    return error;
+  }
+
+  get isChanged() {
+    const value = resolveLambdaValue(this._value);
+    const initialValue = resolveLambdaValue(this._initialValue);
+
+    if (value.length !== initialValue.length) {
+      return true;
+    }
+
+    return isEqual(value, initialValue);
   }
 }

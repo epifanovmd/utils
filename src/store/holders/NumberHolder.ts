@@ -56,17 +56,13 @@ export class NumberHolder {
   }
 
   onChangeText(text: LambdaValue<string>) {
-    const value = textToNumber(resolveLambdaValue(text));
-
-    this.setError(this._validate?.(value) ?? "");
-    this._value = value;
+    this._value = () => textToNumber(resolveLambdaValue(text));
+    this.validate();
   }
 
   setValue(text: LambdaValue<number>) {
-    const value = resolveLambdaValue(text);
-
-    this.setError(this._validate?.(value) ?? "");
     this._value = text;
+    this.validate();
   }
 
   setPlaceholder(text: LambdaValue<string>) {
@@ -79,5 +75,19 @@ export class NumberHolder {
 
   setValidate(validator: ((text: number | undefined) => string) | null) {
     this._validate = validator;
+  }
+
+  validate() {
+    const error = this._validate?.(this.value) ?? "";
+
+    this.setError(error);
+
+    return error;
+  }
+
+  get isChanged() {
+    return (
+      resolveLambdaValue(this._value) !== resolveLambdaValue(this._initialValue)
+    );
   }
 }
