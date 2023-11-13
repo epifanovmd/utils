@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { cloneDeep, identity, pickBy, toUpper } from "lodash";
+import { cloneDeep, identity, isEqual, pickBy, toUpper } from "lodash";
 import { ArrayHolder } from "./ArrayHolder";
 import { TextHolder } from "./TextHolder";
 import { NumberHolder } from "./NumberHolder";
@@ -204,7 +204,7 @@ export class FormHolder<T extends object = object> {
         if (field.isChanged) {
           _changed = true;
         }
-      } else if (field !== this._initialValue[name]) {
+      } else if (!isEqual(field, this._initialValue[name])) {
         _changed = true;
       }
 
