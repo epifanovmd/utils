@@ -127,7 +127,7 @@ export class FormHolder<T extends object = object> {
         const field = fields[key];
 
         if (this._isNotPrimitive(field)) {
-          setters[_key] = field.setValue;
+          setters[_key] = (v: any) => field.setValue(v);
         } else {
           setters[_key] = (data: T[Extract<keyof T, string>]) => {
             this.setValue(key, data);
@@ -191,7 +191,7 @@ export class FormHolder<T extends object = object> {
     }
   }
 
-  isChanged() {
+  get isChanged() {
     let _changed = false;
     const fields = this.fields;
 
