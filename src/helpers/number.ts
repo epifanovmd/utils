@@ -19,7 +19,9 @@ export const genId = (opt?: IGenIdOptions) => {
   }
 };
 
-export const toDivide = (num: number, opt?: { separator?: string }) => {
+export type DivideOpt = { separator?: string };
+
+export const toDivide = (num: number, opt?: DivideOpt) => {
   const int = String(Math.trunc(Number(num || 0)));
 
   if (int.length <= 3) {

@@ -2,6 +2,7 @@ export * from "./array";
 export * from "./date";
 export * from "./debounce";
 export * from "./delayPromise";
+export * from "./input";
 export * from "./lambdaValue";
 export * from "./number";
 export * from "./string";
