@@ -19,7 +19,7 @@ export const replaceInputString = (
   if (type === "text") {
     _value = text;
   } else if (type === "number") {
-    _value = Number(text.replace(/[^0-9]/g, "")).toString();
+    _value = Number(text.replace(/,/g, ".").replace(/[^0-9]/g, "")).toString();
     if (divide) {
       _value = toDivide(Number(_value), divideOpt);
     }
