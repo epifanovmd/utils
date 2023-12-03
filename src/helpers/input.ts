@@ -12,7 +12,7 @@ export const replaceInputString = (
 ) => {
   let _value = "";
 
-  if (text === "" || text === "0") {
+  if (text === "") {
     return "";
   }
 
