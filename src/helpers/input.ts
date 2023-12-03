@@ -24,15 +24,17 @@ export const replaceInputString = (
       _value = toDivide(Number(_value), divideOpt);
     }
   } else if (type === "floating") {
-    _value = Number(
-      text
-        .replace(/,/g, ".")
-        .replace(/[^0-9.]/g, "")
-        .replace(/^([^\\.]*\.)|\./g, "$1"),
-    ).toString();
+    _value = text
+      .replace(/,/g, ".")
+      .replace(/[^0-9.]/g, "")
+      .replace(/^([^\\.]*\.)|\./g, "$1");
 
-    if (divide) {
-      _value = toDivide(Number(_value), divideOpt);
+    if (_value === ".") {
+      _value = "0.";
+    }
+
+    if (_value[0] === "0" && _value[1] && _value[1] !== ".") {
+      _value = Number(_value).toString();
     }
   } else {
     _value = text;
