@@ -12,6 +12,10 @@ export const replaceInputString = (
 ) => {
   let _value = "";
 
+  if (text === "" || text === "0") {
+    return "";
+  }
+
   if (type === "text") {
     _value = text;
   } else if (type === "number") {
