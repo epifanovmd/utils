@@ -80,19 +80,7 @@ export class FormHolder<T extends object = object> {
       this._value = cloneDeep(value);
       this._initialValue = cloneDeep(value);
     } else {
-      for (const key in this._initialValue) {
-        if (this._initialValue.hasOwnProperty(key)) {
-          const field = this._initialValue[key];
-
-          if (field && this._isNotPrimitive(field)) {
-            field?.resetData?.();
-          } else {
-            this._value[key] = field;
-          }
-        } else {
-          this._value[key] = undefined as any;
-        }
-      }
+      this._value = cloneDeep(this._initialValue);
     }
 
     this.validate();
