@@ -4,15 +4,6 @@ import { ArrayHolder } from "./ArrayHolder";
 import { TextHolder } from "./TextHolder";
 import { NumberHolder } from "./NumberHolder";
 
-type Setter<T> = Required<{
-  [K in keyof T as `set${Capitalize<string & K>}`]: T[K] extends
-    | TextHolder
-    | NumberHolder
-    | ArrayHolder
-    ? T[K]["setValue"]
-    : (value: T[K]) => void;
-}>;
-
 type Opts = {};
 
 type SubType<Base, Condition> = Pick<
@@ -113,30 +104,6 @@ export class FormHolder<T extends object = object> {
     } else {
       this._errors[name] = error;
     }
-  }
-
-  get setters(): Setter<T> {
-    const setters: any = {};
-
-    const fields = this.fields;
-
-    for (const key in fields) {
-      if (fields.hasOwnProperty(key)) {
-        const _key = `set${toUpper(key[0])}${key.slice(1, key.length)}`;
-
-        const field = fields[key];
-
-        if (this._isNotPrimitive(field)) {
-          setters[_key] = (v: any) => field.setValue(v);
-        } else {
-          setters[_key] = (data: T[Extract<keyof T, string>]) => {
-            this.setValue(key, data);
-          };
-        }
-      }
-    }
-
-    return setters as Setter<T>;
   }
 
   get errors() {
@@ -256,11 +223,7 @@ export class FormHolder<T extends object = object> {
 //   value.length > 3 ? "длинна массива больше 3" : "",
 // );
 //
-// form.setters.setNumber(33);
-// form.setters.setString("333");
-//
 // form.fields.array.push({ a: 1, b: "3333" });
 // form.fields.array.onReplaceValue({ a: 1, b: "3333" }, 0);
 //
 // form.fields.textField.setValue("12344");
-// form.setters.setTextField("444");
