@@ -89,6 +89,8 @@ export class FormHolder<T extends object = object> {
           } else {
             this._value[key] = field;
           }
+        } else {
+          this._value[key] = undefined as any;
         }
       }
     }
