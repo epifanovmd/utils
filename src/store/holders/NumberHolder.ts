@@ -1,7 +1,5 @@
 import { LambdaValue, resolveLambdaValue } from "../../helpers";
 import { makeAutoObservable } from "mobx";
-import { FormHolder } from "./FormHolder";
-import { TextHolder } from "./TextHolder";
 
 const textToNumber = (value: LambdaValue<string> = () => "") => {
   const text = resolveLambdaValue(value);
@@ -56,7 +54,7 @@ export class NumberHolder {
   }
 
   onChangeText(text: LambdaValue<string>) {
-    this._value = () => textToNumber(resolveLambdaValue(text));
+    this._value = () => textToNumber(text);
     this.validate();
   }
 
