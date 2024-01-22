@@ -26,35 +26,20 @@ type KeyExtractor<T> = (item: T) => string;
 
 interface IListEvents {
   performPullToRefresh(): void;
-
   performLoadMore(): void;
-
   performRefresh(): void;
-
   performReload(): void;
-
-  performChangeVisibleRange(index: number, count: number): void;
-}
-
-interface Range {
-  index: number;
-  count: number;
-}
-
-interface Page {
-  offset: number;
-  pageSize: number;
 }
 
 export interface RefreshArgs {
-  visibleRange: Range;
-  page?: Page;
+  offset: number;
+  limit: number;
 }
 
 interface IOptions<T> {
   keyExtractor: KeyExtractor<T>;
   onFetchData: (args?: RefreshArgs) => Promise<any>;
-  changeVisibleRangeDebounceWait?: number;
+  fetchDebounceWait?: number;
   loadMoreThreshold?: number;
   pageSize?: number;
 }
@@ -74,10 +59,9 @@ export class ListCollectionHolder<T> implements IListEvents {
   _isEndReached: boolean = false;
   private _state: ListCollectionLoadState =
     ListCollectionLoadState.initializing;
-  private _visibleRange: Range = {
-    index: 0,
-    count: 0,
-  };
+
+  private _offset = 0;
+
   private _opts!: IOptions<T>;
   private _lastRefreshArgs?: RefreshArgs;
 
@@ -132,26 +116,17 @@ export class ListCollectionHolder<T> implements IListEvents {
   }
 
   private get _refreshArgs(): RefreshArgs {
-    const visibleRange = this._visibleRange;
-    const page = this._opts.pageSize
-      ? {
-          offset: visibleRange.index,
-          pageSize: this._opts.pageSize! + visibleRange.count,
-        }
-      : undefined;
-
     return {
-      visibleRange: { ...visibleRange },
-      page,
+      offset: this.d.length,
+      limit: this._opts.pageSize || 0,
     };
   }
 
   private get _lastPageSize(): number {
     return (this._opts.pageSize || 0) > 0 &&
       this._lastRefreshArgs &&
-      this._lastRefreshArgs.page &&
-      this._lastRefreshArgs.page.pageSize > 0
-      ? this._lastRefreshArgs.page.pageSize
+      this._lastRefreshArgs.limit > 0
+      ? this._lastRefreshArgs.limit
       : 0;
   }
 
@@ -161,10 +136,6 @@ export class ListCollectionHolder<T> implements IListEvents {
       ...opts,
     };
 
-    this.performChangeVisibleRange = debounce(
-      this.performChangeVisibleRange,
-      this._opts.changeVisibleRangeDebounceWait,
-    );
     this._setState(ListCollectionLoadState.ready);
   }
 
@@ -202,10 +173,7 @@ export class ListCollectionHolder<T> implements IListEvents {
     this.error = undefined;
     this._isEndReached = false;
     this._lastRefreshArgs = undefined;
-    this._visibleRange = {
-      index: 0,
-      count: 0,
-    };
+    this._offset = 0;
     this._setState(ListCollectionLoadState.ready);
   }
 
@@ -257,22 +225,16 @@ export class ListCollectionHolder<T> implements IListEvents {
   public performLoadMore(): void {
     if (this.isLoadingMoreAllowed) {
       this.setLoadingMore();
-      this._raiseOnFetchData().then();
+      this._raiseOnFetchData();
     }
   }
 
   public performPullToRefresh(): void {
     if (this.isPullToRefreshAllowed) {
       this.setPullToRefreshing();
-      this._raiseOnFetchData().then();
+      this._raiseOnFetchData();
     }
   }
-
-  public performChangeVisibleRange = (index: number, count: number) => {
-    this._visibleRange.index = index;
-    this._visibleRange.count = count;
-    this._raiseOnFetchData().then();
-  };
 
   public performRefresh() {
     if (this.isLoadingAllowed) {
@@ -281,7 +243,7 @@ export class ListCollectionHolder<T> implements IListEvents {
       } else {
         this.setRefreshing();
       }
-      this._raiseOnFetchData().then();
+      this._raiseOnFetchData();
     }
   }
 
@@ -289,7 +251,7 @@ export class ListCollectionHolder<T> implements IListEvents {
     if (this.isLoadingAllowed) {
       this.clear();
       this.setLoading();
-      this._raiseOnFetchData().then();
+      this._raiseOnFetchData();
     }
   }
 
@@ -322,10 +284,12 @@ export class ListCollectionHolder<T> implements IListEvents {
     return result;
   }
 
-  private async _raiseOnFetchData() {
-    this._lastRefreshArgs = this._refreshArgs;
-    const args: RefreshArgs = { ...this._lastRefreshArgs };
+  private _raiseOnFetchData() {
+    return debounce(async () => {
+      this._lastRefreshArgs = this._refreshArgs;
+      const args: RefreshArgs = { ...this._lastRefreshArgs };
 
-    await this._opts.onFetchData(args);
+      await this._opts.onFetchData(args);
+    }, this._opts.fetchDebounceWait)();
   }
 }
