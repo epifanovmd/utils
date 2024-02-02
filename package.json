@@ -1,6 +1,6 @@
 {
   "name": "@force-dev/utils",
-  "version": "1.1.33",
+  "version": "1.1.34",
   "description": "Utils library for typescript",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
