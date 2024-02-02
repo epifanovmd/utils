@@ -74,7 +74,6 @@ export class DataHolder<T> implements IDataHolderState {
   }
 
   public setError(error: IDataHolderError) {
-    this.d = undefined as any;
     this.error = error;
     this._state = DataHolderState.ERROR;
 

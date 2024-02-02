@@ -148,7 +148,6 @@ export class CollectionHolder<T> {
   }
 
   public setError(error: IDataHolderError) {
-    this.d = [];
     this.error = error;
     this._setState(CollectionLoadState.error);
     this._setIsLoadedFirst(false);

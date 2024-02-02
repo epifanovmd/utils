@@ -178,7 +178,6 @@ export class ListCollectionHolder<T> implements IListEvents {
   }
 
   public setError(error: IDataHolderError) {
-    this.d = [];
     this.error = error;
     this._setState(ListCollectionLoadState.error);
 
