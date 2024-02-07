@@ -38,7 +38,7 @@ export interface RefreshArgs {
 
 interface IOptions<T> {
   keyExtractor: KeyExtractor<T>;
-  onFetchData: (args?: RefreshArgs) => Promise<any>;
+  onFetchData: (args?: RefreshArgs) => Promise<T[]>;
   fetchDebounceWait?: number;
   loadMoreThreshold?: number;
   pageSize?: number;
@@ -221,18 +221,24 @@ export class ListCollectionHolder<T> implements IListEvents {
     return cachedKey;
   }
 
-  public performLoadMore(): void {
+  public performLoadMore() {
     if (this.isLoadingMoreAllowed) {
       this.setLoadingMore();
-      this._raiseOnFetchData();
+
+      return this._raiseOnFetchData() ?? Promise.resolve([]);
     }
+
+    return Promise.resolve([]);
   }
 
-  public performPullToRefresh(): void {
+  public performPullToRefresh() {
     if (this.isPullToRefreshAllowed) {
       this.setPullToRefreshing();
-      this._raiseOnFetchData();
+
+      return this._raiseOnFetchData() ?? Promise.resolve([]);
     }
+
+    return Promise.resolve([]);
   }
 
   public performRefresh() {
@@ -242,16 +248,22 @@ export class ListCollectionHolder<T> implements IListEvents {
       } else {
         this.setRefreshing();
       }
-      this._raiseOnFetchData();
+
+      return this._raiseOnFetchData() ?? Promise.resolve([]);
     }
+
+    return Promise.resolve([]);
   }
 
   public performReload() {
     if (this.isLoadingAllowed) {
       this.clear();
       this.setLoading();
-      this._raiseOnFetchData();
+
+      return this._raiseOnFetchData() ?? Promise.resolve([]);
     }
+
+    return Promise.resolve([]);
   }
 
   private _setState(state: ListCollectionLoadState) {
@@ -284,11 +296,11 @@ export class ListCollectionHolder<T> implements IListEvents {
   }
 
   private _raiseOnFetchData() {
-    return debounce(async () => {
+    return debounce(() => {
       this._lastRefreshArgs = this._refreshArgs;
       const args: RefreshArgs = { ...this._lastRefreshArgs };
 
-      await this._opts.onFetchData(args);
+      return this._opts.onFetchData(args);
     }, this._opts.fetchDebounceWait)();
   }
 }
