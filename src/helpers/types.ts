@@ -37,6 +37,11 @@ export interface IEmpty {
 
 export type Maybe<T> = T | undefined;
 
+export type InitializeDispose =
+  | void
+  | (() => void)
+  | (() => void)[]
+  | Promise<void | (() => void) | (() => void)[]>;
 export interface SupportInitialize<T = never> {
-  initialize(data: T): void | (() => void) | (() => void)[];
+  initialize(data: T): InitializeDispose;
 }
