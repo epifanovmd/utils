@@ -60,6 +60,13 @@ export class DataHolder<T> implements IDataHolderState {
     return this;
   }
 
+  public clear() {
+    this.d = undefined;
+    this._state = DataHolderState.INITIALIZATION;
+
+    return this;
+  }
+
   public setPending() {
     this._state = DataHolderState.INITIALIZATION;
 

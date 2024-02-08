@@ -184,8 +184,10 @@ export class ListCollectionHolder<T> implements IListEvents {
     return this;
   }
 
-  public setLoading() {
-    this.d = [];
+  public setLoading(clear: boolean = true) {
+    if (clear) {
+      this.d = [];
+    }
     this._setState(ListCollectionLoadState.loading);
 
     return this;
