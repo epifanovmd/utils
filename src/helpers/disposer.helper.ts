@@ -1,7 +1,7 @@
 import { isArray, isFunction } from "./typeGuards";
 import { InitializeDispose } from "./types";
 
-export const disposer = (dispose: InitializeDispose) => {
+export const disposer = (dispose: InitializeDispose | InitializeDispose[]) => {
   if (dispose instanceof Promise) {
     dispose
       .then(disposable => {
