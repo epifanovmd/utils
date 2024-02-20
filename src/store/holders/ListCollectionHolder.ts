@@ -298,7 +298,7 @@ export class ListCollectionHolder<T> implements IListEvents {
     return debounce(() => {
       if (resetArgs) {
         this._lastRefreshArgs = {
-          offset: this.d.length,
+          offset: 0,
           limit: this._opts.pageSize || 0,
         };
       } else {
