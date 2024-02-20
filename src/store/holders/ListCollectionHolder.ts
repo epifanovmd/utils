@@ -60,8 +60,6 @@ export class ListCollectionHolder<T> implements IListEvents {
   private _state: ListCollectionLoadState =
     ListCollectionLoadState.initializing;
 
-  private _offset = 0;
-
   private _opts!: IOptions<T>;
   private _lastRefreshArgs?: RefreshArgs;
 
@@ -173,7 +171,6 @@ export class ListCollectionHolder<T> implements IListEvents {
     this.error = undefined;
     this._isEndReached = false;
     this._lastRefreshArgs = undefined;
-    this._offset = 0;
     this._setState(ListCollectionLoadState.ready);
   }
 
@@ -251,7 +248,7 @@ export class ListCollectionHolder<T> implements IListEvents {
         this.setRefreshing();
       }
 
-      return this._raiseOnFetchData() ?? Promise.resolve([]);
+      return this._raiseOnFetchData(true) ?? Promise.resolve([]);
     }
 
     return Promise.resolve([]);
@@ -297,9 +294,16 @@ export class ListCollectionHolder<T> implements IListEvents {
     return result;
   }
 
-  private _raiseOnFetchData() {
+  private _raiseOnFetchData(resetArgs?: boolean) {
     return debounce(() => {
-      this._lastRefreshArgs = this._refreshArgs;
+      if (resetArgs) {
+        this._lastRefreshArgs = {
+          offset: this.d.length,
+          limit: this._opts.pageSize || 0,
+        };
+      } else {
+        this._lastRefreshArgs = this._refreshArgs;
+      }
       const args: RefreshArgs = { ...this._lastRefreshArgs };
 
       return this._opts.onFetchData(args);
