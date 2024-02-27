@@ -22,7 +22,7 @@ type Collection<T> = T[];
 // eslint-disable-next-line symbol-description
 const ITEM_KEY = Symbol();
 
-type KeyExtractor<T> = (item: T) => string;
+type KeyExtractor<T> = (item: T) => string | number;
 
 interface IListEvents {
   performPullToRefresh(): void;
@@ -40,18 +40,13 @@ interface IOptions<T> {
   keyExtractor: KeyExtractor<T>;
   onFetchData: (args?: RefreshArgs) => Promise<T[]>;
   fetchDebounceWait?: number;
-  loadMoreThreshold?: number;
   pageSize?: number;
+  reverse?: boolean;
 }
 
 interface IUpdateOptions {
   replace?: boolean;
 }
-
-const optsDefault = {
-  changeVisibleRangeDebounceWait: 200,
-  loadMoreThreshold: 0.05,
-};
 
 export class ListCollectionHolder<T> implements IListEvents {
   public error?: IDataHolderError;
@@ -113,24 +108,8 @@ export class ListCollectionHolder<T> implements IListEvents {
     return !this.d.length;
   }
 
-  private get _refreshArgs(): RefreshArgs {
-    return {
-      offset: this.d.length,
-      limit: this._opts.pageSize || 0,
-    };
-  }
-
-  private get _lastPageSize(): number {
-    return (this._opts.pageSize || 0) > 0 &&
-      this._lastRefreshArgs &&
-      this._lastRefreshArgs.limit > 0
-      ? this._lastRefreshArgs.limit
-      : 0;
-  }
-
   public initialize(opts: IOptions<T>): void {
     this._opts = {
-      ...optsDefault,
       ...opts,
     };
 
@@ -157,7 +136,7 @@ export class ListCollectionHolder<T> implements IListEvents {
       merge = false;
     }
 
-    this.d = !merge ? data : this._mergeData(this.d, data);
+    this.d = merge ? this._mergeData(this.d, data) : data;
 
     this._isEndReached =
       this._lastPageSize > 0 && data.length < this._lastPageSize;
@@ -269,6 +248,21 @@ export class ListCollectionHolder<T> implements IListEvents {
     this._state = state;
   }
 
+  private get _refreshArgs(): RefreshArgs {
+    return {
+      offset: this.d.length,
+      limit: this._opts.pageSize || 0,
+    };
+  }
+
+  private get _lastPageSize(): number {
+    return (this._opts.pageSize || 0) > 0 &&
+      this._lastRefreshArgs &&
+      this._lastRefreshArgs.limit > 0
+      ? this._lastRefreshArgs.limit
+      : 0;
+  }
+
   private _mergeData(
     source: Collection<T>,
     merge: Collection<T>,
@@ -285,7 +279,11 @@ export class ListCollectionHolder<T> implements IListEvents {
       );
 
       if (index === -1) {
-        result.push(d);
+        if (this._opts.reverse) {
+          result.unshift(d);
+        } else {
+          result.push(d);
+        }
       } else {
         result[index] = d;
       }
