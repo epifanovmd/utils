@@ -6,7 +6,6 @@ export enum ListCollectionLoadState {
   ready = "ready",
   loading = "loading",
   refreshing = "refreshing",
-  pullToRefreshing = "pullToRefreshing",
   loadingMore = "loadingMore",
   error = "error",
 }
@@ -25,10 +24,9 @@ const ITEM_KEY = Symbol();
 type KeyExtractor<T> = (item: T) => string | number;
 
 interface IListEvents {
-  performPullToRefresh(): void;
-  performLoadMore(): void;
+  performLoad(): void;
   performRefresh(): void;
-  performReload(): void;
+  performLoadMore(): void;
 }
 
 export interface RefreshArgs {
@@ -36,9 +34,9 @@ export interface RefreshArgs {
   limit: number;
 }
 
-interface IOptions<T> {
-  keyExtractor: KeyExtractor<T>;
-  onFetchData: (args?: RefreshArgs) => Promise<T[]>;
+interface IOptions<Data, Args = any> {
+  keyExtractor: KeyExtractor<Data>;
+  onFetchData: (args: RefreshArgs & Args) => Promise<Data[]>;
   fetchDebounceWait?: number;
   pageSize?: number;
   reverse?: boolean;
@@ -48,14 +46,14 @@ interface IUpdateOptions {
   replace?: boolean;
 }
 
-export class ListCollectionHolder<T> implements IListEvents {
+export class ListCollectionHolder<Data, Args = any> implements IListEvents {
   public error?: IDataHolderError;
-  public d: Collection<T> = [];
+  public d: Collection<Data> = [];
   _isEndReached: boolean = false;
   private _state: ListCollectionLoadState =
     ListCollectionLoadState.initializing;
 
-  private _opts!: IOptions<T>;
+  private _opts!: IOptions<Data, Args>;
   private _lastRefreshArgs?: RefreshArgs;
 
   constructor() {
@@ -71,17 +69,6 @@ export class ListCollectionHolder<T> implements IListEvents {
 
   public get isLoading() {
     return this._state === ListCollectionLoadState.loading;
-  }
-
-  public get isPullToRefreshAllowed(): boolean {
-    return (
-      this._state === ListCollectionLoadState.ready ||
-      this._state === ListCollectionLoadState.error
-    );
-  }
-
-  public get isPullToRefreshing() {
-    return this._state === ListCollectionLoadState.pullToRefreshing;
   }
 
   public get isLoadingMoreAllowed(): boolean {
@@ -108,7 +95,7 @@ export class ListCollectionHolder<T> implements IListEvents {
     return !this.d.length;
   }
 
-  public initialize(opts: IOptions<T>): void {
+  public initialize(opts: IOptions<Data, Args>): void {
     this._opts = {
       ...opts,
     };
@@ -116,17 +103,16 @@ export class ListCollectionHolder<T> implements IListEvents {
     this._setState(ListCollectionLoadState.ready);
   }
 
-  public updateData(data: Collection<T>, opts?: IUpdateOptions) {
+  public updateData(data: Collection<Data>, opts?: IUpdateOptions) {
     let merge = false;
 
     switch (this._state) {
-      case ListCollectionLoadState.refreshing:
       case ListCollectionLoadState.loadingMore:
       case ListCollectionLoadState.ready:
         merge = true;
         break;
+      case ListCollectionLoadState.refreshing:
       case ListCollectionLoadState.loading:
-      case ListCollectionLoadState.pullToRefreshing:
       default:
         merge = false;
         break;
@@ -175,20 +161,13 @@ export class ListCollectionHolder<T> implements IListEvents {
     return this;
   }
 
-  public setPullToRefreshing() {
-    this._isEndReached = false;
-    this._setState(ListCollectionLoadState.pullToRefreshing);
-
-    return this;
-  }
-
   public setLoadingMore() {
     this._setState(ListCollectionLoadState.loadingMore);
 
     return this;
   }
 
-  public keyExtractor(item: T) {
+  public keyExtractor(item: Data) {
     let cachedKey = (item as any)[ITEM_KEY];
 
     if (!cachedKey) {
@@ -199,27 +178,19 @@ export class ListCollectionHolder<T> implements IListEvents {
     return cachedKey;
   }
 
-  public performLoadMore() {
+  public performLoadMore(args?: Args) {
     if (this.isLoadingMoreAllowed) {
       this.setLoadingMore();
 
-      return this._raiseOnFetchData() ?? Promise.resolve([]);
+      return this._raiseOnFetchData(false, args) ?? Promise.resolve([]);
     }
 
     return Promise.resolve([]);
   }
 
-  public performPullToRefresh() {
-    if (this.isPullToRefreshAllowed) {
-      this.setPullToRefreshing();
+  public performRefresh(args?: Args) {
+    this._isEndReached = false;
 
-      return this._raiseOnFetchData() ?? Promise.resolve([]);
-    }
-
-    return Promise.resolve([]);
-  }
-
-  public performRefresh() {
     if (this.isLoadingAllowed) {
       if (this.isEmpty) {
         this.setLoading();
@@ -227,18 +198,18 @@ export class ListCollectionHolder<T> implements IListEvents {
         this.setRefreshing();
       }
 
-      return this._raiseOnFetchData(true) ?? Promise.resolve([]);
+      return this._raiseOnFetchData(true, args) ?? Promise.resolve([]);
     }
 
     return Promise.resolve([]);
   }
 
-  public performReload() {
+  public performLoad(args?: Args) {
     if (this.isLoadingAllowed) {
       this.clear();
       this.setLoading();
 
-      return this._raiseOnFetchData() ?? Promise.resolve([]);
+      return this._raiseOnFetchData(false, args) ?? Promise.resolve([]);
     }
 
     return Promise.resolve([]);
@@ -264,9 +235,9 @@ export class ListCollectionHolder<T> implements IListEvents {
   }
 
   private _mergeData(
-    source: Collection<T>,
-    merge: Collection<T>,
-  ): Collection<T> {
+    source: Collection<Data>,
+    merge: Collection<Data>,
+  ): Collection<Data> {
     if (merge.length === 0) {
       return source;
     }
@@ -292,7 +263,7 @@ export class ListCollectionHolder<T> implements IListEvents {
     return result;
   }
 
-  private _raiseOnFetchData(resetArgs?: boolean) {
+  private _raiseOnFetchData(resetArgs?: boolean, args: Args = {} as Args) {
     return debounce(() => {
       if (resetArgs) {
         this._lastRefreshArgs = {
@@ -302,9 +273,12 @@ export class ListCollectionHolder<T> implements IListEvents {
       } else {
         this._lastRefreshArgs = this._refreshArgs;
       }
-      const args: RefreshArgs = { ...this._lastRefreshArgs };
+      const refreshArgs: RefreshArgs & Args = {
+        ...args,
+        ...this._lastRefreshArgs,
+      };
 
-      return this._opts.onFetchData(args);
+      return this._opts.onFetchData(refreshArgs);
     }, this._opts.fetchDebounceWait)();
   }
 }
