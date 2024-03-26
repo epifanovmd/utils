@@ -19,7 +19,7 @@
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:7](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L7)
+[src/store/holders/CollectionHolder.ts:7](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/CollectionHolder.ts#L7)
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:4](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L4)
+[src/store/holders/CollectionHolder.ts:4](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/CollectionHolder.ts#L4)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:6](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L6)
+[src/store/holders/CollectionHolder.ts:6](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/CollectionHolder.ts#L6)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:5](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L5)
+[src/store/holders/CollectionHolder.ts:5](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/CollectionHolder.ts#L5)

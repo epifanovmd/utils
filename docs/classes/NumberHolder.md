@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:23](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L23)
+[src/store/holders/NumberHolder.ts:23](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L23)
 
 ## Properties
 
@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:18](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L18)
+[src/store/holders/NumberHolder.ts:18](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L18)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:20](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L20)
+[src/store/holders/NumberHolder.ts:20](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L20)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:19](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L19)
+[src/store/holders/NumberHolder.ts:19](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L19)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:17](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L17)
+[src/store/holders/NumberHolder.ts:17](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L17)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:21](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L21)
+[src/store/holders/NumberHolder.ts:21](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L21)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:16](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L16)
+[src/store/holders/NumberHolder.ts:16](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L16)
 
 ## Accessors
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:36](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L36)
+[src/store/holders/NumberHolder.ts:36](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L36)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:86](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L86)
+[src/store/holders/NumberHolder.ts:86](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L86)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:48](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L48)
+[src/store/holders/NumberHolder.ts:48](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L48)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:40](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L40)
+[src/store/holders/NumberHolder.ts:40](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L40)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:44](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L44)
+[src/store/holders/NumberHolder.ts:44](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L44)
 
 ## Methods
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:56](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L56)
+[src/store/holders/NumberHolder.ts:56](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L56)
 
 ___
 
@@ -213,7 +213,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:52](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L52)
+[src/store/holders/NumberHolder.ts:52](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L52)
 
 ___
 
@@ -233,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:70](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L70)
+[src/store/holders/NumberHolder.ts:70](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L70)
 
 ___
 
@@ -253,7 +253,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:66](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L66)
+[src/store/holders/NumberHolder.ts:66](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L66)
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:74](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L74)
+[src/store/holders/NumberHolder.ts:74](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L74)
 
 ___
 
@@ -293,7 +293,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:61](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L61)
+[src/store/holders/NumberHolder.ts:61](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L61)
 
 ___
 
@@ -307,4 +307,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/NumberHolder.ts:78](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/NumberHolder.ts#L78)
+[src/store/holders/NumberHolder.ts:78](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/NumberHolder.ts#L78)

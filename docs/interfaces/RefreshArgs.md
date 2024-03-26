@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:34](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L34)
+[src/store/holders/ListCollectionHolder.ts:34](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L34)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:33](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L33)
+[src/store/holders/ListCollectionHolder.ts:33](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L33)

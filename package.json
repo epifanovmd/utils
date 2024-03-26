@@ -38,11 +38,9 @@
     "check-packages-updates": "yarn outdated"
   },
   "dependencies": {
-    "@types/luxon": "^3.1.0",
     "inversify": "^6.0.1",
     "inversify-inject-decorators": "^3.1.0",
     "lodash": "^4.17.21",
-    "luxon": "^3.1.1",
     "mobx": "^6.10.2",
     "reflect-metadata": "^0.1.13",
     "shortid": "^2.2.16",

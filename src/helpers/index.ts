@@ -1,5 +1,4 @@
 export * from "./array";
-export * from "./date";
 export * from "./debounce";
 export * from "./delayPromise";
 export * from "./disposer.helper";
