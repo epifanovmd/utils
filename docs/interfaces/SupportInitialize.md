@@ -36,4 +36,4 @@
 
 #### Defined in
 
-[src/helpers/types.ts:46](https://github.com/epifanovmd/utils/blob/9c060fa/src/helpers/types.ts#L46)
+[src/helpers/types.ts:46](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/types.ts#L46)

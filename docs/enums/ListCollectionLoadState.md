@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:10](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L10)
+[src/store/holders/ListCollectionHolder.ts:10](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/ListCollectionHolder.ts#L10)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:5](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L5)
+[src/store/holders/ListCollectionHolder.ts:5](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/ListCollectionHolder.ts#L5)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:7](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L7)
+[src/store/holders/ListCollectionHolder.ts:7](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/ListCollectionHolder.ts#L7)
 
 ___
 
@@ -51,7 +51,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:9](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L9)
+[src/store/holders/ListCollectionHolder.ts:9](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/ListCollectionHolder.ts#L9)
 
 ___
 
@@ -61,7 +61,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:6](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L6)
+[src/store/holders/ListCollectionHolder.ts:6](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/ListCollectionHolder.ts#L6)
 
 ___
 
@@ -71,4 +71,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:8](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/ListCollectionHolder.ts#L8)
+[src/store/holders/ListCollectionHolder.ts:8](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/ListCollectionHolder.ts#L8)

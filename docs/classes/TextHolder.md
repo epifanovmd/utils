@@ -49,7 +49,7 @@
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:17](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L17)
+[src/store/holders/TextHolder.ts:17](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L17)
 
 ## Properties
 
@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:12](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L12)
+[src/store/holders/TextHolder.ts:12](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L12)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:14](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L14)
+[src/store/holders/TextHolder.ts:14](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L14)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:13](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L13)
+[src/store/holders/TextHolder.ts:13](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L13)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:11](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L11)
+[src/store/holders/TextHolder.ts:11](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L11)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:15](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L15)
+[src/store/holders/TextHolder.ts:15](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L15)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:10](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L10)
+[src/store/holders/TextHolder.ts:10](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L10)
 
 ## Accessors
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:30](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L30)
+[src/store/holders/TextHolder.ts:30](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L30)
 
 ___
 
@@ -137,7 +137,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:80](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L80)
+[src/store/holders/TextHolder.ts:80](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L80)
 
 ___
 
@@ -151,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:42](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L42)
+[src/store/holders/TextHolder.ts:42](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L42)
 
 ___
 
@@ -165,7 +165,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:34](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L34)
+[src/store/holders/TextHolder.ts:34](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L34)
 
 ___
 
@@ -179,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:38](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L38)
+[src/store/holders/TextHolder.ts:38](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L38)
 
 ## Methods
 
@@ -199,7 +199,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:50](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L50)
+[src/store/holders/TextHolder.ts:50](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L50)
 
 ___
 
@@ -213,7 +213,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:46](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L46)
+[src/store/holders/TextHolder.ts:46](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L46)
 
 ___
 
@@ -233,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:64](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L64)
+[src/store/holders/TextHolder.ts:64](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L64)
 
 ___
 
@@ -253,7 +253,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:60](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L60)
+[src/store/holders/TextHolder.ts:60](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L60)
 
 ___
 
@@ -273,7 +273,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:68](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L68)
+[src/store/holders/TextHolder.ts:68](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L68)
 
 ___
 
@@ -293,7 +293,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:55](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L55)
+[src/store/holders/TextHolder.ts:55](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L55)
 
 ___
 
@@ -307,4 +307,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:72](https://github.com/epifanovmd/utils/blob/9c060fa/src/store/holders/TextHolder.ts#L72)
+[src/store/holders/TextHolder.ts:72](https://github.com/epifanovmd/utils/blob/de50c77/src/store/holders/TextHolder.ts#L72)
