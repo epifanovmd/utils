@@ -7,9 +7,8 @@
 ### Enumeration Members
 
 - [error](CollectionLoadState.md#error)
+- [initializing](CollectionLoadState.md#initializing)
 - [loading](CollectionLoadState.md#loading)
-- [loadingMore](CollectionLoadState.md#loadingmore)
-- [pullToRefreshing](CollectionLoadState.md#pulltorefreshing)
 - [ready](CollectionLoadState.md#ready)
 
 ## Enumeration Members
@@ -20,7 +19,17 @@
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:9](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L9)
+[src/store/holders/CollectionHolder.ts:7](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L7)
+
+___
+
+### initializing
+
+• **initializing** = ``"initializing"``
+
+#### Defined in
+
+[src/store/holders/CollectionHolder.ts:4](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L4)
 
 ___
 
@@ -30,27 +39,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:6](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L6)
-
-___
-
-### loadingMore
-
-• **loadingMore** = ``"loadingMore"``
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:8](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L8)
-
-___
-
-### pullToRefreshing
-
-• **pullToRefreshing** = ``"pullToRefreshing"``
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:7](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L7)
+[src/store/holders/CollectionHolder.ts:6](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L6)
 
 ___
 
@@ -60,4 +49,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L5)
+[src/store/holders/CollectionHolder.ts:5](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L5)

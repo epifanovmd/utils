@@ -1,12 +1,13 @@
 [@force-dev/utils](../README.md) / [Exports](../modules.md) / ListCollectionHolder
 
-# Class: ListCollectionHolder<T\>
+# Class: ListCollectionHolder<Data, Args\>
 
 ## Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Type |
+| :------ | :------ |
+| `Data` | `Data` |
+| `Args` | `any` |
 
 ## Implements
 
@@ -24,7 +25,6 @@
 - [\_lastRefreshArgs](ListCollectionHolder.md#_lastrefreshargs)
 - [\_opts](ListCollectionHolder.md#_opts)
 - [\_state](ListCollectionHolder.md#_state)
-- [\_visibleRange](ListCollectionHolder.md#_visiblerange)
 - [d](ListCollectionHolder.md#d)
 - [error](ListCollectionHolder.md#error)
 
@@ -38,8 +38,6 @@
 - [isLoadingAllowed](ListCollectionHolder.md#isloadingallowed)
 - [isLoadingMore](ListCollectionHolder.md#isloadingmore)
 - [isLoadingMoreAllowed](ListCollectionHolder.md#isloadingmoreallowed)
-- [isPullToRefreshAllowed](ListCollectionHolder.md#ispulltorefreshallowed)
-- [isPullToRefreshing](ListCollectionHolder.md#ispulltorefreshing)
 - [isReady](ListCollectionHolder.md#isready)
 
 ### Methods
@@ -50,15 +48,12 @@
 - [clear](ListCollectionHolder.md#clear)
 - [initialize](ListCollectionHolder.md#initialize)
 - [keyExtractor](ListCollectionHolder.md#keyextractor)
-- [performChangeVisibleRange](ListCollectionHolder.md#performchangevisiblerange)
+- [performLoad](ListCollectionHolder.md#performload)
 - [performLoadMore](ListCollectionHolder.md#performloadmore)
-- [performPullToRefresh](ListCollectionHolder.md#performpulltorefresh)
 - [performRefresh](ListCollectionHolder.md#performrefresh)
-- [performReload](ListCollectionHolder.md#performreload)
 - [setError](ListCollectionHolder.md#seterror)
 - [setLoading](ListCollectionHolder.md#setloading)
 - [setLoadingMore](ListCollectionHolder.md#setloadingmore)
-- [setPullToRefreshing](ListCollectionHolder.md#setpulltorefreshing)
 - [setRefreshing](ListCollectionHolder.md#setrefreshing)
 - [updateData](ListCollectionHolder.md#updatedata)
 
@@ -66,17 +61,18 @@
 
 ### constructor
 
-• **new ListCollectionHolder**<`T`\>()
+• **new ListCollectionHolder**<`Data`, `Args`\>()
 
 #### Type parameters
 
-| Name |
-| :------ |
-| `T` |
+| Name | Type |
+| :------ | :------ |
+| `Data` | `Data` |
+| `Args` | `any` |
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:83](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L83)
+[src/store/holders/ListCollectionHolder.ts:59](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L59)
 
 ## Properties
 
@@ -86,7 +82,7 @@
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:73](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L73)
+[src/store/holders/ListCollectionHolder.ts:52](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L52)
 
 ___
 
@@ -96,17 +92,17 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:81](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L81)
+[src/store/holders/ListCollectionHolder.ts:57](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L57)
 
 ___
 
 ### \_opts
 
-• `Private` **\_opts**: `IOptions`<`T`\>
+• `Private` **\_opts**: `IOptions`<`Data`, `Args`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:80](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L80)
+[src/store/holders/ListCollectionHolder.ts:56](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L56)
 
 ___
 
@@ -116,27 +112,17 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:74](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L74)
-
-___
-
-### \_visibleRange
-
-• `Private` **\_visibleRange**: `Range`
-
-#### Defined in
-
-[src/store/holders/ListCollectionHolder.ts:76](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L76)
+[src/store/holders/ListCollectionHolder.ts:53](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L53)
 
 ___
 
 ### d
 
-• **d**: `Collection`<`T`\> = `[]`
+• **d**: `Collection`<`Data`\> = `[]`
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:72](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L72)
+[src/store/holders/ListCollectionHolder.ts:51](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L51)
 
 ___
 
@@ -146,7 +132,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:71](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L71)
+[src/store/holders/ListCollectionHolder.ts:50](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L50)
 
 ## Accessors
 
@@ -160,7 +146,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:148](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L148)
+[src/store/holders/ListCollectionHolder.ts:229](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L229)
 
 ___
 
@@ -174,7 +160,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:133](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L133)
+[src/store/holders/ListCollectionHolder.ts:222](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L222)
 
 ___
 
@@ -188,7 +174,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:129](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L129)
+[src/store/holders/ListCollectionHolder.ts:94](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L94)
 
 ___
 
@@ -202,7 +188,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:125](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L125)
+[src/store/holders/ListCollectionHolder.ts:90](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L90)
 
 ___
 
@@ -216,7 +202,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:94](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L94)
+[src/store/holders/ListCollectionHolder.ts:70](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L70)
 
 ___
 
@@ -230,7 +216,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:87](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L87)
+[src/store/holders/ListCollectionHolder.ts:63](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L63)
 
 ___
 
@@ -244,7 +230,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:117](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L117)
+[src/store/holders/ListCollectionHolder.ts:82](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L82)
 
 ___
 
@@ -258,35 +244,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:109](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L109)
-
-___
-
-### isPullToRefreshAllowed
-
-• `get` **isPullToRefreshAllowed**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/ListCollectionHolder.ts:98](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L98)
-
-___
-
-### isPullToRefreshing
-
-• `get` **isPullToRefreshing**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/ListCollectionHolder.ts:105](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L105)
+[src/store/holders/ListCollectionHolder.ts:74](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L74)
 
 ___
 
@@ -300,42 +258,49 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:121](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L121)
+[src/store/holders/ListCollectionHolder.ts:86](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L86)
 
 ## Methods
 
 ### \_mergeData
 
-▸ `Private` **_mergeData**(`source`, `merge`): `Collection`<`T`\>
+▸ `Private` **_mergeData**(`source`, `merge`): `Collection`<`Data`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `source` | `Collection`<`T`\> |
-| `merge` | `Collection`<`T`\> |
+| `source` | `Collection`<`Data`\> |
+| `merge` | `Collection`<`Data`\> |
 
 #### Returns
 
-`Collection`<`T`\>
+`Collection`<`Data`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:301](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L301)
+[src/store/holders/ListCollectionHolder.ts:237](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L237)
 
 ___
 
 ### \_raiseOnFetchData
 
-▸ `Private` **_raiseOnFetchData**(): `Promise`<`void`\>
+▸ `Private` **_raiseOnFetchData**(`resetArgs?`, `args?`): `undefined` \| `Promise`<`Data`[]\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `resetArgs?` | `boolean` |
+| `args` | `Args` |
 
 #### Returns
 
-`Promise`<`void`\>
+`undefined` \| `Promise`<`Data`[]\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:326](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L326)
+[src/store/holders/ListCollectionHolder.ts:266](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L266)
 
 ___
 
@@ -355,7 +320,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:297](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L297)
+[src/store/holders/ListCollectionHolder.ts:218](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L218)
 
 ___
 
@@ -369,7 +334,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:199](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L199)
+[src/store/holders/ListCollectionHolder.ts:134](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L134)
 
 ___
 
@@ -381,7 +346,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `opts` | `IOptions`<`T`\> |
+| `opts` | `IOptions`<`Data`, `Args`\> |
 
 #### Returns
 
@@ -389,7 +354,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:157](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L157)
+[src/store/holders/ListCollectionHolder.ts:98](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L98)
 
 ___
 
@@ -401,7 +366,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `item` | `T` |
+| `item` | `Data` |
 
 #### Returns
 
@@ -409,42 +374,47 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:245](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L245)
+[src/store/holders/ListCollectionHolder.ts:170](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L170)
 
 ___
 
-### performChangeVisibleRange
+### performLoad
 
-▸ **performChangeVisibleRange**(`index`, `count`): `void`
+▸ **performLoad**(`args?`): `Promise`<`Data`[]\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `index` | `number` |
-| `count` | `number` |
+| `args?` | `Args` |
 
 #### Returns
 
-`void`
+`Promise`<`Data`[]\>
 
 #### Implementation of
 
-IListEvents.performChangeVisibleRange
+IListEvents.performLoad
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:270](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L270)
+[src/store/holders/ListCollectionHolder.ts:207](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L207)
 
 ___
 
 ### performLoadMore
 
-▸ **performLoadMore**(): `void`
+▸ **performLoadMore**(`args?`): `Promise`<`Data`[]\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args?` | `Args` |
 
 #### Returns
 
-`void`
+`Promise`<`Data`[]\>
 
 #### Implementation of
 
@@ -452,35 +422,23 @@ IListEvents.performLoadMore
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:256](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L256)
-
-___
-
-### performPullToRefresh
-
-▸ **performPullToRefresh**(): `void`
-
-#### Returns
-
-`void`
-
-#### Implementation of
-
-IListEvents.performPullToRefresh
-
-#### Defined in
-
-[src/store/holders/ListCollectionHolder.ts:263](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L263)
+[src/store/holders/ListCollectionHolder.ts:181](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L181)
 
 ___
 
 ### performRefresh
 
-▸ **performRefresh**(): `void`
+▸ **performRefresh**(`args?`): `Promise`<`Data`[]\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `args?` | `Args` |
 
 #### Returns
 
-`void`
+`Promise`<`Data`[]\>
 
 #### Implementation of
 
@@ -488,31 +446,13 @@ IListEvents.performRefresh
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:278](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L278)
-
-___
-
-### performReload
-
-▸ **performReload**(): `void`
-
-#### Returns
-
-`void`
-
-#### Implementation of
-
-IListEvents.performReload
-
-#### Defined in
-
-[src/store/holders/ListCollectionHolder.ts:289](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L289)
+[src/store/holders/ListCollectionHolder.ts:191](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L191)
 
 ___
 
 ### setError
 
-▸ **setError**(`error`): [`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+▸ **setError**(`error`): [`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Parameters
 
@@ -522,85 +462,77 @@ ___
 
 #### Returns
 
-[`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+[`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:211](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L211)
+[src/store/holders/ListCollectionHolder.ts:142](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L142)
 
 ___
 
 ### setLoading
 
-▸ **setLoading**(): [`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+▸ **setLoading**(`clear?`): [`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `clear` | `boolean` | `true` |
 
 #### Returns
 
-[`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+[`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:219](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L219)
+[src/store/holders/ListCollectionHolder.ts:149](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L149)
 
 ___
 
 ### setLoadingMore
 
-▸ **setLoadingMore**(): [`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+▸ **setLoadingMore**(): [`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Returns
 
-[`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+[`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:239](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L239)
-
-___
-
-### setPullToRefreshing
-
-▸ **setPullToRefreshing**(): [`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
-
-#### Returns
-
-[`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
-
-#### Defined in
-
-[src/store/holders/ListCollectionHolder.ts:232](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L232)
+[src/store/holders/ListCollectionHolder.ts:164](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L164)
 
 ___
 
 ### setRefreshing
 
-▸ **setRefreshing**(): [`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+▸ **setRefreshing**(): [`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Returns
 
-[`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+[`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:226](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L226)
+[src/store/holders/ListCollectionHolder.ts:158](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L158)
 
 ___
 
 ### updateData
 
-▸ **updateData**(`data`, `opts?`): [`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+▸ **updateData**(`data`, `opts?`): [`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `data` | `Collection`<`T`\> |
+| `data` | `Collection`<`Data`\> |
 | `opts?` | `IUpdateOptions` |
 
 #### Returns
 
-[`ListCollectionHolder`](ListCollectionHolder.md)<`T`\>
+[`ListCollectionHolder`](ListCollectionHolder.md)<`Data`, `Args`\>
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:170](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ListCollectionHolder.ts#L170)
+[src/store/holders/ListCollectionHolder.ts:106](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ListCollectionHolder.ts#L106)

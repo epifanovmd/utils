@@ -6,52 +6,34 @@
 
 | Name | Type |
 | :------ | :------ |
-| `T` | `never` |
+| `T` | `unknown` |
 
 ## Table of contents
 
-### Methods
+### Properties
 
 - [initialize](SupportInitialize.md#initialize)
-- [onFocusScreen](SupportInitialize.md#onfocusscreen)
 
-## Methods
+## Properties
 
 ### initialize
 
-▸ **initialize**(`props`): `void` \| () => `void`
+• **initialize**: (`data`: `T`) => [`InitializeDispose`](../modules.md#initializedispose)
 
-#### Parameters
+#### Type declaration
 
-| Name | Type |
-| :------ | :------ |
-| `props` | `T` |
+▸ (`data`): [`InitializeDispose`](../modules.md#initializedispose)
 
-#### Returns
-
-`void` \| () => `void`
-
-#### Defined in
-
-[src/helpers/types.ts:41](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L41)
-
-___
-
-### onFocusScreen
-
-▸ **onFocusScreen**(`isFocused`, `props`): `void`
-
-#### Parameters
+##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `isFocused` | `boolean` |
-| `props` | `T` |
+| `data` | `T` |
 
-#### Returns
+##### Returns
 
-`void`
+[`InitializeDispose`](../modules.md#initializedispose)
 
 #### Defined in
 
-[src/helpers/types.ts:42](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/types.ts#L42)
+[src/helpers/types.ts:46](https://github.com/epifanovmd/utils/blob/3135168/src/helpers/types.ts#L46)

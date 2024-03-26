@@ -16,7 +16,7 @@
 
 ### Properties
 
-- [\_error](FormHolder.md#_error)
+- [\_errors](FormHolder.md#_errors)
 - [\_initialValue](FormHolder.md#_initialvalue)
 - [\_validate](FormHolder.md#_validate)
 - [\_value](FormHolder.md#_value)
@@ -26,20 +26,21 @@
 
 ### Accessors
 
-- [error](FormHolder.md#error)
+- [errors](FormHolder.md#errors)
+- [fields](FormHolder.md#fields)
+- [isChanged](FormHolder.md#ischanged)
 - [isValid](FormHolder.md#isvalid)
-- [setters](FormHolder.md#setters)
-- [value](FormHolder.md#value)
 
 ### Methods
 
-- [\_validateAll](FormHolder.md#_validateall)
-- [resetData](FormHolder.md#resetdata)
+- [\_isNotPrimitive](FormHolder.md#_isnotprimitive)
+- [reset](FormHolder.md#reset)
 - [setError](FormHolder.md#seterror)
 - [setLoaded](FormHolder.md#setloaded)
 - [setLoading](FormHolder.md#setloading)
 - [setValidate](FormHolder.md#setvalidate)
 - [setValue](FormHolder.md#setvalue)
+- [validate](FormHolder.md#validate)
 
 ## Constructors
 
@@ -62,17 +63,17 @@
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:52](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L52)
+[src/store/holders/FormHolder.ts:42](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L42)
 
 ## Properties
 
-### \_error
+### \_errors
 
-• `Private` **\_error**: `Partial`<`Record`<keyof `T`, `string`\>\> = `{}`
+• `Private` **\_errors**: `Partial`<`Record`<keyof `T`, `string`\>\> = `{}`
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:48](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L48)
+[src/store/holders/FormHolder.ts:38](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L38)
 
 ___
 
@@ -82,17 +83,17 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:49](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L49)
+[src/store/holders/FormHolder.ts:39](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L39)
 
 ___
 
 ### \_validate
 
-• `Private` **\_validate**: `Validation`<`Partial`<`T`\>, `ExtractFields`<`Partial`<`T`\>\>\> = `{}`
+• `Private` **\_validate**: `Validation`<`T`, `ExtractFields`<`T`\>\> = `{}`
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:47](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L47)
+[src/store/holders/FormHolder.ts:37](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L37)
 
 ___
 
@@ -102,7 +103,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:50](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L50)
+[src/store/holders/FormHolder.ts:40](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L40)
 
 ___
 
@@ -112,7 +113,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:43](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L43)
+[src/store/holders/FormHolder.ts:33](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L33)
 
 ___
 
@@ -122,7 +123,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:44](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L44)
+[src/store/holders/FormHolder.ts:34](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L34)
 
 ___
 
@@ -132,13 +133,13 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:46](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L46)
+[src/store/holders/FormHolder.ts:36](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L36)
 
 ## Accessors
 
-### error
+### errors
 
-• `get` **error**(): `Partial`<`Record`<keyof `T`, `string`\>\>
+• `get` **errors**(): `Partial`<`Record`<keyof `T`, `string`\>\>
 
 #### Returns
 
@@ -146,7 +147,35 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:64](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L64)
+[src/store/holders/FormHolder.ts:99](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L99)
+
+___
+
+### fields
+
+• `get` **fields**(): [`FormPartial`](../modules.md#formpartial)<`T`\>
+
+#### Returns
+
+[`FormPartial`](../modules.md#formpartial)<`T`\>
+
+#### Defined in
+
+[src/store/holders/FormHolder.ts:50](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L50)
+
+___
+
+### isChanged
+
+• `get` **isChanged**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/store/holders/FormHolder.ts:151](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L151)
 
 ___
 
@@ -160,55 +189,33 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:72](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L72)
-
-___
-
-### setters
-
-• `get` **setters**(): `Required`<{ [K in string \| number \| symbol as \`set${Capitalize<string & K\>}\`]: T[K] extends TextHolder \| FormHolder<object\> \| ArrayHolder<any\> ? any[any]["setValue"] : Function }\>
-
-#### Returns
-
-`Required`<{ [K in string \| number \| symbol as \`set${Capitalize<string & K\>}\`]: T[K] extends TextHolder \| FormHolder<object\> \| ArrayHolder<any\> ? any[any]["setValue"] : Function }\>
-
-#### Defined in
-
-[src/store/holders/FormHolder.ts:127](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L127)
-
-___
-
-### value
-
-• `get` **value**(): [`FormPartial`](../modules.md#formpartial)<`T`\>
-
-#### Returns
-
-[`FormPartial`](../modules.md#formpartial)<`T`\>
-
-#### Defined in
-
-[src/store/holders/FormHolder.ts:68](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L68)
+[src/store/holders/FormHolder.ts:54](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L54)
 
 ## Methods
 
-### \_validateAll
+### \_isNotPrimitive
 
-▸ `Private` **_validateAll**(): `void`
+▸ `Private` **_isNotPrimitive**(`field`): field is TextHolder \| NumberHolder \| ArrayHolder<any\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `field` | `any` |
 
 #### Returns
 
-`void`
+field is TextHolder \| NumberHolder \| ArrayHolder<any\>
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:165](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L165)
+[src/store/holders/FormHolder.ts:176](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L176)
 
 ___
 
-### resetData
+### reset
 
-▸ **resetData**(`value?`): `void`
+▸ **reset**(`value?`): `void`
 
 #### Parameters
 
@@ -222,7 +229,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:100](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L100)
+[src/store/holders/FormHolder.ts:78](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L78)
 
 ___
 
@@ -243,7 +250,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:123](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L123)
+[src/store/holders/FormHolder.ts:89](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L89)
 
 ___
 
@@ -263,7 +270,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:161](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L161)
+[src/store/holders/FormHolder.ts:124](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L124)
 
 ___
 
@@ -283,7 +290,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:157](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L157)
+[src/store/holders/FormHolder.ts:120](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L120)
 
 ___
 
@@ -295,7 +302,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `validator` | `Validation`<`Partial`<`T`\>, `ExtractFields`<`Partial`<`T`\>\>\> |
+| `validator` | `Validation`<`T`, `ExtractFields`<`T`\>\> |
 
 #### Returns
 
@@ -303,7 +310,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:153](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L153)
+[src/store/holders/FormHolder.ts:116](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L116)
 
 ___
 
@@ -330,4 +337,18 @@ ___
 
 #### Defined in
 
-[src/store/holders/FormHolder.ts:95](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/FormHolder.ts#L95)
+[src/store/holders/FormHolder.ts:73](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L73)
+
+___
+
+### validate
+
+▸ **validate**(): `void`
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+[src/store/holders/FormHolder.ts:128](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/FormHolder.ts#L128)

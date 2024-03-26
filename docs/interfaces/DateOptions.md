@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[src/helpers/date.ts:4](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/date.ts#L4)
+[src/helpers/date.ts:4](https://github.com/epifanovmd/utils/blob/3135168/src/helpers/date.ts#L4)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[src/helpers/date.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/date.ts#L5)
+[src/helpers/date.ts:5](https://github.com/epifanovmd/utils/blob/3135168/src/helpers/date.ts#L5)

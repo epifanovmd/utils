@@ -51,7 +51,7 @@
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:8](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L8)
+[src/store/holders/PropsHolder.ts:8](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L8)
 
 ## Properties
 
@@ -61,7 +61,7 @@
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:6](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L6)
+[src/store/holders/PropsHolder.ts:6](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L6)
 
 ___
 
@@ -71,7 +71,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L5)
+[src/store/holders/PropsHolder.ts:5](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L5)
 
 ## Accessors
 
@@ -85,7 +85,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:29](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L29)
+[src/store/holders/PropsHolder.ts:29](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L29)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:25](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L25)
+[src/store/holders/PropsHolder.ts:25](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L25)
 
 ## Methods
 
@@ -119,7 +119,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:21](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L21)
+[src/store/holders/PropsHolder.ts:21](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L21)
 
 ___
 
@@ -139,7 +139,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:17](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L17)
+[src/store/holders/PropsHolder.ts:17](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L17)
 
 ___
 
@@ -153,4 +153,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/PropsHolder.ts:33](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/PropsHolder.ts#L33)
+[src/store/holders/PropsHolder.ts:33](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/PropsHolder.ts#L33)

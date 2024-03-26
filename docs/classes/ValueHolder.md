@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[src/store/holders/ValueHolder.ts:7](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ValueHolder.ts#L7)
+[src/store/holders/ValueHolder.ts:7](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ValueHolder.ts#L7)
 
 ## Properties
 
@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[src/store/holders/ValueHolder.ts:5](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ValueHolder.ts#L5)
+[src/store/holders/ValueHolder.ts:5](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ValueHolder.ts#L5)
 
 ## Accessors
 
@@ -72,7 +72,7 @@
 
 #### Defined in
 
-[src/store/holders/ValueHolder.ts:20](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ValueHolder.ts#L20)
+[src/store/holders/ValueHolder.ts:20](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ValueHolder.ts#L20)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ValueHolder.ts:16](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ValueHolder.ts#L16)
+[src/store/holders/ValueHolder.ts:16](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ValueHolder.ts#L16)
 
 ## Methods
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ValueHolder.ts:12](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ValueHolder.ts#L12)
+[src/store/holders/ValueHolder.ts:12](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ValueHolder.ts#L12)
 
 ___
 
@@ -120,4 +120,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/ValueHolder.ts:24](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ValueHolder.ts#L24)
+[src/store/holders/ValueHolder.ts:24](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ValueHolder.ts#L24)

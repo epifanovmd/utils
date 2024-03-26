@@ -34,6 +34,7 @@
 
 ### Methods
 
+- [clear](DataHolder.md#clear)
 - [setData](DataHolder.md#setdata)
 - [setError](DataHolder.md#seterror)
 - [setLoading](DataHolder.md#setloading)
@@ -59,7 +60,7 @@
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:30](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L30)
+[src/store/holders/DataHolder.ts:30](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L30)
 
 ## Properties
 
@@ -69,7 +70,7 @@
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:28](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L28)
+[src/store/holders/DataHolder.ts:28](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L28)
 
 ___
 
@@ -79,7 +80,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:26](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L26)
+[src/store/holders/DataHolder.ts:26](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L26)
 
 ___
 
@@ -89,7 +90,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:27](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L27)
+[src/store/holders/DataHolder.ts:27](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L27)
 
 ## Accessors
 
@@ -107,7 +108,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:49](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L49)
+[src/store/holders/DataHolder.ts:49](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L49)
 
 ___
 
@@ -125,7 +126,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:45](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L45)
+[src/store/holders/DataHolder.ts:45](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L45)
 
 ___
 
@@ -143,7 +144,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:53](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L53)
+[src/store/holders/DataHolder.ts:53](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L53)
 
 ___
 
@@ -161,7 +162,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:41](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L41)
+[src/store/holders/DataHolder.ts:41](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L41)
 
 ___
 
@@ -179,9 +180,23 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:37](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L37)
+[src/store/holders/DataHolder.ts:37](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L37)
 
 ## Methods
+
+### clear
+
+▸ **clear**(): [`DataHolder`](DataHolder.md)<`T`\>
+
+#### Returns
+
+[`DataHolder`](DataHolder.md)<`T`\>
+
+#### Defined in
+
+[src/store/holders/DataHolder.ts:63](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L63)
+
+___
 
 ### setData
 
@@ -199,7 +214,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:69](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L69)
+[src/store/holders/DataHolder.ts:76](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L76)
 
 ___
 
@@ -219,7 +234,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:76](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L76)
+[src/store/holders/DataHolder.ts:83](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L83)
 
 ___
 
@@ -233,7 +248,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:57](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L57)
+[src/store/holders/DataHolder.ts:57](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L57)
 
 ___
 
@@ -247,4 +262,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:63](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/DataHolder.ts#L63)
+[src/store/holders/DataHolder.ts:70](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/DataHolder.ts#L70)

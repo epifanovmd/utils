@@ -16,11 +16,7 @@
 
 ### Properties
 
-- [\_isLoadedFirst](CollectionHolder.md#_isloadedfirst)
-- [\_lastDataLength](CollectionHolder.md#_lastdatalength)
-- [\_pageSize](CollectionHolder.md#_pagesize)
 - [\_state](CollectionHolder.md#_state)
-- [\_visibleRange](CollectionHolder.md#_visiblerange)
 - [d](CollectionHolder.md#d)
 - [error](CollectionHolder.md#error)
 
@@ -28,35 +24,24 @@
 
 - [isEmpty](CollectionHolder.md#isempty)
 - [isError](CollectionHolder.md#iserror)
-- [isLoadedFirst](CollectionHolder.md#isloadedfirst)
 - [isLoading](CollectionHolder.md#isloading)
 - [isLoadingAllowed](CollectionHolder.md#isloadingallowed)
-- [isLoadingMore](CollectionHolder.md#isloadingmore)
-- [isLoadingMoreAllowed](CollectionHolder.md#isloadingmoreallowed)
-- [isPullToRefreshAllowed](CollectionHolder.md#ispulltorefreshallowed)
-- [isPullToRefreshing](CollectionHolder.md#ispulltorefreshing)
 - [isReady](CollectionHolder.md#isready)
-- [offset](CollectionHolder.md#offset)
-- [pageCount](CollectionHolder.md#pagecount)
-- [pageSize](CollectionHolder.md#pagesize)
 
 ### Methods
 
-- [\_setIsLoadedFirst](CollectionHolder.md#_setisloadedfirst)
 - [\_setState](CollectionHolder.md#_setstate)
-- [performChangeVisibleRange](CollectionHolder.md#performchangevisiblerange)
+- [clear](CollectionHolder.md#clear)
 - [setData](CollectionHolder.md#setdata)
 - [setError](CollectionHolder.md#seterror)
 - [setLoading](CollectionHolder.md#setloading)
-- [setLoadingMore](CollectionHolder.md#setloadingmore)
-- [setPullToRefreshing](CollectionHolder.md#setpulltorefreshing)
 - [setReady](CollectionHolder.md#setready)
 
 ## Constructors
 
 ### constructor
 
-• **new CollectionHolder**<`T`\>(`data?`, `opts?`)
+• **new CollectionHolder**<`T`\>(`data?`)
 
 #### Type parameters
 
@@ -69,61 +54,20 @@
 | Name | Type |
 | :------ | :------ |
 | `data?` | `Collection`<`T`\> |
-| `opts?` | `Options` |
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:40](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L40)
+[src/store/holders/CollectionHolder.ts:24](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L24)
 
 ## Properties
 
-### \_isLoadedFirst
-
-• `Private` **\_isLoadedFirst**: `boolean` = `false`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:56](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L56)
-
-___
-
-### \_lastDataLength
-
-• `Private` **\_lastDataLength**: `number` = `0`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:37](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L37)
-
-___
-
-### \_pageSize
-
-• `Private` `Readonly` **\_pageSize**: `number`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:38](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L38)
-
-___
-
 ### \_state
 
-• `Private` **\_state**: [`CollectionLoadState`](../enums/CollectionLoadState.md) = `CollectionLoadState.ready`
+• `Private` **\_state**: [`CollectionLoadState`](../enums/CollectionLoadState.md) = `CollectionLoadState.initializing`
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:36](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L36)
-
-___
-
-### \_visibleRange
-
-• `Private` **\_visibleRange**: `Range`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:32](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L32)
+[src/store/holders/CollectionHolder.ts:22](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L22)
 
 ___
 
@@ -133,7 +77,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:31](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L31)
+[src/store/holders/CollectionHolder.ts:20](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L20)
 
 ___
 
@@ -143,7 +87,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:30](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L30)
+[src/store/holders/CollectionHolder.ts:19](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L19)
 
 ## Accessors
 
@@ -157,7 +101,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:122](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L122)
+[src/store/holders/CollectionHolder.ts:50](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L50)
 
 ___
 
@@ -171,21 +115,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:118](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L118)
-
-___
-
-### isLoadedFirst
-
-• `get` **isLoadedFirst**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:58](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L58)
+[src/store/holders/CollectionHolder.ts:46](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L46)
 
 ___
 
@@ -199,7 +129,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:81](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L81)
+[src/store/holders/CollectionHolder.ts:38](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L38)
 
 ___
 
@@ -213,63 +143,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:74](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L74)
-
-___
-
-### isLoadingMore
-
-• `get` **isLoadingMore**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:108](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L108)
-
-___
-
-### isLoadingMoreAllowed
-
-• `get` **isLoadingMoreAllowed**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:98](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L98)
-
-___
-
-### isPullToRefreshAllowed
-
-• `get` **isPullToRefreshAllowed**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:87](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L87)
-
-___
-
-### isPullToRefreshing
-
-• `get` **isPullToRefreshing**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:94](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L94)
+[src/store/holders/CollectionHolder.ts:31](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L31)
 
 ___
 
@@ -283,71 +157,9 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:114](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L114)
-
-___
-
-### offset
-
-• `get` **offset**(): `undefined` \| `number`
-
-#### Returns
-
-`undefined` \| `number`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:62](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L62)
-
-___
-
-### pageCount
-
-• `get` **pageCount**(): `undefined` \| `number`
-
-#### Returns
-
-`undefined` \| `number`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:66](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L66)
-
-___
-
-### pageSize
-
-• `get` **pageSize**(): `number`
-
-#### Returns
-
-`number`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:70](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L70)
+[src/store/holders/CollectionHolder.ts:42](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L42)
 
 ## Methods
-
-### \_setIsLoadedFirst
-
-▸ `Private` **_setIsLoadedFirst**(`value`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `value` | `boolean` |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:196](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L196)
-
-___
 
 ### \_setState
 
@@ -365,28 +177,21 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:192](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L192)
+[src/store/holders/CollectionHolder.ts:90](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L90)
 
 ___
 
-### performChangeVisibleRange
+### clear
 
-▸ **performChangeVisibleRange**(`index`, `count`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `index` | `number` |
-| `count` | `number` |
+▸ **clear**(): [`CollectionHolder`](CollectionHolder.md)<`T`\>
 
 #### Returns
 
-`void`
+[`CollectionHolder`](CollectionHolder.md)<`T`\>
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:187](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L187)
+[src/store/holders/CollectionHolder.ts:61](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L61)
 
 ___
 
@@ -406,7 +211,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:128](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L128)
+[src/store/holders/CollectionHolder.ts:54](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L54)
 
 ___
 
@@ -426,13 +231,19 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:150](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L150)
+[src/store/holders/CollectionHolder.ts:68](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L68)
 
 ___
 
 ### setLoading
 
-▸ **setLoading**(): [`CollectionHolder`](CollectionHolder.md)<`T`\>
+▸ **setLoading**(`clear?`): [`CollectionHolder`](CollectionHolder.md)<`T`\>
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `clear` | `boolean` | `true` |
 
 #### Returns
 
@@ -440,35 +251,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:159](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L159)
-
-___
-
-### setLoadingMore
-
-▸ **setLoadingMore**(): [`CollectionHolder`](CollectionHolder.md)<`T`\>
-
-#### Returns
-
-[`CollectionHolder`](CollectionHolder.md)<`T`\>
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:181](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L181)
-
-___
-
-### setPullToRefreshing
-
-▸ **setPullToRefreshing**(): [`CollectionHolder`](CollectionHolder.md)<`T`\>
-
-#### Returns
-
-[`CollectionHolder`](CollectionHolder.md)<`T`\>
-
-#### Defined in
-
-[src/store/holders/CollectionHolder.ts:175](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L175)
+[src/store/holders/CollectionHolder.ts:75](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L75)
 
 ___
 
@@ -482,4 +265,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/CollectionHolder.ts:169](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/CollectionHolder.ts#L169)
+[src/store/holders/CollectionHolder.ts:84](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/CollectionHolder.ts#L84)

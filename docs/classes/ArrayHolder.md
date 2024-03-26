@@ -25,6 +25,7 @@
 ### Accessors
 
 - [error](ArrayHolder.md#error)
+- [isChanged](ArrayHolder.md#ischanged)
 - [isValid](ArrayHolder.md#isvalid)
 - [value](ArrayHolder.md#value)
 
@@ -37,6 +38,7 @@
 - [setError](ArrayHolder.md#seterror)
 - [setValidate](ArrayHolder.md#setvalidate)
 - [setValue](ArrayHolder.md#setvalue)
+- [validate](ArrayHolder.md#validate)
 
 ## Constructors
 
@@ -59,7 +61,7 @@
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:17](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L17)
+[src/store/holders/ArrayHolder.ts:18](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L18)
 
 ## Properties
 
@@ -69,7 +71,7 @@
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:13](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L13)
+[src/store/holders/ArrayHolder.ts:14](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L14)
 
 ___
 
@@ -79,7 +81,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:14](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L14)
+[src/store/holders/ArrayHolder.ts:15](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L15)
 
 ___
 
@@ -89,7 +91,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:12](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L12)
+[src/store/holders/ArrayHolder.ts:13](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L13)
 
 ___
 
@@ -99,7 +101,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:15](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L15)
+[src/store/holders/ArrayHolder.ts:16](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L16)
 
 ___
 
@@ -109,7 +111,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:11](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L11)
+[src/store/holders/ArrayHolder.ts:12](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L12)
 
 ## Accessors
 
@@ -123,7 +125,21 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:31](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L31)
+[src/store/holders/ArrayHolder.ts:32](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L32)
+
+___
+
+### isChanged
+
+• `get` **isChanged**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+[src/store/holders/ArrayHolder.ts:100](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L100)
 
 ___
 
@@ -137,7 +153,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:39](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L39)
+[src/store/holders/ArrayHolder.ts:40](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L40)
 
 ___
 
@@ -151,7 +167,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:35](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L35)
+[src/store/holders/ArrayHolder.ts:36](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L36)
 
 ## Methods
 
@@ -172,7 +188,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:62](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L62)
+[src/store/holders/ArrayHolder.ts:70](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L70)
 
 ___
 
@@ -192,7 +208,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:54](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L54)
+[src/store/holders/ArrayHolder.ts:62](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L62)
 
 ___
 
@@ -212,7 +228,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:47](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L47)
+[src/store/holders/ArrayHolder.ts:49](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L49)
 
 ___
 
@@ -226,7 +242,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:80](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L80)
+[src/store/holders/ArrayHolder.ts:88](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L88)
 
 ___
 
@@ -246,7 +262,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:72](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L72)
+[src/store/holders/ArrayHolder.ts:80](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L80)
 
 ___
 
@@ -266,7 +282,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:76](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L76)
+[src/store/holders/ArrayHolder.ts:84](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L84)
 
 ___
 
@@ -286,4 +302,18 @@ ___
 
 #### Defined in
 
-[src/store/holders/ArrayHolder.ts:43](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/ArrayHolder.ts#L43)
+[src/store/holders/ArrayHolder.ts:44](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L44)
+
+___
+
+### validate
+
+▸ **validate**(): `string`
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/store/holders/ArrayHolder.ts:92](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/ArrayHolder.ts#L92)

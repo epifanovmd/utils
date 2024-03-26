@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/helpers/string.ts:4](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L4)
+[src/helpers/string.ts:4](https://github.com/epifanovmd/utils/blob/3135168/src/helpers/string.ts#L4)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[src/helpers/string.ts:2](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L2)
+[src/helpers/string.ts:2](https://github.com/epifanovmd/utils/blob/3135168/src/helpers/string.ts#L2)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[src/helpers/string.ts:3](https://github.com/epifanovmd/utils/blob/4aca669/src/helpers/string.ts#L3)
+[src/helpers/string.ts:3](https://github.com/epifanovmd/utils/blob/3135168/src/helpers/string.ts#L3)

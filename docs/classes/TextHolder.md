@@ -12,7 +12,6 @@
 
 - [\_error](TextHolder.md#_error)
 - [\_initialValue](TextHolder.md#_initialvalue)
-- [\_inputValue](TextHolder.md#_inputvalue)
 - [\_placeholder](TextHolder.md#_placeholder)
 - [\_validate](TextHolder.md#_validate)
 - [\_value](TextHolder.md#_value)
@@ -21,7 +20,7 @@
 ### Accessors
 
 - [error](TextHolder.md#error)
-- [inputValue](TextHolder.md#inputvalue)
+- [isChanged](TextHolder.md#ischanged)
 - [isValid](TextHolder.md#isvalid)
 - [placeholder](TextHolder.md#placeholder)
 - [value](TextHolder.md#value)
@@ -29,12 +28,12 @@
 ### Methods
 
 - [onChangeText](TextHolder.md#onchangetext)
-- [onSetInputValue](TextHolder.md#onsetinputvalue)
 - [resetData](TextHolder.md#resetdata)
 - [setError](TextHolder.md#seterror)
 - [setPlaceholder](TextHolder.md#setplaceholder)
 - [setValidate](TextHolder.md#setvalidate)
 - [setValue](TextHolder.md#setvalue)
+- [validate](TextHolder.md#validate)
 
 ## Constructors
 
@@ -50,7 +49,7 @@
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:25](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L25)
+[src/store/holders/TextHolder.ts:17](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L17)
 
 ## Properties
 
@@ -60,7 +59,7 @@
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:19](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L19)
+[src/store/holders/TextHolder.ts:12](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L12)
 
 ___
 
@@ -70,17 +69,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:21](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L21)
-
-___
-
-### \_inputValue
-
-• `Private` **\_inputValue**: [`LambdaValue`](../modules.md#lambdavalue)<`string`, `unknown`\> = `""`
-
-#### Defined in
-
-[src/store/holders/TextHolder.ts:23](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L23)
+[src/store/holders/TextHolder.ts:14](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L14)
 
 ___
 
@@ -90,7 +79,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:20](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L20)
+[src/store/holders/TextHolder.ts:13](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L13)
 
 ___
 
@@ -100,7 +89,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:18](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L18)
+[src/store/holders/TextHolder.ts:11](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L11)
 
 ___
 
@@ -110,7 +99,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:22](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L22)
+[src/store/holders/TextHolder.ts:15](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L15)
 
 ___
 
@@ -120,7 +109,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:17](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L17)
+[src/store/holders/TextHolder.ts:10](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L10)
 
 ## Accessors
 
@@ -134,21 +123,21 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:38](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L38)
+[src/store/holders/TextHolder.ts:30](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L30)
 
 ___
 
-### inputValue
+### isChanged
 
-• `get` **inputValue**(): `string`
+• `get` **isChanged**(): `boolean`
 
 #### Returns
 
-`string`
+`boolean`
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:50](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L50)
+[src/store/holders/TextHolder.ts:80](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L80)
 
 ___
 
@@ -162,7 +151,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:54](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L54)
+[src/store/holders/TextHolder.ts:42](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L42)
 
 ___
 
@@ -176,7 +165,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:42](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L42)
+[src/store/holders/TextHolder.ts:34](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L34)
 
 ___
 
@@ -190,7 +179,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:46](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L46)
+[src/store/holders/TextHolder.ts:38](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L38)
 
 ## Methods
 
@@ -210,27 +199,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:62](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L62)
-
-___
-
-### onSetInputValue
-
-▸ **onSetInputValue**(`text`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `text` | [`LambdaValue`](../modules.md#lambdavalue)<`string`, `unknown`\> |
-
-#### Returns
-
-`void`
-
-#### Defined in
-
-[src/store/holders/TextHolder.ts:76](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L76)
+[src/store/holders/TextHolder.ts:50](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L50)
 
 ___
 
@@ -244,7 +213,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:58](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L58)
+[src/store/holders/TextHolder.ts:46](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L46)
 
 ___
 
@@ -264,7 +233,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:84](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L84)
+[src/store/holders/TextHolder.ts:64](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L64)
 
 ___
 
@@ -284,7 +253,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:80](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L80)
+[src/store/holders/TextHolder.ts:60](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L60)
 
 ___
 
@@ -304,7 +273,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:88](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L88)
+[src/store/holders/TextHolder.ts:68](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L68)
 
 ___
 
@@ -324,4 +293,18 @@ ___
 
 #### Defined in
 
-[src/store/holders/TextHolder.ts:67](https://github.com/epifanovmd/utils/blob/4aca669/src/store/holders/TextHolder.ts#L67)
+[src/store/holders/TextHolder.ts:55](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L55)
+
+___
+
+### validate
+
+▸ **validate**(): `string`
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[src/store/holders/TextHolder.ts:72](https://github.com/epifanovmd/utils/blob/3135168/src/store/holders/TextHolder.ts#L72)
