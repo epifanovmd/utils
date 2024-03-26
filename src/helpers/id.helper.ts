@@ -1,4 +1,3 @@
-import { v4 } from "uuid";
 import { generate } from "shortid";
 
 export const numberId = () =>
@@ -10,5 +9,4 @@ export const numberId = () =>
       ),
   );
 
-export const uuid = () => v4();
 export const shortid = () => generate();
