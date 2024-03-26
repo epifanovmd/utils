@@ -1,5 +1,5 @@
-import uuid from "uuid";
-import shortid from "shortid";
+import { v4 } from "uuid";
+import { generate } from "shortid";
 
 export const numberId = () =>
   Math.floor(
@@ -10,4 +10,5 @@ export const numberId = () =>
       ),
   );
 
-export { shortid, uuid };
+export const uuid = () => v4();
+export const shortid = () => generate();
