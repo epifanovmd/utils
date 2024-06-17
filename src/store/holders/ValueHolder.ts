@@ -1,4 +1,5 @@
 import { makeAutoObservable, when } from "mobx";
+
 import { isFunction, LambdaValue, resolveLambdaValue } from "../../helpers";
 
 export class ValueHolder<T> {

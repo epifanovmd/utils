@@ -1,4 +1,4 @@
-import { disposer } from "./disposer.helper";
+import { disposer } from "./disposer";
 import { InitializeDispose } from "./types";
 
 export const initialize =

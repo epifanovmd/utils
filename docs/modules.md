@@ -498,7 +498,7 @@ ___
 
 #### Defined in
 
-[src/helpers/disposer.helper.ts:4](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/disposer.helper.ts#L4)
+[src/helpers/disposer.ts:4](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/disposer.helper.ts#L4)
 
 ___
 
@@ -552,7 +552,7 @@ ___
 
 #### Defined in
 
-[src/helpers/initialize.helper.ts:5](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/initialize.helper.ts#L5)
+[src/helpers/initialize.ts:5](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/initialize.helper.ts#L5)
 
 ___
 
@@ -1201,7 +1201,7 @@ ___
 
 #### Defined in
 
-[src/helpers/id.helper.ts:4](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/id.helper.ts#L4)
+[src/helpers/id.ts:4](https://github.com/epifanovmd/utils/blob/de50c77/src/helpers/id.helper.ts#L4)
 
 ___
 

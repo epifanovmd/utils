@@ -6,24 +6,19 @@ type Options = {
   divideOpt?: DivideOpt;
 };
 
-export const replaceInputString = (
-  text: string,
-  { type, divide, divideOpt }: Options,
-) => {
+export const replaceInputString = (text: string, opts?: Options) => {
   let _value = "";
 
   if (text === "") {
     return "";
   }
 
-  if (type === "text") {
-    _value = text;
-  } else if (type === "number") {
+  if (opts?.type === "number") {
     _value = Number(text.replace(/,/g, ".").replace(/[^0-9]/g, "")).toString();
-    if (divide) {
-      _value = toDivide(Number(_value), divideOpt);
+    if (opts?.divide) {
+      _value = toDivide(Number(_value), opts?.divideOpt);
     }
-  } else if (type === "floating") {
+  } else if (opts?.type === "floating") {
     _value = text
       .replace(/,/g, ".")
       .replace(/[^0-9.]/g, "")

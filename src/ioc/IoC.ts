@@ -1,16 +1,21 @@
+import "reflect-metadata";
+
 import {
   Container as InversifyContainer,
   inject as Inject,
   injectable as Injectable,
 } from "inversify";
 import getDecorators from "inversify-inject-decorators";
-import "reflect-metadata";
 import shortid from "shortid";
 
-export interface IIoCInterface<T> {
+export interface IoCDecoratorOptions {
+  inSingleton?: boolean;
+}
+
+export interface IoCDecorator<T> {
   readonly Tid: string;
 
-  (options?: { inSingleton?: boolean }): (
+  (options?: IoCDecoratorOptions): (
     target: any,
     targetKey?: string,
     index?: number | undefined,
@@ -19,14 +24,18 @@ export interface IIoCInterface<T> {
   getInstance(): T;
 }
 
+interface DecoratorOptions {
+  inSingleton?: boolean;
+}
+
 const iocContainer = new InversifyContainer();
 
 const { lazyInject } = getDecorators(iocContainer);
 
-function iocDecorator<TInterface>(name?: string): IIoCInterface<TInterface> {
-  const tid = name || shortid.generate();
+function iocDecorator<TInterface>(): IoCDecorator<TInterface> {
+  const tid = shortid();
 
-  function iocDecoratorFactory(options?: { inSingleton?: boolean }) {
+  function iocDecoratorFactory(options?: DecoratorOptions) {
     return function iocDecorator(
       target: any,
       targetKey?: string,
@@ -41,6 +50,7 @@ function iocDecorator<TInterface>(name?: string): IIoCInterface<TInterface> {
       } else {
         // При использовании на классе
         Injectable()(target);
+
         if (options?.inSingleton) {
           iocContainer.bind<TInterface>(tid).to(target).inSingletonScope();
         } else {
@@ -56,4 +66,4 @@ function iocDecorator<TInterface>(name?: string): IIoCInterface<TInterface> {
   return iocDecoratorFactory;
 }
 
-export { Injectable, Inject, iocDecorator };
+export { Inject, Injectable, iocDecorator };
