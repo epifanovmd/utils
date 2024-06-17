@@ -1,13 +1,13 @@
 import isFunction from "lodash/isFunction";
 import { computed } from "mobx";
 
-import { LambdaValueHelper, resolveLambdaValue } from "../../helpers";
+import { LambdaValue, resolveLambdaValue } from "../../helpers";
 import { IDataModel } from "./DataModel.types";
 
 export class DataModelBase<TData> implements IDataModel<TData> {
-  private readonly _data: LambdaValueHelper<TData>;
+  private readonly _data: LambdaValue<TData>;
 
-  constructor(value: LambdaValueHelper<TData>) {
+  constructor(value: LambdaValue<TData>) {
     this._data = value;
   }
 

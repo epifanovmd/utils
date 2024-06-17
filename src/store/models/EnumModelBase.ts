@@ -1,8 +1,8 @@
 import { computed } from "mobx";
 
 import {
-  EnumValuesHelper,
-  LambdaValueHelper,
+  getEnumNamesAndValues,
+  LambdaValue,
   Maybe,
   stringCapitalize,
 } from "../../helpers";
@@ -13,7 +13,7 @@ type TEnumProps<TEnum> = {
 };
 type EnumValue<TEnum> = TEnum[keyof TEnum];
 type ModelClassType<T, TEnum> = new (
-  enm: LambdaValueHelper<Maybe<EnumValue<TEnum>>>,
+  enm: LambdaValue<Maybe<EnumValue<TEnum>>>,
 ) => T;
 type TEnumModelBase<TEnum> = ModelClassType<
   TEnumProps<TEnum> & DataModelBase<Maybe<EnumValue<TEnum>>>,
@@ -24,7 +24,7 @@ export function createEnumModelBase<TEnum>(enm: any) {
   class EnumModel extends DataModelBase<Maybe<EnumValue<TEnum>>> {}
 
   // Тут генерируем реализацию проверочных пропсов по каждому полю энума, которые соответствуют типу TEnumProps
-  EnumValuesHelper.getNamesAndValues<any>(enm).forEach(item => {
+  getEnumNamesAndValues<any>(enm).forEach(item => {
     const key = `is${stringCapitalize(item.name)}`;
 
     Object.defineProperty(EnumModel.prototype, key, {
