@@ -33,7 +33,9 @@ const iocContainer = new InversifyContainer();
 const { lazyInject } = getDecorators(iocContainer);
 
 function iocDecorator<TInterface>(): IoCDecorator<TInterface> {
-  const tid = shortid();
+  const meta = {
+    id: "",
+  };
 
   function iocDecoratorFactory(options?: DecoratorOptions) {
     return function iocDecorator(
@@ -43,25 +45,33 @@ function iocDecorator<TInterface>(): IoCDecorator<TInterface> {
     ) {
       if (index !== undefined) {
         // При использовании на параметре конструкра
-        Inject(tid)(target, targetKey!, index);
+        Inject(meta.id)(target, targetKey!, index);
       } else if (targetKey) {
         // При использовании на поле класса
-        lazyInject(tid)(target, targetKey);
+        lazyInject(meta.id)(target, targetKey);
       } else {
         // При использовании на классе
         Injectable()(target);
+        console.log("target", target.name);
 
-        if (options?.inSingleton) {
-          iocContainer.bind<TInterface>(tid).to(target).inSingletonScope();
-        } else {
-          iocContainer.bind<TInterface>(tid).to(target);
+        meta.id = target.name ?? shortid();
+
+        if (meta.id) {
+          if (options?.inSingleton) {
+            iocContainer
+              .bind<TInterface>(meta.id)
+              .to(target)
+              .inSingletonScope();
+          } else {
+            iocContainer.bind<TInterface>(meta.id).to(target);
+          }
         }
       }
     };
   }
 
-  iocDecoratorFactory.Tid = tid;
-  iocDecoratorFactory.getInstance = () => iocContainer.get<TInterface>(tid);
+  iocDecoratorFactory.Tid = meta.id;
+  iocDecoratorFactory.getInstance = () => iocContainer.get<TInterface>(meta.id);
 
   return iocDecoratorFactory;
 }
