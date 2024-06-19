@@ -43,6 +43,8 @@ export type InitializeDispose =
   | (() => void)[]
   | Promise<void | (() => void) | (() => void)[]>;
 
-export interface SupportInitialize<T = unknown> {
-  initialize: (data: T) => InitializeDispose;
+export interface SupportInitialize<T extends any = undefined> {
+  initialize: T extends undefined
+    ? () => InitializeDispose
+    : (data: T) => InitializeDispose;
 }

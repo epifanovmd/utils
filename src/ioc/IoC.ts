@@ -52,9 +52,12 @@ function iocDecorator<TInterface>(): IoCDecorator<TInterface> {
       } else {
         // При использовании на классе
         Injectable()(target);
-        console.log("target", target.name);
 
         meta.id = target.name ?? shortid();
+
+        if (iocContainer.isBound(meta.id)) {
+          iocContainer.unbind(meta.id);
+        }
 
         if (meta.id) {
           if (options?.inSingleton) {
