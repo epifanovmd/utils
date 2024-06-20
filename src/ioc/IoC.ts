@@ -32,11 +32,9 @@ const iocContainer = new InversifyContainer();
 
 const { lazyInject } = getDecorators(iocContainer);
 
-function iocDecorator<TInterface>(): IoCDecorator<TInterface> {
-  const meta = {
-    id: "",
-  };
-
+function iocDecorator<TInterface>(
+  name: string = shortid(),
+): IoCDecorator<TInterface> {
   function iocDecoratorFactory(options?: DecoratorOptions) {
     return function iocDecorator(
       target: any,
@@ -45,36 +43,31 @@ function iocDecorator<TInterface>(): IoCDecorator<TInterface> {
     ) {
       if (index !== undefined) {
         // При использовании на параметре конструкра
-        Inject(meta.id)(target, targetKey!, index);
+        Inject(name)(target, targetKey!, index);
       } else if (targetKey) {
         // При использовании на поле класса
-        lazyInject(meta.id)(target, targetKey);
+        lazyInject(name)(target, targetKey);
       } else {
         // При использовании на классе
         Injectable()(target);
 
-        meta.id = target.name ?? shortid();
-
-        if (iocContainer.isBound(meta.id)) {
-          iocContainer.unbind(meta.id);
+        if (iocContainer.isBound(name)) {
+          iocContainer.unbind(name);
         }
 
-        if (meta.id) {
+        if (name) {
           if (options?.inSingleton) {
-            iocContainer
-              .bind<TInterface>(meta.id)
-              .to(target)
-              .inSingletonScope();
+            iocContainer.bind<TInterface>(name).to(target).inSingletonScope();
           } else {
-            iocContainer.bind<TInterface>(meta.id).to(target);
+            iocContainer.bind<TInterface>(name).to(target);
           }
         }
       }
     };
   }
 
-  iocDecoratorFactory.Tid = meta.id;
-  iocDecoratorFactory.getInstance = () => iocContainer.get<TInterface>(meta.id);
+  iocDecoratorFactory.Tid = name;
+  iocDecoratorFactory.getInstance = () => iocContainer.get<TInterface>(name);
 
   return iocDecoratorFactory;
 }
