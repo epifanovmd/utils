@@ -22,13 +22,24 @@ export interface IoCDecorator<T> {
   ) => void;
 
   getInstance(): T;
+  toConstantValue(value: T): void;
 }
 
 interface DecoratorOptions {
   inSingleton?: boolean;
 }
 
-const iocContainer = new InversifyContainer();
+export const iocContainer = new InversifyContainer();
+
+export const iocBind = <T>(id: string) => {
+  if (iocContainer.isBound(id)) {
+    iocContainer.unbind(id);
+  }
+
+  return iocContainer.bind<T>(id);
+};
+
+export const iocGet = <T>(id: string) => iocContainer.get<T>(id);
 
 const { lazyInject } = getDecorators(iocContainer);
 
@@ -51,23 +62,22 @@ function iocDecorator<TInterface>(
         // При использовании на классе
         Injectable()(target);
 
-        if (iocContainer.isBound(name)) {
-          iocContainer.unbind(name);
-        }
-
-        if (name) {
-          if (options?.inSingleton) {
-            iocContainer.bind<TInterface>(name).to(target).inSingletonScope();
-          } else {
-            iocContainer.bind<TInterface>(name).to(target);
-          }
+        if (options?.inSingleton) {
+          iocBind<TInterface>(name).to(target).inSingletonScope();
+        } else {
+          iocBind<TInterface>(name).to(target);
         }
       }
     };
   }
 
   iocDecoratorFactory.Tid = name;
-  iocDecoratorFactory.getInstance = () => iocContainer.get<TInterface>(name);
+  iocDecoratorFactory.getInstance = () => iocGet<TInterface>(name);
+  iocDecoratorFactory.toConstantValue = <TInterface>(value: TInterface) => {
+    iocBind<TInterface>(name).toConstantValue(value);
+
+    return iocDecoratorFactory;
+  };
 
   return iocDecoratorFactory;
 }
