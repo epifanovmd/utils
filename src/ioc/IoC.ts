@@ -22,7 +22,7 @@ export interface IoCDecorator<T> {
   ) => void;
 
   getInstance(): T;
-  toConstantValue(value: T): void;
+  toConstantValue(value: T): IoCDecorator<T>;
 }
 
 interface DecoratorOptions {
