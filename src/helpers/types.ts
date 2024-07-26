@@ -15,15 +15,13 @@ export type Join<K, P> = K extends string | number
     : never
   : never;
 
-export type RecursiveObjectType<T, D extends number = 10> = [D] extends [never]
-  ? never
-  : T extends object
+export type DeepKeys<T> = T extends object
   ? {
-      [K in keyof T]-?: K extends string | number
-        ? `${K}` | Join<K, RecursiveObjectType<T[K]>>
-        : never;
-    }[keyof T]
-  : "";
+      [K in (string | number) & keyof T]: `${K}` | Join<K, DeepKeys<T[K]>>;
+    }[(string | number) & keyof T]
+  : never;
+
+export type RecursiveObjectType<T> = DeepKeys<T>;
 
 export type PartialKeys<T, K extends keyof T> = Omit<T, K> &
   Partial<Pick<T, K>>;
