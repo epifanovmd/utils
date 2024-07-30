@@ -1,11 +1,12 @@
 import isEmpty from "lodash/isEmpty";
-import { makeAutoObservable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
+import { isFunction, LambdaValue, resolveLambdaValue } from "../../helpers";
 
 enum DataHolderState {
-  READY = 0,
-  INITIALIZATION = 1,
-  LOADING = 2,
-  ERROR = 500,
+  READY = "READY",
+  INITIALIZATION = "INITIALIZATION",
+  LOADING = "LOADING",
+  ERROR = "ERROR",
 }
 
 interface IDataHolderError {
@@ -23,15 +24,44 @@ export interface IDataHolderState {
 }
 
 export class DataHolder<T> implements IDataHolderState {
-  public d: T | undefined = undefined as any;
   public error?: IDataHolderError;
+  private _d: LambdaValue<T | undefined> = undefined as any;
   private _state: DataHolderState = DataHolderState.INITIALIZATION;
 
-  constructor(data?: T) {
+  constructor(data?: LambdaValue<T>) {
     if (data) {
       this.setData(data);
     }
-    makeAutoObservable(this, {}, { autoBind: true });
+    makeObservable(
+      this,
+      {
+        // @ts-ignore
+        _state: observable,
+        _d: observable,
+        data: computed,
+        isLambda: computed,
+        error: observable,
+        isReady: computed,
+        isLoading: computed,
+        isError: computed,
+        isEmpty: computed,
+        isFilled: computed,
+        setLoading: action,
+        clear: action,
+        setPending: action,
+        setData: action,
+        setError: action,
+      },
+      { autoBind: true },
+    );
+  }
+
+  public get data() {
+    return resolveLambdaValue(this._d);
+  }
+
+  public get isLambda() {
+    return isFunction(this._d);
   }
 
   public get isReady() {
@@ -47,11 +77,11 @@ export class DataHolder<T> implements IDataHolderState {
   }
 
   public get isEmpty() {
-    return this.isReady && isEmpty(this.d);
+    return this.isReady && isEmpty(this.data);
   }
 
   public get isFilled() {
-    return this.isReady && !isEmpty(this.d);
+    return this.isReady && !isEmpty(this.data);
   }
 
   public setLoading() {
@@ -61,7 +91,7 @@ export class DataHolder<T> implements IDataHolderState {
   }
 
   public clear() {
-    this.d = undefined;
+    this._d = undefined;
     this._state = DataHolderState.INITIALIZATION;
 
     return this;
@@ -73,8 +103,8 @@ export class DataHolder<T> implements IDataHolderState {
     return this;
   }
 
-  public setData(data: T) {
-    this.d = data;
+  public setData(data: LambdaValue<T>) {
+    this._d = data;
     this._state = DataHolderState.READY;
 
     return this;

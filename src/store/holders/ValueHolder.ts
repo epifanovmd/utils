@@ -1,4 +1,4 @@
-import { makeAutoObservable, when } from "mobx";
+import { action, computed, makeObservable, observable, when } from "mobx";
 
 import { isFunction, LambdaValue, resolveLambdaValue } from "../../helpers";
 
@@ -7,7 +7,17 @@ export class ValueHolder<T> {
 
   constructor(value: LambdaValue<T>) {
     this._value = value;
-    makeAutoObservable(this, {}, { autoBind: true });
+    makeObservable(
+      this,
+      {
+        // @ts-ignore
+        _value: observable,
+        setValue: action,
+        value: computed,
+        isLambda: computed,
+      },
+      { autoBind: true },
+    );
   }
 
   public setValue(value: LambdaValue<T>) {

@@ -1,10 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 
 export enum CollectionLoadState {
-  initializing = "initializing",
-  ready = "ready",
-  loading = "loading",
-  error = "error",
+  READY = "READY",
+  INITIALIZATION = "INITIALIZATION",
+  LOADING = "LOADING",
+  ERROR = "ERROR",
 }
 
 interface IDataHolderError {
@@ -19,32 +19,52 @@ export class CollectionHolder<T> {
   public error?: IDataHolderError;
   public d: Collection<T> = [];
 
-  private _state: CollectionLoadState = CollectionLoadState.initializing;
+  private _state: CollectionLoadState = CollectionLoadState.INITIALIZATION;
 
   constructor(data?: Collection<T>) {
     if (data) {
       this.setData(data);
     }
-    makeAutoObservable(this, {}, { autoBind: true });
+
+    makeObservable(
+      this,
+      {
+        error: observable,
+        d: observable,
+        // @ts-ignore
+        _state: observable,
+        isLoadingAllowed: computed,
+        isLoading: computed,
+        isReady: computed,
+        isError: computed,
+        isEmpty: computed,
+        setData: action,
+        clear: action,
+        setError: action,
+        setLoading: action,
+        setReady: action,
+      },
+      { autoBind: true },
+    );
   }
 
   public get isLoadingAllowed(): boolean {
     return (
-      this._state === CollectionLoadState.ready ||
-      this._state === CollectionLoadState.error
+      this._state === CollectionLoadState.READY ||
+      this._state === CollectionLoadState.ERROR
     );
   }
 
   public get isLoading() {
-    return this._state === CollectionLoadState.loading;
+    return this._state === CollectionLoadState.LOADING;
   }
 
   public get isReady() {
-    return this._state === CollectionLoadState.ready;
+    return this._state === CollectionLoadState.READY;
   }
 
   public get isError() {
-    return this._state === CollectionLoadState.error;
+    return this._state === CollectionLoadState.ERROR;
   }
 
   public get isEmpty() {
@@ -53,21 +73,21 @@ export class CollectionHolder<T> {
 
   public setData(data: Collection<T>) {
     this.d = data;
-    this._setState(CollectionLoadState.ready);
+    this._state = CollectionLoadState.READY;
 
     return this;
   }
 
   public clear() {
     this.d = [];
-    this._setState(CollectionLoadState.initializing);
+    this._state = CollectionLoadState.INITIALIZATION;
 
     return this;
   }
 
   public setError(error: IDataHolderError) {
     this.error = error;
-    this._setState(CollectionLoadState.error);
+    this._state = CollectionLoadState.ERROR;
 
     return this;
   }
@@ -76,18 +96,14 @@ export class CollectionHolder<T> {
     if (clear) {
       this.d = [];
     }
-    this._setState(CollectionLoadState.loading);
+    this._state = CollectionLoadState.LOADING;
 
     return this;
   }
 
   public setReady() {
-    this._setState(CollectionLoadState.ready);
+    this._state = CollectionLoadState.READY;
 
     return this;
-  }
-
-  private _setState(state: CollectionLoadState) {
-    this._state = state;
   }
 }

@@ -2,12 +2,12 @@ import debounce from "lodash/debounce";
 import { makeAutoObservable } from "mobx";
 
 export enum ListCollectionLoadState {
-  initializing = "initializing",
-  ready = "ready",
-  loading = "loading",
-  refreshing = "refreshing",
-  loadingMore = "loadingMore",
-  error = "error",
+  READY = "READY",
+  INITIALIZATION = "INITIALIZATION",
+  LOADING = "LOADING",
+  ERROR = "ERROR",
+  REFRESHING = "REFRESHING",
+  LOADING_MORE = "LOADING_MORE",
 }
 
 interface IDataHolderError {
@@ -51,7 +51,7 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
   public d: Collection<Data> = [];
   _isEndReached: boolean = false;
   private _state: ListCollectionLoadState =
-    ListCollectionLoadState.initializing;
+    ListCollectionLoadState.INITIALIZATION;
 
   private _opts!: IOptions<Data, Args>;
   private _lastRefreshArgs?: RefreshArgs;
@@ -62,33 +62,33 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
 
   public get isLoadingAllowed(): boolean {
     return (
-      this._state === ListCollectionLoadState.ready ||
-      this._state === ListCollectionLoadState.error
+      this._state === ListCollectionLoadState.READY ||
+      this._state === ListCollectionLoadState.ERROR
     );
   }
 
   public get isLoading() {
-    return this._state === ListCollectionLoadState.loading;
+    return this._state === ListCollectionLoadState.LOADING;
   }
 
   public get isLoadingMoreAllowed(): boolean {
     return (
-      (this._state === ListCollectionLoadState.ready ||
-        this._state === ListCollectionLoadState.error) &&
+      (this._state === ListCollectionLoadState.READY ||
+        this._state === ListCollectionLoadState.ERROR) &&
       !this._isEndReached
     );
   }
 
   public get isLoadingMore() {
-    return this._state === ListCollectionLoadState.loadingMore;
+    return this._state === ListCollectionLoadState.LOADING_MORE;
   }
 
   public get isReady() {
-    return this._state === ListCollectionLoadState.ready;
+    return this._state === ListCollectionLoadState.READY;
   }
 
   public get isError() {
-    return this._state === ListCollectionLoadState.error;
+    return this._state === ListCollectionLoadState.ERROR;
   }
 
   public get isEmpty() {
@@ -100,19 +100,19 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
       ...opts,
     };
 
-    this._setState(ListCollectionLoadState.ready);
+    this._setState(ListCollectionLoadState.READY);
   }
 
   public updateData(data: Collection<Data>, opts?: IUpdateOptions) {
     let merge = false;
 
     switch (this._state) {
-      case ListCollectionLoadState.loadingMore:
-      case ListCollectionLoadState.ready:
+      case ListCollectionLoadState.LOADING_MORE:
+      case ListCollectionLoadState.READY:
         merge = true;
         break;
-      case ListCollectionLoadState.refreshing:
-      case ListCollectionLoadState.loading:
+      case ListCollectionLoadState.REFRESHING:
+      case ListCollectionLoadState.LOADING:
       default:
         merge = false;
         break;
@@ -126,7 +126,7 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
 
     this._isEndReached =
       this._lastPageSize > 0 && data.length < this._lastPageSize;
-    this._setState(ListCollectionLoadState.ready);
+    this._setState(ListCollectionLoadState.READY);
 
     return this;
   }
@@ -136,12 +136,12 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     this.error = undefined;
     this._isEndReached = false;
     this._lastRefreshArgs = undefined;
-    this._setState(ListCollectionLoadState.ready);
+    this._setState(ListCollectionLoadState.READY);
   }
 
   public setError(error: IDataHolderError) {
     this.error = error;
-    this._setState(ListCollectionLoadState.error);
+    this._setState(ListCollectionLoadState.ERROR);
 
     return this;
   }
@@ -150,19 +150,19 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     if (clear) {
       this.d = [];
     }
-    this._setState(ListCollectionLoadState.loading);
+    this._setState(ListCollectionLoadState.LOADING);
 
     return this;
   }
 
   public setRefreshing() {
-    this._setState(ListCollectionLoadState.refreshing);
+    this._setState(ListCollectionLoadState.REFRESHING);
 
     return this;
   }
 
   public setLoadingMore() {
-    this._setState(ListCollectionLoadState.loadingMore);
+    this._setState(ListCollectionLoadState.LOADING_MORE);
 
     return this;
   }
