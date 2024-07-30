@@ -38,7 +38,7 @@ export class DataHolder<T> implements IDataHolderState {
         // @ts-ignore
         _state: observable,
         _d: observable,
-        data: computed,
+        d: computed,
         isLambda: computed,
         error: observable,
         isReady: computed,
@@ -56,7 +56,7 @@ export class DataHolder<T> implements IDataHolderState {
     );
   }
 
-  public get data() {
+  public get d() {
     return resolveLambdaValue(this._d);
   }
 
@@ -77,11 +77,11 @@ export class DataHolder<T> implements IDataHolderState {
   }
 
   public get isEmpty() {
-    return this.isReady && isEmpty(this.data);
+    return this.isReady && isEmpty(this.d);
   }
 
   public get isFilled() {
-    return this.isReady && !isEmpty(this.data);
+    return this.isReady && !isEmpty(this.d);
   }
 
   public setLoading() {
