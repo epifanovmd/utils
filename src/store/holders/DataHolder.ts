@@ -1,5 +1,6 @@
 import isEmpty from "lodash/isEmpty";
 import { action, computed, makeObservable, observable } from "mobx";
+
 import { isFunction, LambdaValue, resolveLambdaValue } from "../../helpers";
 
 enum DataHolderState {

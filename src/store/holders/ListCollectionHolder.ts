@@ -2,8 +2,8 @@ import debounce from "lodash/debounce";
 import { makeAutoObservable } from "mobx";
 
 export enum ListCollectionLoadState {
-  READY = "READY",
   INITIALIZATION = "INITIALIZATION",
+  READY = "READY",
   LOADING = "LOADING",
   ERROR = "ERROR",
   REFRESHING = "REFRESHING",
