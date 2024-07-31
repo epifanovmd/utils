@@ -5,8 +5,6 @@ import {
   InternalAxiosRequestConfig,
 } from "axios";
 
-import { iocDecorator } from "../ioc";
-
 export interface CancelablePromise<T> extends Promise<T> {
   cancel: Canceler;
 }
@@ -22,8 +20,6 @@ export interface ApiResponse<R = any> {
   error?: Error;
   isCanceled?: boolean;
 }
-
-export const IApiService = iocDecorator<IApiService>();
 
 export interface IApiService {
   readonly instance: AxiosInstance;

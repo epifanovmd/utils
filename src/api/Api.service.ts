@@ -28,6 +28,7 @@ export class ApiService implements IApiService {
   constructor(@unmanaged() config?: Parameters<typeof axios.create>[0]) {
     this._instance = axios.create({
       timeout: 2 * 60 * 1000,
+      headers: DEFAULT_AXIOS_HEADERS,
       ...config,
     });
 
