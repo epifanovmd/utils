@@ -1,5 +1,5 @@
 import debounce from "lodash/debounce";
-import { makeAutoObservable } from "mobx";
+import { action, computed, makeObservable, observable } from "mobx";
 
 export enum ListCollectionLoadState {
   INITIALIZATION = "INITIALIZATION",
@@ -25,7 +25,9 @@ type KeyExtractor<T> = (item: T) => string | number;
 
 interface IListEvents {
   performLoad(): void;
+
   performRefresh(): void;
+
   performLoadMore(): void;
 }
 
@@ -49,7 +51,7 @@ interface IUpdateOptions {
 export class ListCollectionHolder<Data, Args = any> implements IListEvents {
   public error?: IDataHolderError = undefined;
   public d: Collection<Data> = [];
-  _isEndReached: boolean = false;
+  private _isEndReached: boolean = false;
   private _state: ListCollectionLoadState =
     ListCollectionLoadState.INITIALIZATION;
 
@@ -57,10 +59,32 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
   private _lastRefreshArgs?: RefreshArgs;
 
   constructor() {
-    makeAutoObservable(this, {}, { autoBind: true });
+    makeObservable(
+      this,
+      {
+        error: observable,
+        d: observable,
+        // @ts-ignore
+        _isEndReached: observable,
+        _state: observable,
+        isLoadingAllowed: computed,
+        isLoading: computed,
+        isLoadingMoreAllowed: computed,
+        isLoadingMore: computed,
+        isReady: computed,
+        isError: computed,
+        isEmpty: computed,
+        updateData: action,
+        clear: action,
+        setError: action,
+        setLoading: action,
+        _setState: action,
+      },
+      { autoBind: true },
+    );
   }
 
-  public get isLoadingAllowed(): boolean {
+  public get isLoadingAllowed() {
     return (
       this._state === ListCollectionLoadState.READY ||
       this._state === ListCollectionLoadState.ERROR
@@ -71,7 +95,7 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     return this._state === ListCollectionLoadState.LOADING;
   }
 
-  public get isLoadingMoreAllowed(): boolean {
+  public get isLoadingMoreAllowed() {
     return (
       (this._state === ListCollectionLoadState.READY ||
         this._state === ListCollectionLoadState.ERROR) &&
@@ -95,15 +119,15 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     return !this.d.length;
   }
 
-  public initialize(opts: IOptions<Data, Args>): void {
+  public initialize = (opts: IOptions<Data, Args>) => {
     this._opts = {
       ...opts,
     };
 
     this._setState(ListCollectionLoadState.READY);
-  }
+  };
 
-  public updateData(data: Collection<Data>, opts?: IUpdateOptions) {
+  public updateData = (data: Collection<Data>, opts?: IUpdateOptions) => {
     let merge = false;
 
     switch (this._state) {
@@ -129,45 +153,45 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     this._setState(ListCollectionLoadState.READY);
 
     return this;
-  }
+  };
 
-  public clear() {
+  public clear = () => {
     this.d = [];
     this.error = undefined;
     this._isEndReached = false;
     this._lastRefreshArgs = undefined;
     this._setState(ListCollectionLoadState.READY);
-  }
+  };
 
-  public setError(error: IDataHolderError) {
+  public setError = (error: IDataHolderError) => {
     this.error = error;
     this._setState(ListCollectionLoadState.ERROR);
 
     return this;
-  }
+  };
 
-  public setLoading(clear: boolean = true) {
+  public setLoading = (clear: boolean = true) => {
     if (clear) {
       this.d = [];
     }
     this._setState(ListCollectionLoadState.LOADING);
 
     return this;
-  }
+  };
 
-  public setRefreshing() {
+  public setRefreshing = () => {
     this._setState(ListCollectionLoadState.REFRESHING);
 
     return this;
-  }
+  };
 
-  public setLoadingMore() {
+  public setLoadingMore = () => {
     this._setState(ListCollectionLoadState.LOADING_MORE);
 
     return this;
-  }
+  };
 
-  public keyExtractor(item: Data) {
+  public keyExtractor = (item: Data) => {
     let cachedKey = (item as any)[ITEM_KEY];
 
     if (!cachedKey) {
@@ -176,9 +200,9 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     }
 
     return cachedKey;
-  }
+  };
 
-  public performLoadMore(args?: Args) {
+  public performLoadMore = (args?: Args) => {
     if (this.isLoadingMoreAllowed) {
       this.setLoadingMore();
 
@@ -186,9 +210,9 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     }
 
     return Promise.resolve([]);
-  }
+  };
 
-  public performRefresh(args?: Args) {
+  public performRefresh = (args?: Args) => {
     this._isEndReached = false;
 
     if (this.isLoadingAllowed) {
@@ -202,9 +226,9 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     }
 
     return Promise.resolve([]);
-  }
+  };
 
-  public performLoad(args?: Args) {
+  public performLoad = (args?: Args) => {
     if (this.isLoadingAllowed) {
       this.clear();
       this.setLoading();
@@ -213,11 +237,11 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     }
 
     return Promise.resolve([]);
-  }
+  };
 
-  private _setState(state: ListCollectionLoadState) {
+  private _setState = (state: ListCollectionLoadState) => {
     this._state = state;
-  }
+  };
 
   private get _refreshArgs(): RefreshArgs {
     return {
@@ -234,10 +258,10 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
       : 0;
   }
 
-  private _mergeData(
+  private _mergeData = (
     source: Collection<Data>,
     merge: Collection<Data>,
-  ): Collection<Data> {
+  ): Collection<Data> => {
     if (merge.length === 0) {
       return source;
     }
@@ -261,9 +285,12 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     });
 
     return result;
-  }
+  };
 
-  private _raiseOnFetchData(resetArgs?: boolean, args: Args = {} as Args) {
+  private _raiseOnFetchData = (
+    resetArgs?: boolean,
+    args: Args = {} as Args,
+  ) => {
     return debounce(() => {
       if (resetArgs) {
         this._lastRefreshArgs = {
@@ -280,5 +307,5 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
 
       return this._opts.onFetchData(refreshArgs);
     }, this._opts.fetchDebounceWait)();
-  }
+  };
 }

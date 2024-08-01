@@ -20,9 +20,9 @@ export class ValueHolder<T> {
     );
   }
 
-  public setValue(value: LambdaValue<T>) {
+  public setValue = (value: LambdaValue<T>) => {
     this._value = value;
-  }
+  };
 
   public get value() {
     return resolveLambdaValue(this._value);
@@ -32,9 +32,9 @@ export class ValueHolder<T> {
     return isFunction(this._value);
   }
 
-  public whenChanged() {
+  public whenChanged = () => {
     const value = this.value;
 
     return when(() => this.value !== value);
-  }
+  };
 }

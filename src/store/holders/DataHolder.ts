@@ -85,36 +85,36 @@ export class DataHolder<T> implements IDataHolderState {
     return this.isReady && !isEmpty(this.d);
   }
 
-  public setLoading() {
+  public setLoading = () => {
     this._state = DataHolderState.LOADING;
 
     return this;
-  }
+  };
 
-  public clear() {
+  public clear = () => {
     this._d = undefined;
     this._state = DataHolderState.INITIALIZATION;
 
     return this;
-  }
+  };
 
-  public setPending() {
+  public setPending = () => {
     this._state = DataHolderState.INITIALIZATION;
 
     return this;
-  }
+  };
 
-  public setData(data: LambdaValue<T>) {
+  public setData = (data: LambdaValue<T>) => {
     this._d = data;
     this._state = DataHolderState.READY;
 
     return this;
-  }
+  };
 
-  public setError(error: IDataHolderError) {
+  public setError = (error: IDataHolderError) => {
     this.error = error;
     this._state = DataHolderState.ERROR;
 
     return this;
-  }
+  };
 }
