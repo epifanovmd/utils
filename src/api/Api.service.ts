@@ -1,6 +1,12 @@
 import "reflect-metadata";
 
-import axios, { AxiosHeaders, CanceledError } from "axios";
+import axios, {
+  AxiosError,
+  AxiosHeaders,
+  AxiosResponse,
+  CanceledError,
+  isAxiosError,
+} from "axios";
 import { injectable, unmanaged } from "inversify";
 
 import { promisify } from "../helpers";
@@ -142,15 +148,22 @@ export class ApiService implements IApiService {
 
   private _applyInterceptor = () => {
     this._instance.interceptors.response.use(
-      response => {
-        const status = response.status;
-        const data = response.data;
+      res => {
+        const axiosResponse = res as any as AxiosResponse;
 
-        return Promise.resolve<ApiResponse>({ data, status }) as any;
+        const status = axiosResponse.status;
+        const data = axiosResponse.data;
+
+        return Promise.resolve<ApiResponse>({
+          data,
+          status,
+          axiosResponse,
+        }) as any;
       },
       e => {
-        console.log("interceptors original error", e);
         const error = new Error(e.message ?? e);
+
+        const axiosError = isAxiosError(e) ? e : undefined;
 
         if (e.response) {
           const errorData = e.response.data as any;
@@ -161,16 +174,19 @@ export class ApiService implements IApiService {
           return Promise.resolve<ApiResponse>({
             status: errorStatus ?? e.response.status ?? 500,
             error: errorMessage ? new Error(errorMessage) : error,
+            axiosError,
           });
         } else if (e.request) {
           return Promise.resolve<ApiResponse>({
             status: e.request.status || 400,
             error,
+            axiosError,
           });
         } else {
           return Promise.resolve<ApiResponse>({
             status: 400,
             error,
+            axiosError,
             isCanceled: e instanceof CanceledError,
           });
         }

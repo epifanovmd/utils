@@ -1,6 +1,7 @@
 import {
   Axios,
   AxiosDefaults,
+  AxiosError,
   AxiosHeaderValue,
   AxiosInterceptorManager,
   AxiosRequestConfig,
@@ -47,6 +48,8 @@ export interface ApiResponse<R = any> {
   status: number;
   error?: Error;
   isCanceled?: boolean;
+  axiosError?: AxiosError;
+  axiosResponse?: AxiosResponse<R>;
 }
 
 export interface IApiService {
