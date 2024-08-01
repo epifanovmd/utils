@@ -25,8 +25,8 @@ export interface IDataHolderState {
 }
 
 export class DataHolder<T> implements IDataHolderState {
-  public error?: IDataHolderError;
-  private _d: LambdaValue<T | undefined> = undefined as any;
+  public error?: IDataHolderError = undefined;
+  private _d: LambdaValue<T | undefined> = undefined;
   private _state: DataHolderState = DataHolderState.INITIALIZATION;
 
   constructor(data?: LambdaValue<T>) {

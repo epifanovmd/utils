@@ -47,7 +47,7 @@ interface IUpdateOptions {
 }
 
 export class ListCollectionHolder<Data, Args = any> implements IListEvents {
-  public error?: IDataHolderError;
+  public error?: IDataHolderError = undefined;
   public d: Collection<Data> = [];
   _isEndReached: boolean = false;
   private _state: ListCollectionLoadState =
