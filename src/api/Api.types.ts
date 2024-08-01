@@ -11,6 +11,12 @@ import {
   InternalAxiosRequestConfig,
 } from "axios";
 
+declare module "axios" {
+  interface AxiosRequestConfig {
+    skipInterceptError?: boolean;
+  }
+}
+
 export interface ApiAxios extends Omit<Axios, "interceptors"> {
   interceptors: {
     request: AxiosInterceptorManager<InternalAxiosRequestConfig>;
