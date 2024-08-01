@@ -11,7 +11,9 @@ export class AsyncDataSource<R, P = unknown> extends DataHolder<R> {
     const res = await this.fetchFn(query);
 
     if (res.error) {
-      this.setError({ msg: res.error.toString() });
+      if (!res.isCanceled) {
+        this.setError({ msg: res.error.toString() });
+      }
     } else if (res.data) {
       this.setData(res.data);
 
