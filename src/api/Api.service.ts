@@ -50,13 +50,13 @@ export class ApiService implements IApiService {
   };
 
   public onResponse: IApiService["onResponse"] = callback => {
-    this._instance.interceptors.response.use((async (response: ApiResponse) => {
+    this._instance.interceptors.response.use(async response => {
       if (!response.error && response.data) {
         return (await promisify(callback(response))) ?? response;
       }
 
       return response;
-    }) as any);
+    });
   };
 
   public onError: IApiService["onError"] = callback => {
@@ -158,7 +158,7 @@ export class ApiService implements IApiService {
           data,
           status,
           axiosResponse,
-        }) as any;
+        });
       },
       e => {
         const error = new Error(e.message ?? e);
