@@ -1,15 +1,11 @@
 import "reflect-metadata";
 
-import axios, {
-  AxiosHeaders,
-  AxiosInstance,
-  AxiosRequestConfig,
-  CanceledError,
-} from "axios";
+import axios, { AxiosHeaders, CanceledError } from "axios";
 import { injectable, unmanaged } from "inversify";
 
 import { promisify } from "../helpers";
 import {
+  ApiAxiosInstance,
   ApiRequestConfig,
   ApiResponse,
   CancelablePromise,
@@ -24,7 +20,7 @@ export const DEFAULT_AXIOS_HEADERS = new AxiosHeaders({
 
 @injectable()
 export class ApiService implements IApiService {
-  private readonly _instance: AxiosInstance;
+  private readonly _instance: ApiAxiosInstance;
   public queryRace = new QueryRace();
 
   constructor(@unmanaged() config?: Parameters<typeof axios.create>[0]) {
@@ -116,7 +112,7 @@ export class ApiService implements IApiService {
   }
 
   instancePromise = <R = any, P = any>(
-    config: AxiosRequestConfig<P>,
+    config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
   ): CancelablePromise<ApiResponse<R>> => {
     const source = axios.CancelToken.source();

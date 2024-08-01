@@ -1,17 +1,45 @@
 import {
-  AxiosInstance,
+  Axios,
+  AxiosDefaults,
+  AxiosHeaderValue,
+  AxiosInterceptorManager,
   AxiosRequestConfig,
+  AxiosResponse,
   Canceler,
+  HeadersDefaults,
   InternalAxiosRequestConfig,
 } from "axios";
 
-export interface CancelablePromise<T> extends Promise<T> {
-  cancel: Canceler;
+export interface ApiAxios extends Omit<Axios, "interceptors"> {
+  interceptors: {
+    request: AxiosInterceptorManager<InternalAxiosRequestConfig>;
+    response: AxiosInterceptorManager<ApiResponse>;
+  };
 }
 
 export interface ApiRequestConfig<P = any>
   extends Partial<AxiosRequestConfig<P>> {
   useQueryRace?: boolean;
+}
+
+export interface ApiAxiosInstance extends ApiAxios {
+  <T = any, R = AxiosResponse<T>, D = any>(
+    config: ApiRequestConfig<D>,
+  ): Promise<R>;
+  <T = any, R = AxiosResponse<T>, D = any>(
+    url: string,
+    config?: ApiRequestConfig<D>,
+  ): Promise<R>;
+
+  defaults: Omit<AxiosDefaults, "headers"> & {
+    headers: HeadersDefaults & {
+      [key: string]: AxiosHeaderValue;
+    };
+  };
+}
+
+export interface CancelablePromise<T> extends Promise<T> {
+  cancel: Canceler;
 }
 
 export interface ApiResponse<R = any> {
@@ -22,7 +50,7 @@ export interface ApiResponse<R = any> {
 }
 
 export interface IApiService {
-  readonly instance: AxiosInstance;
+  readonly instance: ApiAxiosInstance;
 
   onRequest(
     callback: (
@@ -75,7 +103,7 @@ export interface IApiService {
   ): CancelablePromise<ApiResponse<R>>;
 
   instancePromise<R = any, P = any>(
-    config: AxiosRequestConfig<P>,
+    config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
   ): CancelablePromise<ApiResponse<R>>;
 }
