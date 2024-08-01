@@ -149,6 +149,7 @@ export class ApiService implements IApiService {
         return Promise.resolve<ApiResponse>({ data, status }) as any;
       },
       e => {
+        console.log("interceptors original error", e);
         const error = new Error(e.message ?? e);
 
         if (e.response) {
