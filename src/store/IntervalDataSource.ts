@@ -8,10 +8,10 @@ export abstract class IntervalDataSource<Res, Req> {
   // eslint-disable-next-line no-useless-constructor,no-empty-function
   protected constructor(protected _fetchFn: (req: Req) => Promise<Res>) {}
 
-  protected subscribe(
+  protected subscribe = (
     onData: (res: Res) => void,
     timerInterval?: number,
-  ): IntervalDataSourceSubscription {
+  ): IntervalDataSourceSubscription => {
     const _timerInterval = timerInterval || TIMER_INTERVAL_DEFAULT;
 
     const intervalId = setInterval(async () => {
@@ -23,7 +23,7 @@ export abstract class IntervalDataSource<Res, Req> {
         clearInterval(intervalId);
       },
     };
-  }
+  };
 
   protected abstract getParams(): Req;
 
@@ -31,11 +31,11 @@ export abstract class IntervalDataSource<Res, Req> {
 
   protected abstract afterFetch(v: Res): void | Res;
 
-  private _fetchDataInternal(): Promise<Res> {
+  private _fetchDataInternal = (): Promise<Res> => {
     this.beforeFetch();
     const args = this.getParams();
     const fetch = this._fetchFn(args);
 
     return fetch.then(v => this.afterFetch(v) || v);
-  }
+  };
 }
