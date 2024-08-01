@@ -22,4 +22,4 @@
 
 #### Defined in
 
-[src/helpers/types.ts:45](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/types.ts#L45)
+[src/helpers/types.ts:45](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/types.ts#L45)

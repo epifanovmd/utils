@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/helpers/timeout.ts:9](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/timeout.ts#L9)
+[src/helpers/timeout.ts:9](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/timeout.ts#L9)
 
 ## Properties
 
@@ -42,7 +42,7 @@
 
 #### Defined in
 
-[src/helpers/timeout.ts:7](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/timeout.ts#L7)
+[src/helpers/timeout.ts:7](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/timeout.ts#L7)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/helpers/timeout.ts:6](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/timeout.ts#L6)
+[src/helpers/timeout.ts:6](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/timeout.ts#L6)
 
 ## Methods
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[src/helpers/timeout.ts:15](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/timeout.ts#L15)
+[src/helpers/timeout.ts:15](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/timeout.ts#L15)
 
 ___
 
@@ -92,4 +92,4 @@ ___
 
 #### Defined in
 
-[src/helpers/timeout.ts:24](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/timeout.ts#L24)
+[src/helpers/timeout.ts:24](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/timeout.ts#L24)

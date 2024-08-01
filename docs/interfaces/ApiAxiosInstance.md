@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[src/api/Api.types.ts:27](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L27)
+[src/api/Api.types.ts:33](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L33)
 
 ### ApiAxiosInstance
 
@@ -61,7 +61,7 @@
 
 #### Defined in
 
-[src/api/Api.types.ts:30](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L30)
+[src/api/Api.types.ts:36](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L36)
 
 ## Table of contents
 
@@ -97,7 +97,7 @@
 
 #### Defined in
 
-[src/api/Api.types.ts:35](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L35)
+[src/api/Api.types.ts:41](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L41)
 
 ___
 
@@ -118,7 +118,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:15](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L15)
+[src/api/Api.types.ts:21](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L21)
 
 ## Methods
 

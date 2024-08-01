@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:43](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L43)
+[src/api/Api.types.ts:49](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L49)
 
 ## Methods
 

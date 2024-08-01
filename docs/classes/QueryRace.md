@@ -35,7 +35,7 @@
 
 #### Defined in
 
-[src/api/Api.utils.ts:31](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L31)
+[src/api/Api.utils.ts:31](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L31)
 
 ## Properties
 
@@ -45,7 +45,7 @@
 
 #### Defined in
 
-[src/api/Api.utils.ts:29](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L29)
+[src/api/Api.utils.ts:29](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L29)
 
 ___
 
@@ -55,7 +55,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.utils.ts:31](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L31)
+[src/api/Api.utils.ts:31](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L31)
 
 ___
 
@@ -65,7 +65,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.utils.ts:28](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L28)
+[src/api/Api.utils.ts:28](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L28)
 
 ## Methods
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.utils.ts:35](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L35)
+[src/api/Api.utils.ts:35](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L35)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.utils.ts:42](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L42)
+[src/api/Api.utils.ts:42](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L42)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.utils.ts:49](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L49)
+[src/api/Api.utils.ts:49](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L49)
 
 ___
 
@@ -146,4 +146,4 @@ ___
 
 #### Defined in
 
-[src/api/Api.utils.ts:40](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L40)
+[src/api/Api.utils.ts:40](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L40)

@@ -47,6 +47,7 @@
 - [responseEncoding](ApiRequestConfig.md#responseencoding)
 - [responseType](ApiRequestConfig.md#responsetype)
 - [signal](ApiRequestConfig.md#signal)
+- [skipInterceptError](ApiRequestConfig.md#skipintercepterror)
 - [socketPath](ApiRequestConfig.md#socketpath)
 - [timeout](ApiRequestConfig.md#timeout)
 - [timeoutErrorMessage](ApiRequestConfig.md#timeouterrormessage)
@@ -521,6 +522,20 @@ node_modules/axios/index.d.ts:351
 
 ___
 
+### skipInterceptError
+
+• `Optional` **skipInterceptError**: `boolean`
+
+#### Inherited from
+
+Partial.skipInterceptError
+
+#### Defined in
+
+[src/api/Api.types.ts:16](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L16)
+
+___
+
 ### socketPath
 
 • `Optional` **socketPath**: ``null`` \| `string`
@@ -639,7 +654,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:23](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L23)
+[src/api/Api.types.ts:29](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L29)
 
 ___
 

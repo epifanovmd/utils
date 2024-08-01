@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/api/Api.types.ts:56](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L56)
+[src/api/Api.types.ts:62](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L62)
 
 ## Methods
 
@@ -59,7 +59,7 @@
 
 #### Defined in
 
-[src/api/Api.types.ts:103](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L103)
+[src/api/Api.types.ts:109](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L109)
 
 ___
 
@@ -88,7 +88,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:79](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L79)
+[src/api/Api.types.ts:85](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L85)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:108](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L108)
+[src/api/Api.types.ts:114](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L114)
 
 ___
 
@@ -136,7 +136,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:73](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L73)
+[src/api/Api.types.ts:79](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L79)
 
 ___
 
@@ -156,7 +156,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:58](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L58)
+[src/api/Api.types.ts:64](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L64)
 
 ___
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:67](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L67)
+[src/api/Api.types.ts:73](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L73)
 
 ___
 
@@ -205,7 +205,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:91](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L91)
+[src/api/Api.types.ts:97](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L97)
 
 ___
 
@@ -234,7 +234,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:85](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L85)
+[src/api/Api.types.ts:91](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L91)
 
 ___
 
@@ -263,4 +263,4 @@ ___
 
 #### Defined in
 
-[src/api/Api.types.ts:97](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.types.ts#L97)
+[src/api/Api.types.ts:103](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.types.ts#L103)

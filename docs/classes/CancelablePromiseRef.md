@@ -36,7 +36,7 @@
 
 #### Defined in
 
-[src/api/Api.utils.ts:7](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L7)
+[src/api/Api.utils.ts:7](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L7)
 
 ## Methods
 
@@ -62,4 +62,4 @@
 
 #### Defined in
 
-[src/api/Api.utils.ts:9](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.utils.ts#L9)
+[src/api/Api.utils.ts:9](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.utils.ts#L9)

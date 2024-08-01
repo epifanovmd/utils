@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/helpers/interval.ts:9](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/interval.ts#L9)
+[src/helpers/interval.ts:9](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/interval.ts#L9)
 
 ## Properties
 
@@ -42,7 +42,7 @@
 
 #### Defined in
 
-[src/helpers/interval.ts:6](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/interval.ts#L6)
+[src/helpers/interval.ts:6](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/interval.ts#L6)
 
 ___
 
@@ -52,7 +52,7 @@ ___
 
 #### Defined in
 
-[src/helpers/interval.ts:7](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/interval.ts#L7)
+[src/helpers/interval.ts:7](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/interval.ts#L7)
 
 ## Methods
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[src/helpers/interval.ts:15](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/interval.ts#L15)
+[src/helpers/interval.ts:15](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/interval.ts#L15)
 
 ___
 
@@ -92,4 +92,4 @@ ___
 
 #### Defined in
 
-[src/helpers/interval.ts:24](https://github.com/epifanovmd/utils/blob/fdca100/src/helpers/interval.ts#L24)
+[src/helpers/interval.ts:24](https://github.com/epifanovmd/utils/blob/78a5c89/src/helpers/interval.ts#L24)

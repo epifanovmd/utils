@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[src/api/Api.service.ts:32](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L32)
+[src/api/Api.service.ts:32](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L32)
 
 ## Properties
 
@@ -58,7 +58,7 @@
 
 #### Defined in
 
-[src/api/Api.service.ts:29](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L29)
+[src/api/Api.service.ts:29](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L29)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:62](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L62)
+[src/api/Api.service.ts:62](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L62)
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:46](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L46)
+[src/api/Api.service.ts:46](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L46)
 
 ___
 
@@ -142,7 +142,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:52](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L52)
+[src/api/Api.service.ts:52](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L52)
 
 ___
 
@@ -152,7 +152,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:30](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L30)
+[src/api/Api.service.ts:30](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L30)
 
 ## Accessors
 
@@ -170,7 +170,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:42](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L42)
+[src/api/Api.service.ts:42](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L42)
 
 ## Methods
 
@@ -184,7 +184,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:149](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L149)
+[src/api/Api.service.ts:149](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L149)
 
 ___
 
@@ -215,7 +215,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:116](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L116)
+[src/api/Api.service.ts:116](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L116)
 
 ___
 
@@ -248,7 +248,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:72](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L72)
+[src/api/Api.service.ts:72](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L72)
 
 ___
 
@@ -280,7 +280,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:120](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L120)
+[src/api/Api.service.ts:120](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L120)
 
 ___
 
@@ -313,7 +313,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:94](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L94)
+[src/api/Api.service.ts:94](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L94)
 
 ___
 
@@ -346,7 +346,7 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:83](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L83)
+[src/api/Api.service.ts:83](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L83)
 
 ___
 
@@ -379,4 +379,4 @@ ___
 
 #### Defined in
 
-[src/api/Api.service.ts:105](https://github.com/epifanovmd/utils/blob/fdca100/src/api/Api.service.ts#L105)
+[src/api/Api.service.ts:105](https://github.com/epifanovmd/utils/blob/78a5c89/src/api/Api.service.ts#L105)

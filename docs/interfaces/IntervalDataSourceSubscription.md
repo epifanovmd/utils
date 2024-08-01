@@ -24,4 +24,4 @@
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:2](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L2)
+[src/store/IntervalDataSource.ts:2](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L2)

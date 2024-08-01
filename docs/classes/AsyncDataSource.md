@@ -70,7 +70,7 @@
 
 #### Defined in
 
-[src/store/holders/AsyncDataSource.ts:5](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/AsyncDataSource.ts#L5)
+[src/store/holders/AsyncDataSource.ts:5](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/AsyncDataSource.ts#L5)
 
 ## Properties
 
@@ -84,7 +84,7 @@
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:28](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L28)
+[src/store/holders/DataHolder.ts:28](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L28)
 
 ___
 
@@ -108,7 +108,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/AsyncDataSource.ts:5](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/AsyncDataSource.ts#L5)
+[src/store/holders/AsyncDataSource.ts:5](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/AsyncDataSource.ts#L5)
 
 ## Accessors
 
@@ -126,7 +126,7 @@ DataHolder.d
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:60](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L60)
+[src/store/holders/DataHolder.ts:60](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L60)
 
 ___
 
@@ -144,7 +144,7 @@ DataHolder.isEmpty
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:80](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L80)
+[src/store/holders/DataHolder.ts:80](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L80)
 
 ___
 
@@ -162,7 +162,7 @@ DataHolder.isError
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:76](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L76)
+[src/store/holders/DataHolder.ts:76](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L76)
 
 ___
 
@@ -180,7 +180,7 @@ DataHolder.isFilled
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:84](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L84)
+[src/store/holders/DataHolder.ts:84](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L84)
 
 ___
 
@@ -198,7 +198,7 @@ DataHolder.isLambda
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:64](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L64)
+[src/store/holders/DataHolder.ts:64](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L64)
 
 ___
 
@@ -216,7 +216,7 @@ DataHolder.isLoading
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:72](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L72)
+[src/store/holders/DataHolder.ts:72](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L72)
 
 ___
 
@@ -234,7 +234,7 @@ DataHolder.isReady
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:68](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L68)
+[src/store/holders/DataHolder.ts:68](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L68)
 
 ## Methods
 
@@ -252,7 +252,7 @@ DataHolder.isReady
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:94](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L94)
+[src/store/holders/DataHolder.ts:94](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L94)
 
 ___
 
@@ -272,7 +272,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/AsyncDataSource.ts:9](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/AsyncDataSource.ts#L9)
+[src/store/holders/AsyncDataSource.ts:9](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/AsyncDataSource.ts#L9)
 
 ___
 
@@ -296,7 +296,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:107](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L107)
+[src/store/holders/DataHolder.ts:107](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L107)
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:114](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L114)
+[src/store/holders/DataHolder.ts:114](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L114)
 
 ___
 
@@ -338,7 +338,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:88](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L88)
+[src/store/holders/DataHolder.ts:88](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L88)
 
 ___
 
@@ -356,4 +356,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/DataHolder.ts:101](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/DataHolder.ts#L101)
+[src/store/holders/DataHolder.ts:101](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/DataHolder.ts#L101)

@@ -72,7 +72,7 @@
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:61](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L61)
+[src/store/holders/ListCollectionHolder.ts:61](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L61)
 
 ## Properties
 
@@ -82,7 +82,7 @@
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:54](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L54)
+[src/store/holders/ListCollectionHolder.ts:54](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L54)
 
 ___
 
@@ -92,7 +92,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:59](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L59)
+[src/store/holders/ListCollectionHolder.ts:59](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L59)
 
 ___
 
@@ -102,7 +102,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:58](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L58)
+[src/store/holders/ListCollectionHolder.ts:58](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L58)
 
 ___
 
@@ -112,7 +112,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:55](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L55)
+[src/store/holders/ListCollectionHolder.ts:55](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L55)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:53](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L53)
+[src/store/holders/ListCollectionHolder.ts:53](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L53)
 
 ___
 
@@ -132,7 +132,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:52](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L52)
+[src/store/holders/ListCollectionHolder.ts:52](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L52)
 
 ## Accessors
 
@@ -146,7 +146,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:253](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L253)
+[src/store/holders/ListCollectionHolder.ts:253](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L253)
 
 ___
 
@@ -160,7 +160,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:246](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L246)
+[src/store/holders/ListCollectionHolder.ts:246](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L246)
 
 ___
 
@@ -174,7 +174,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:118](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L118)
+[src/store/holders/ListCollectionHolder.ts:118](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L118)
 
 ___
 
@@ -188,7 +188,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:114](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L114)
+[src/store/holders/ListCollectionHolder.ts:114](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L114)
 
 ___
 
@@ -202,7 +202,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:94](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L94)
+[src/store/holders/ListCollectionHolder.ts:94](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L94)
 
 ___
 
@@ -216,7 +216,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:87](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L87)
+[src/store/holders/ListCollectionHolder.ts:87](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L87)
 
 ___
 
@@ -230,7 +230,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:106](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L106)
+[src/store/holders/ListCollectionHolder.ts:106](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L106)
 
 ___
 
@@ -244,7 +244,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:98](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L98)
+[src/store/holders/ListCollectionHolder.ts:98](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L98)
 
 ___
 
@@ -258,7 +258,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:110](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L110)
+[src/store/holders/ListCollectionHolder.ts:110](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L110)
 
 ## Methods
 
@@ -279,7 +279,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:261](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L261)
+[src/store/holders/ListCollectionHolder.ts:261](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L261)
 
 ___
 
@@ -300,7 +300,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:290](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L290)
+[src/store/holders/ListCollectionHolder.ts:290](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L290)
 
 ___
 
@@ -320,7 +320,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:242](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L242)
+[src/store/holders/ListCollectionHolder.ts:242](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L242)
 
 ___
 
@@ -334,7 +334,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:158](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L158)
+[src/store/holders/ListCollectionHolder.ts:158](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L158)
 
 ___
 
@@ -354,7 +354,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:122](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L122)
+[src/store/holders/ListCollectionHolder.ts:122](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L122)
 
 ___
 
@@ -374,7 +374,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:194](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L194)
+[src/store/holders/ListCollectionHolder.ts:194](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L194)
 
 ___
 
@@ -398,7 +398,7 @@ IListEvents.performLoad
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:231](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L231)
+[src/store/holders/ListCollectionHolder.ts:231](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L231)
 
 ___
 
@@ -422,7 +422,7 @@ IListEvents.performLoadMore
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:205](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L205)
+[src/store/holders/ListCollectionHolder.ts:205](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L205)
 
 ___
 
@@ -446,7 +446,7 @@ IListEvents.performRefresh
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:215](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L215)
+[src/store/holders/ListCollectionHolder.ts:215](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L215)
 
 ___
 
@@ -466,7 +466,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:166](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L166)
+[src/store/holders/ListCollectionHolder.ts:166](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L166)
 
 ___
 
@@ -486,7 +486,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:173](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L173)
+[src/store/holders/ListCollectionHolder.ts:173](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L173)
 
 ___
 
@@ -500,7 +500,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:188](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L188)
+[src/store/holders/ListCollectionHolder.ts:188](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L188)
 
 ___
 
@@ -514,7 +514,7 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:182](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L182)
+[src/store/holders/ListCollectionHolder.ts:182](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L182)
 
 ___
 
@@ -535,4 +535,4 @@ ___
 
 #### Defined in
 
-[src/store/holders/ListCollectionHolder.ts:130](https://github.com/epifanovmd/utils/blob/fdca100/src/store/holders/ListCollectionHolder.ts#L130)
+[src/store/holders/ListCollectionHolder.ts:130](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/holders/ListCollectionHolder.ts#L130)

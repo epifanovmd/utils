@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:9](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L9)
+[src/store/IntervalDataSource.ts:9](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L9)
 
 ## Properties
 
@@ -72,7 +72,7 @@
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:9](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L9)
+[src/store/IntervalDataSource.ts:9](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L9)
 
 ## Methods
 
@@ -86,7 +86,7 @@
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:34](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L34)
+[src/store/IntervalDataSource.ts:34](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L34)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:32](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L32)
+[src/store/IntervalDataSource.ts:32](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L32)
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:30](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L30)
+[src/store/IntervalDataSource.ts:30](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L30)
 
 ___
 
@@ -134,7 +134,7 @@ ___
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:28](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L28)
+[src/store/IntervalDataSource.ts:28](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L28)
 
 ___
 
@@ -155,4 +155,4 @@ ___
 
 #### Defined in
 
-[src/store/IntervalDataSource.ts:11](https://github.com/epifanovmd/utils/blob/fdca100/src/store/IntervalDataSource.ts#L11)
+[src/store/IntervalDataSource.ts:11](https://github.com/epifanovmd/utils/blob/78a5c89/src/store/IntervalDataSource.ts#L11)
