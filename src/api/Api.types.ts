@@ -17,10 +17,10 @@ declare module "axios" {
   }
 }
 
-export interface ApiAxios extends Omit<Axios, "interceptors"> {
+export interface ApiAxios<R, ErrorBody> extends Omit<Axios, "interceptors"> {
   interceptors: {
     request: AxiosInterceptorManager<InternalAxiosRequestConfig>;
-    response: AxiosInterceptorManager<ApiResponse>;
+    response: AxiosInterceptorManager<ApiResponse<R, ErrorBody>>;
   };
 }
 
@@ -29,7 +29,7 @@ export interface ApiRequestConfig<P = any>
   useQueryRace?: boolean;
 }
 
-export interface ApiAxiosInstance extends ApiAxios {
+export interface ApiAxiosInstance<ErrorBody> extends ApiAxios<any, ErrorBody> {
   <T = any, R = AxiosResponse<T>, D = any>(
     config: ApiRequestConfig<D>,
   ): Promise<R>;
@@ -59,7 +59,7 @@ export interface ApiResponse<R = any, ErrorBody = unknown> {
 }
 
 export interface IApiService<ErrorBody = unknown> {
-  readonly instance: ApiAxiosInstance;
+  readonly instance: ApiAxiosInstance<ErrorBody>;
 
   onRequest(
     callback: (

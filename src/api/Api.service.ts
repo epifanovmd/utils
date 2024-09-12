@@ -1,7 +1,6 @@
 import "reflect-metadata";
 
 import axios, {
-  AxiosError,
   AxiosHeaders,
   AxiosResponse,
   CanceledError,
@@ -25,8 +24,8 @@ export const DEFAULT_AXIOS_HEADERS = new AxiosHeaders({
 });
 
 @injectable()
-export class ApiService implements IApiService {
-  private readonly _instance: ApiAxiosInstance;
+export class ApiService<ErrorBody = unknown> implements IApiService<ErrorBody> {
+  private readonly _instance: ApiAxiosInstance<ErrorBody>;
   public queryRace = new QueryRace();
 
   constructor(@unmanaged() config?: Parameters<typeof axios.create>[0]) {
@@ -49,18 +48,22 @@ export class ApiService implements IApiService {
     );
   };
 
-  public onResponse: IApiService["onResponse"] = callback => {
-    this._instance.interceptors.response.use(async response => {
-      if (!response.error && response.data) {
-        return (await promisify(callback(response))) ?? response;
-      }
+  public onResponse: IApiService<ErrorBody>["onResponse"] = callback => {
+    this._instance.interceptors.response.use(
+      async (response: ApiResponse<any, ErrorBody>) => {
+        if (!response.error && response.data) {
+          return (await promisify(callback(response))) ?? response;
+        }
 
-      return response;
-    });
+        return response;
+      },
+    );
   };
 
-  public onError: IApiService["onError"] = callback => {
-    this._instance.interceptors.response.use((async (response: ApiResponse) => {
+  public onError: IApiService<ErrorBody>["onError"] = callback => {
+    this._instance.interceptors.response.use((async (
+      response: ApiResponse<any, ErrorBody>,
+    ) => {
       if (response.error) {
         return (await promisify(callback(response))) ?? response;
       }
@@ -120,7 +123,7 @@ export class ApiService implements IApiService {
   instancePromise = <R = any, P = any>(
     config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R>> => {
+  ): CancelablePromise<ApiResponse<R, ErrorBody>> => {
     const source = axios.CancelToken.source();
 
     const endpoint = (config.method ?? "GET") + config.url;
@@ -133,7 +136,7 @@ export class ApiService implements IApiService {
       ...config,
       ...options,
       cancelToken: source.token,
-    }) as CancelablePromise<ApiResponse<R>>;
+    }) as CancelablePromise<ApiResponse<R, ErrorBody>>;
 
     promise.finally(() => {
       this.queryRace.delete(endpoint);
@@ -149,12 +152,12 @@ export class ApiService implements IApiService {
   private _applyInterceptor = () => {
     this._instance.interceptors.response.use(
       res => {
-        const axiosResponse = res as any as AxiosResponse;
+        const axiosResponse = res as any as AxiosResponse<any, ErrorBody>;
 
         const status = axiosResponse.status;
         const data = axiosResponse.data;
 
-        return Promise.resolve<ApiResponse>({
+        return Promise.resolve<ApiResponse<any, ErrorBody>>({
           data,
           status,
           axiosResponse,
@@ -171,19 +174,19 @@ export class ApiService implements IApiService {
           const errorStatus = errorData?.error?.status;
           const errorMessage = errorData?.error?.message;
 
-          return Promise.resolve<ApiResponse>({
+          return Promise.resolve<ApiResponse<any, ErrorBody>>({
             status: errorStatus ?? e.response.status ?? 500,
             error: errorMessage ? new Error(errorMessage) : error,
             axiosError,
           });
         } else if (e.request) {
-          return Promise.resolve<ApiResponse>({
+          return Promise.resolve<ApiResponse<any, ErrorBody>>({
             status: e.request.status || 400,
             error,
             axiosError,
           });
         } else {
-          return Promise.resolve<ApiResponse>({
+          return Promise.resolve<ApiResponse<any, ErrorBody>>({
             status: 400,
             error,
             axiosError,
