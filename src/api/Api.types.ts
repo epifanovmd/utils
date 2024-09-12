@@ -49,12 +49,12 @@ export interface CancelablePromise<T> extends Promise<T> {
   cancel: Canceler;
 }
 
-export interface ApiResponse<R = any> {
+export interface ApiResponse<R = any, ErrorBody = unknown> {
   data?: R;
   status: number;
   error?: Error;
   isCanceled?: boolean;
-  axiosError?: AxiosError;
+  axiosError?: AxiosError<ErrorBody>;
   axiosResponse?: AxiosResponse<R>;
 }
 
