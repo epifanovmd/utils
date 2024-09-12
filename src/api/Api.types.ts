@@ -58,7 +58,7 @@ export interface ApiResponse<R = any, ErrorBody = unknown> {
   axiosResponse?: AxiosResponse<R>;
 }
 
-export interface IApiService {
+export interface IApiService<ErrorBody = unknown> {
   readonly instance: ApiAxiosInstance;
 
   onRequest(
@@ -72,47 +72,53 @@ export interface IApiService {
 
   onResponse(
     callback: (
-      response: ApiResponse,
-    ) => void | ApiResponse | Promise<void | ApiResponse>,
+      response: ApiResponse<any, ErrorBody>,
+    ) =>
+      | void
+      | ApiResponse<any, ErrorBody>
+      | Promise<void | ApiResponse<any, ErrorBody>>,
   ): void;
 
   onError(
     callback: (
-      response: ApiResponse,
-    ) => void | ApiResponse | Promise<void | ApiResponse>,
+      response: ApiResponse<any, ErrorBody>,
+    ) =>
+      | void
+      | ApiResponse<any, ErrorBody>
+      | Promise<void | ApiResponse<any, ErrorBody>>,
   ): void;
 
   get<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R>>;
+  ): CancelablePromise<ApiResponse<R, ErrorBody>>;
 
   post<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R>>;
+  ): CancelablePromise<ApiResponse<R, ErrorBody>>;
 
   patch<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R>>;
+  ): CancelablePromise<ApiResponse<R, ErrorBody>>;
 
   put<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R>>;
+  ): CancelablePromise<ApiResponse<R, ErrorBody>>;
 
   delete<R = any>(
     endpoint: string,
     config?: ApiRequestConfig,
-  ): CancelablePromise<ApiResponse<R>>;
+  ): CancelablePromise<ApiResponse<R, ErrorBody>>;
 
   instancePromise<R = any, P = any>(
     config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R>>;
+  ): CancelablePromise<ApiResponse<R, ErrorBody>>;
 }
