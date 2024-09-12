@@ -25,9 +25,9 @@ export const DEFAULT_AXIOS_HEADERS = new AxiosHeaders({
 
 @injectable()
 export class ApiService<E extends Error = Error, ErrorBody = unknown>
-  implements IApiService<ErrorBody>
+  implements IApiService<E, ErrorBody>
 {
-  private readonly _instance: ApiAxiosInstance<ErrorBody>;
+  private readonly _instance: ApiAxiosInstance<E, ErrorBody>;
   public queryRace = new QueryRace();
 
   constructor(@unmanaged() config?: Parameters<typeof axios.create>[0]) {
@@ -44,15 +44,15 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
     return this._instance;
   }
 
-  public onRequest: IApiService["onRequest"] = callback => {
+  public onRequest: IApiService<E, ErrorBody>["onRequest"] = callback => {
     this._instance.interceptors.request.use(
       async request => (await promisify(callback(request))) ?? request,
     );
   };
 
-  public onResponse: IApiService<ErrorBody>["onResponse"] = callback => {
+  public onResponse: IApiService<E, ErrorBody>["onResponse"] = callback => {
     this._instance.interceptors.response.use(
-      async (response: ApiResponse<any, ErrorBody>) => {
+      async (response: ApiResponse<any, E, ErrorBody>) => {
         if (!response.error && response.data) {
           return (await promisify(callback(response))) ?? response;
         }
@@ -62,9 +62,9 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
     );
   };
 
-  public onError: IApiService<ErrorBody>["onError"] = callback => {
+  public onError: IApiService<E, ErrorBody>["onError"] = callback => {
     this._instance.interceptors.response.use((async (
-      response: ApiResponse<any, ErrorBody>,
+      response: ApiResponse<any, E, ErrorBody>,
     ) => {
       if (response.error) {
         return (await promisify(callback(response))) ?? response;
@@ -125,7 +125,7 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
   instancePromise = <R = any, P = any>(
     config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, ErrorBody>> => {
+  ): CancelablePromise<ApiResponse<R, E, ErrorBody>> => {
     const source = axios.CancelToken.source();
 
     const endpoint = (config.method ?? "GET") + config.url;
@@ -138,7 +138,7 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
       ...config,
       ...options,
       cancelToken: source.token,
-    }) as CancelablePromise<ApiResponse<R, ErrorBody>>;
+    }) as CancelablePromise<ApiResponse<R, E, ErrorBody>>;
 
     promise.finally(() => {
       this.queryRace.delete(endpoint);
@@ -159,7 +159,7 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
         const status = axiosResponse.status;
         const data = axiosResponse.data;
 
-        return Promise.resolve<ApiResponse<any, ErrorBody>>({
+        return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
           data,
           status,
           axiosResponse,

@@ -61,7 +61,7 @@ export interface ApiResponse<R = any, E = Error, ErrorBody = unknown> {
 }
 
 export interface IApiService<E = Error, ErrorBody = unknown> {
-  readonly instance: ApiAxiosInstance<ErrorBody>;
+  readonly instance: ApiAxiosInstance<E, ErrorBody>;
 
   onRequest(
     callback: (
