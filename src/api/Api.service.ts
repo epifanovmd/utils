@@ -24,7 +24,9 @@ export const DEFAULT_AXIOS_HEADERS = new AxiosHeaders({
 });
 
 @injectable()
-export class ApiService<ErrorBody = unknown> implements IApiService<ErrorBody> {
+export class ApiService<E extends Error = Error, ErrorBody = unknown>
+  implements IApiService<ErrorBody>
+{
   private readonly _instance: ApiAxiosInstance<ErrorBody>;
   public queryRace = new QueryRace();
 
@@ -164,7 +166,7 @@ export class ApiService<ErrorBody = unknown> implements IApiService<ErrorBody> {
         });
       },
       e => {
-        const error = new Error(e.message ?? e);
+        const error = new Error(e.message ?? e) as E;
 
         const axiosError = isAxiosError(e) ? e : undefined;
 
@@ -174,19 +176,19 @@ export class ApiService<ErrorBody = unknown> implements IApiService<ErrorBody> {
           const errorStatus = errorData?.error?.status;
           const errorMessage = errorData?.error?.message;
 
-          return Promise.resolve<ApiResponse<any, ErrorBody>>({
+          return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
             status: errorStatus ?? e.response.status ?? 500,
-            error: errorMessage ? new Error(errorMessage) : error,
+            error: errorMessage ? (new Error(errorMessage) as E) : error,
             axiosError,
           });
         } else if (e.request) {
-          return Promise.resolve<ApiResponse<any, ErrorBody>>({
+          return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
             status: e.request.status || 400,
             error,
             axiosError,
           });
         } else {
-          return Promise.resolve<ApiResponse<any, ErrorBody>>({
+          return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
             status: 400,
             error,
             axiosError,
