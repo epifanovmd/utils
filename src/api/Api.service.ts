@@ -1,6 +1,7 @@
 import "reflect-metadata";
 
 import axios, {
+  AxiosError,
   AxiosHeaders,
   AxiosResponse,
   CanceledError,
@@ -24,35 +25,53 @@ export const DEFAULT_AXIOS_HEADERS = new AxiosHeaders({
 });
 
 @injectable()
-export class ApiService<E extends Error = Error, ErrorBody = unknown>
-  implements IApiService<E, ErrorBody>
+export class ApiService<
+  E extends Error | AxiosError<EBody> = AxiosError<unknown>,
+  EBody = unknown,
+> implements IApiService<E, EBody>
 {
-  private readonly _instance: ApiAxiosInstance<E, ErrorBody>;
+  private readonly _instance: ApiAxiosInstance<E, EBody>;
   public queryRace = new QueryRace();
 
-  constructor(@unmanaged() config?: Parameters<typeof axios.create>[0]) {
+  constructor(
+    @unmanaged() config: Parameters<typeof axios.create>[0],
+    @unmanaged() transformError: (error: AxiosError<EBody>) => E,
+  ) {
     this._instance = axios.create({
       timeout: 2 * 60 * 1000,
       headers: DEFAULT_AXIOS_HEADERS,
       ...config,
     });
 
-    this._applyInterceptor();
+    this._instance.interceptors.response.use(
+      res => {
+        const axiosResponse = res as any as AxiosResponse<any, EBody>;
+
+        return Promise.resolve<ApiResponse<any, E, EBody>>({
+          data: axiosResponse.data,
+          status: axiosResponse.status,
+          axiosResponse,
+        });
+      },
+      e => {
+        return Promise.resolve(this.interceptError(e, transformError));
+      },
+    );
   }
 
   get instance() {
     return this._instance;
   }
 
-  public onRequest: IApiService<E, ErrorBody>["onRequest"] = callback => {
+  public onRequest: IApiService<E, EBody>["onRequest"] = callback => {
     this._instance.interceptors.request.use(
       async request => (await promisify(callback(request))) ?? request,
     );
   };
 
-  public onResponse: IApiService<E, ErrorBody>["onResponse"] = callback => {
+  public onResponse: IApiService<E, EBody>["onResponse"] = callback => {
     this._instance.interceptors.response.use(
-      async (response: ApiResponse<any, E, ErrorBody>) => {
+      async (response: ApiResponse<any, E, EBody>) => {
         if (!response.error && response.data) {
           return (await promisify(callback(response))) ?? response;
         }
@@ -62,9 +81,16 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
     );
   };
 
-  public onError: IApiService<E, ErrorBody>["onError"] = callback => {
+  public onError(
+    callback: (
+      response: ApiResponse<any, E, EBody>,
+    ) =>
+      | void
+      | ApiResponse<any, E, EBody>
+      | Promise<void | ApiResponse<any, E, EBody>>,
+  ) {
     this._instance.interceptors.response.use((async (
-      response: ApiResponse<any, E, ErrorBody>,
+      response: ApiResponse<any, E, EBody>,
     ) => {
       if (response.error) {
         return (await promisify(callback(response))) ?? response;
@@ -72,7 +98,7 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
 
       return response;
     }) as any);
-  };
+  }
 
   public get<R = any, P = any>(
     endpoint: string,
@@ -122,10 +148,38 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
     return this.instancePromise<R>({ url: endpoint, method: "DELETE" }, config);
   }
 
+  protected interceptError(
+    e: any,
+    transformError: (error: AxiosError<EBody>) => E,
+  ): unknown {
+    const axiosError = isAxiosError(e) ? e : (undefined as any);
+
+    if (e.response) {
+      return Promise.resolve<ApiResponse<any, E, EBody>>({
+        status: e.response.status ?? e.status ?? 500,
+        error: transformError(axiosError),
+        axiosError,
+      });
+    } else if (e.request) {
+      return Promise.resolve<ApiResponse<any, E, EBody>>({
+        status: e.request.status || 400,
+        error: transformError(axiosError),
+        axiosError,
+      });
+    } else {
+      return Promise.resolve<ApiResponse<any, E, EBody>>({
+        status: 400,
+        error: transformError(axiosError),
+        axiosError,
+        isCanceled: e instanceof CanceledError,
+      });
+    }
+  }
+
   instancePromise = <R = any, P = any>(
     config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>> => {
+  ): CancelablePromise<ApiResponse<R, E, EBody>> => {
     const source = axios.CancelToken.source();
 
     const endpoint = (config.method ?? "GET") + config.url;
@@ -138,7 +192,7 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
       ...config,
       ...options,
       cancelToken: source.token,
-    }) as CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+    }) as CancelablePromise<ApiResponse<R, E, EBody>>;
 
     promise.finally(() => {
       this.queryRace.delete(endpoint);
@@ -149,53 +203,5 @@ export class ApiService<E extends Error = Error, ErrorBody = unknown>
     };
 
     return promise;
-  };
-
-  private _applyInterceptor = () => {
-    this._instance.interceptors.response.use(
-      res => {
-        const axiosResponse = res as any as AxiosResponse<any, ErrorBody>;
-
-        const status = axiosResponse.status;
-        const data = axiosResponse.data;
-
-        return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
-          data,
-          status,
-          axiosResponse,
-        });
-      },
-      e => {
-        const error = new Error(e.message ?? e) as E;
-
-        const axiosError = isAxiosError(e) ? e : undefined;
-
-        if (e.response) {
-          const errorData = e.response.data as any;
-
-          const errorStatus = errorData?.error?.status;
-          const errorMessage = errorData?.error?.message;
-
-          return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
-            status: errorStatus ?? e.response.status ?? 500,
-            error: errorMessage ? (new Error(errorMessage) as E) : error,
-            axiosError,
-          });
-        } else if (e.request) {
-          return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
-            status: e.request.status || 400,
-            error,
-            axiosError,
-          });
-        } else {
-          return Promise.resolve<ApiResponse<any, E, ErrorBody>>({
-            status: 400,
-            error,
-            axiosError,
-            isCanceled: e instanceof CanceledError,
-          });
-        }
-      },
-    );
   };
 }

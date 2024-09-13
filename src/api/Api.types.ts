@@ -17,11 +17,14 @@ declare module "axios" {
   }
 }
 
-export interface ApiAxios<R, E = Error, ErrorBody = unknown>
-  extends Omit<Axios, "interceptors"> {
+export interface ApiAxios<
+  R,
+  E extends Error | AxiosError<EBody>,
+  EBody = unknown,
+> extends Omit<Axios, "interceptors"> {
   interceptors: {
     request: AxiosInterceptorManager<InternalAxiosRequestConfig>;
-    response: AxiosInterceptorManager<ApiResponse<R, E, ErrorBody>>;
+    response: AxiosInterceptorManager<ApiResponse<R, E, EBody>>;
   };
 }
 
@@ -30,11 +33,14 @@ export interface ApiRequestConfig<P = any>
   useQueryRace?: boolean;
 }
 
-export interface ApiAxiosInstance<E = Error, ErrorBody = unknown>
-  extends ApiAxios<any, E, ErrorBody> {
+export interface ApiAxiosInstance<
+  E extends Error | AxiosError<EBody>,
+  EBody = unknown,
+> extends ApiAxios<any, E, EBody> {
   <T = any, R = AxiosResponse<T>, D = any>(
     config: ApiRequestConfig<D>,
   ): Promise<R>;
+
   <T = any, R = AxiosResponse<T>, D = any>(
     url: string,
     config?: ApiRequestConfig<D>,
@@ -51,17 +57,24 @@ export interface CancelablePromise<T> extends Promise<T> {
   cancel: Canceler;
 }
 
-export interface ApiResponse<R = any, E = Error, ErrorBody = unknown> {
+export interface ApiResponse<
+  R,
+  E extends Error | AxiosError<unknown>,
+  EBody = unknown,
+> {
   data?: R;
   status: number;
   error?: E;
   isCanceled?: boolean;
-  axiosError?: AxiosError<ErrorBody>;
+  axiosError?: AxiosError<EBody>;
   axiosResponse?: AxiosResponse<R>;
 }
 
-export interface IApiService<E = Error, ErrorBody = unknown> {
-  readonly instance: ApiAxiosInstance<E, ErrorBody>;
+export interface IApiService<
+  E extends Error | AxiosError<EBody> = AxiosError<unknown>,
+  EBody = unknown,
+> {
+  readonly instance: ApiAxiosInstance<E, EBody>;
 
   onRequest(
     callback: (
@@ -74,53 +87,53 @@ export interface IApiService<E = Error, ErrorBody = unknown> {
 
   onResponse(
     callback: (
-      response: ApiResponse<any, E, ErrorBody>,
+      response: ApiResponse<any, E, EBody>,
     ) =>
       | void
-      | ApiResponse<any, E, ErrorBody>
-      | Promise<void | ApiResponse<any, E, ErrorBody>>,
+      | ApiResponse<any, E, EBody>
+      | Promise<void | ApiResponse<any, E, EBody>>,
   ): void;
 
   onError(
     callback: (
-      response: ApiResponse<any, E, ErrorBody>,
+      response: ApiResponse<any, E, EBody>,
     ) =>
       | void
-      | ApiResponse<any, E, ErrorBody>
-      | Promise<void | ApiResponse<any, E, ErrorBody>>,
+      | ApiResponse<any, E, EBody>
+      | Promise<void | ApiResponse<any, E, EBody>>,
   ): void;
 
   get<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+  ): CancelablePromise<ApiResponse<R, E, EBody>>;
 
   post<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+  ): CancelablePromise<ApiResponse<R, E, EBody>>;
 
   patch<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+  ): CancelablePromise<ApiResponse<R, E, EBody>>;
 
   put<R = any, P = any>(
     endpoint: string,
     params?: P,
     config?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+  ): CancelablePromise<ApiResponse<R, E, EBody>>;
 
   delete<R = any>(
     endpoint: string,
     config?: ApiRequestConfig,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+  ): CancelablePromise<ApiResponse<R, E, EBody>>;
 
   instancePromise<R = any, P = any>(
     config: ApiRequestConfig<P>,
     options?: ApiRequestConfig<P>,
-  ): CancelablePromise<ApiResponse<R, E, ErrorBody>>;
+  ): CancelablePromise<ApiResponse<R, E, EBody>>;
 }
