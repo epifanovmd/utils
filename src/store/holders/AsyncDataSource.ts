@@ -1,8 +1,17 @@
+import { AxiosError } from "axios";
+
 import { ApiResponse } from "../../api";
 import { DataHolder } from "./DataHolder";
 
-export class AsyncDataSource<R, P = unknown> extends DataHolder<R> {
-  constructor(private fetchFn: (query: P) => Promise<ApiResponse<R>>) {
+export class AsyncDataSource<
+  R,
+  P = unknown,
+  E extends Error | AxiosError<unknown> = Error | AxiosError<unknown>,
+  EBody = unknown,
+> extends DataHolder<R> {
+  constructor(
+    private fetchFn: (query: P) => Promise<ApiResponse<R, E, EBody>>,
+  ) {
     super();
   }
 
