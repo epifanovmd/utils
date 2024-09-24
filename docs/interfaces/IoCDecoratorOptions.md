@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[src/ioc/IoC.ts:12](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L12)
+[src/ioc/IoC.old.ts:12](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L12)

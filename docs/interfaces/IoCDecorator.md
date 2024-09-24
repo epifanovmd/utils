@@ -40,7 +40,7 @@
 
 #### Defined in
 
-[src/ioc/IoC.ts:18](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L18)
+[src/ioc/IoC.old.ts:18](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L18)
 
 ## Table of contents
 
@@ -61,7 +61,7 @@
 
 #### Defined in
 
-[src/ioc/IoC.ts:16](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L16)
+[src/ioc/IoC.old.ts:16](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L16)
 
 ## Methods
 
@@ -75,7 +75,7 @@
 
 #### Defined in
 
-[src/ioc/IoC.ts:24](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L24)
+[src/ioc/IoC.old.ts:24](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L24)
 
 ___
 
@@ -95,4 +95,4 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:25](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L25)
+[src/ioc/IoC.old.ts:25](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L25)

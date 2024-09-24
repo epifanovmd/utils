@@ -321,7 +321,7 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:32](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L32)
+[src/ioc/IoC.old.ts:32](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L32)
 
 ## Functions
 
@@ -692,7 +692,7 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:34](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L34)
+[src/ioc/IoC.old.ts:34](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L34)
 
 ___
 
@@ -718,7 +718,7 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:46](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L46)
+[src/ioc/IoC.old.ts:46](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L46)
 
 ___
 
@@ -744,7 +744,7 @@ ___
 
 #### Defined in
 
-[src/ioc/IoC.ts:42](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L42)
+[src/ioc/IoC.old.ts:42](https://github.com/epifanovmd/utils/blob/78a5c89/src/ioc/IoC.ts#L42)
 
 ___
 
