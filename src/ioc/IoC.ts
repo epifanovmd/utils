@@ -42,13 +42,17 @@ type IIoCDecoratorOptions<M extends "named" | "tagged" | unknown> =
     ? IIoCTaggedDecoratorOptions
     : IIoCTaggedDecoratorDefaultOptions;
 
+type TGetInstanceOptions<M extends "named" | "tagged" | unknown> =
+  M extends "named"
+    ? Omit<IIoCNamedDecoratorOptions, keyof IIoCTaggedDecoratorDefaultOptions>
+    : M extends "tagged"
+    ? Omit<IIoCTaggedDecoratorOptions, keyof IIoCTaggedDecoratorDefaultOptions>
+    : undefined;
+
 /**
  * Интерфейс декоратора IoC.
  */
-export interface IoCServiceDecorator<
-  T,
-  M extends "named" | "tagged" | unknown,
-> {
+export interface IoCDecorator<T, M extends "named" | "tagged" | unknown> {
   readonly Tid: string;
 
   (options?: IIoCDecoratorOptions<M>): (
@@ -57,16 +61,21 @@ export interface IoCServiceDecorator<
     index?: number | undefined,
   ) => void;
 
-  getInstance(
-    named?: string,
-    tagged?: { key: string; value: string | number },
-  ): T;
+  getInstance(options?: TGetInstanceOptions<M>): T;
 
   toConstantValue(
     value: T,
     options?: IIoCDecoratorOptions<M>,
-  ): IoCServiceDecorator<T, M>;
+  ): IoCDecorator<T, M>;
 }
+
+const isNamedOptions = (opts: any): opts is IIoCNamedDecoratorOptions => {
+  return opts && "named" in opts;
+};
+
+const isTaggedOptions = (opts: any): opts is IIoCTaggedDecoratorOptions => {
+  return opts && "tagged" in opts;
+};
 
 const { lazyInject, lazyInjectNamed, lazyInjectTagged } =
   decorators(iocContainer);
@@ -75,31 +84,25 @@ const { lazyInject, lazyInjectNamed, lazyInjectTagged } =
  * Получает экземпляр службы из контейнера IoC.
  *
  * @param id - Идентификатор службы.
- * @param named - Имя службы (опционально).
- * @param tagged - Тег службы (опционально).
+ * @param options - Опции декоратора (опционально).
  * @returns Экземпляр службы.
  */
-export const getServiceInstance = <T>(
+export const getServiceInstance = <T, M>(
   id: string,
-  named?: string,
-  tagged?: { key: string; value: string | number },
+  options?: TGetInstanceOptions<M>,
 ) => {
-  if (named) {
-    return iocContainer.getNamed<T>(id, named);
+  if (isNamedOptions(options)) {
+    return iocContainer.getNamed<T>(id, options.named);
   }
-  if (tagged) {
-    return iocContainer.getTagged<T>(id, tagged.key, tagged.value);
+  if (isTaggedOptions(options)) {
+    return iocContainer.getTagged<T>(
+      id,
+      options.tagged.key,
+      options.tagged.value,
+    );
   }
 
   return iocContainer.get<T>(id);
-};
-
-const isNamedOptions = (opts: any): opts is IIoCNamedDecoratorOptions => {
-  return opts && "named" in opts;
-};
-
-const isTaggedOptions = (opts: any): opts is IIoCTaggedDecoratorOptions => {
-  return opts && "tagged" in opts;
 };
 
 /**
@@ -112,7 +115,7 @@ const isTaggedOptions = (opts: any): opts is IIoCTaggedDecoratorOptions => {
 function createServiceDecorator<
   TInterface,
   M extends "named" | "tagged" | unknown = unknown,
->(): IoCServiceDecorator<TInterface, M> {
+>(): IoCDecorator<TInterface, M> {
   const name: string = shortid();
 
   /**
@@ -197,14 +200,11 @@ function createServiceDecorator<
   /**
    * Получает экземпляр службы из контейнера IoC.
    *
-   * @param named - Имя службы (опционально).
-   * @param tagged - Тег службы (опционально).
+   * @param options - Опции декоратора (исключая IIoCTaggedDecoratorDefaultOptions).
    * @returns Экземпляр службы.
    */
-  serviceDecoratorFactory.getInstance = (
-    named?: string,
-    tagged?: { key: string; value: string | number },
-  ) => getServiceInstance<TInterface>(name, named, tagged);
+  serviceDecoratorFactory.getInstance = (options?: TGetInstanceOptions<M>) =>
+    getServiceInstance<TInterface, M>(name, options);
 
   /**
    * Связывает константное значение с декоратором службы.
