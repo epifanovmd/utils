@@ -52,7 +52,10 @@ type TGetInstanceOptions<M extends "named" | "tagged" | unknown> =
 /**
  * Интерфейс декоратора IoC.
  */
-export interface IoCDecorator<T, M extends "named" | "tagged" | unknown> {
+export interface IoCServiceDecorator<
+  T,
+  M extends "named" | "tagged" | unknown,
+> {
   readonly Tid: string;
 
   (options?: IIoCDecoratorOptions<M>): (
@@ -66,7 +69,7 @@ export interface IoCDecorator<T, M extends "named" | "tagged" | unknown> {
   toConstantValue(
     value: T,
     options?: IIoCDecoratorOptions<M>,
-  ): IoCDecorator<T, M>;
+  ): IoCServiceDecorator<T, M>;
 }
 
 const isNamedOptions = (opts: any): opts is IIoCNamedDecoratorOptions => {
@@ -115,7 +118,7 @@ export const getServiceInstance = <T, M>(
 function createServiceDecorator<
   TInterface,
   M extends "named" | "tagged" | unknown = unknown,
->(): IoCDecorator<TInterface, M> {
+>(): IoCServiceDecorator<TInterface, M> {
   const name: string = shortid();
 
   /**

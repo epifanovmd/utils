@@ -59,7 +59,7 @@ export interface CancelablePromise<T> extends Promise<T> {
 
 export interface ApiResponse<
   R,
-  E extends Error | AxiosError<unknown>,
+  E extends Error | AxiosError<unknown> = AxiosError<unknown>,
   EBody = unknown,
 > {
   data?: R;
