@@ -20,10 +20,14 @@ type IGenerateApiServiceParams =
   | IGenerateApiServiceParamsFromPath
   | IGenerateApiServiceParamsFromUrl;
 
+import path from "path";
+
+const projectRootDir = path.resolve(import.meta.dirname);
+
 const generateApiService = (params: IGenerateApiServiceParams) =>
   generateApi({
     httpClientType: "axios",
-    templates: "./templates",
+    templates: path.resolve(projectRootDir, "./templates"),
     modular: true,
     extractRequestBody: true,
     extractRequestParams: true,
