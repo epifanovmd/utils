@@ -21,8 +21,11 @@ type IGenerateApiServiceParams =
   | IGenerateApiServiceParamsFromUrl;
 
 import path from "path";
+import { fileURLToPath } from "url";
 
-const projectRootDir = path.resolve(import.meta.dirname);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const projectRootDir = path.resolve(__dirname);
 
 const generateApiService = (params: IGenerateApiServiceParams) =>
   generateApi({
