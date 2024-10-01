@@ -5,7 +5,33 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "types": "lib/types/index.d.ts",
+  "exports": {
+    "./node": {
+      "require": "./lib/cjs/node-utils/index.js",
+      "types": "./lib/types/node-utils/index.d.ts",
+      "default": "./lib/esm/node-utils/index.js"
+    },
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/esm/index.js"
+    },
+    "./types": {
+      "types": "./lib/types/index.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "types": [
+        "./lib/types/index.d.ts"
+      ],
+      "node": [
+        "./lib/types/node-utils/index.d.ts"
+      ]
+    }
+  },
   "files": [
+    "node/",
     "lib/",
     "src/",
     "README.md"
