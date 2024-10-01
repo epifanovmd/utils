@@ -1,0 +1,28 @@
+<%
+const { utils, route, config, modelTypes } = it;
+const { _, pascalCase, require } = utils;
+const apiClassName = pascalCase(route.moduleName);
+const routes = route.routes;
+const dataContracts = _.map(modelTypes, "name");
+%>
+
+<% if (config.httpClientType === config.constants.HTTP_CLIENT.AXIOS) { %> import type { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios"; <% } %>
+
+import { HttpClient, RequestParams, EContentType, HttpResponse } from "./<%~ config.fileNames.httpClient %>";
+<% if (dataContracts.length) { %>
+import { <%~ dataContracts.join(", ") %> } from "./<%~ config.fileNames.dataContracts %>"
+<% } %>
+
+export class <%= apiClassName %><% if (!config.singleHttpClient) { %><E extends Error | AxiosError<EBody> = AxiosError<unknown>, EBody = unknown> extends HttpClient<E, EBody> <% } %> {
+    <% if(config.singleHttpClient) { %>
+        http: HttpClient;
+
+        constructor (http: HttpClient) {
+            this.http = http;
+            }
+            <% } %>
+
+            <% for (const route of routes) { %>
+            <%~ includeFile('./procedure-call.ejs', { ...it, route }) %>
+            <% } %>
+            }

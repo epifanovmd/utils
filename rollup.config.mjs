@@ -2,6 +2,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import { defineConfig } from "rollup";
+import copy from "rollup-plugin-copy";
 // @ts-ignore
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import typescript from "rollup-plugin-typescript2";
@@ -28,6 +29,12 @@ const config = defineConfig({
   ],
   external: /node_modules/,
   plugins: [
+    copy({
+      targets: [
+        { src: "src/api/templates/**/*", dest: "lib/cjs/api/templates" },
+        { src: "src/api/templates/**/*", dest: "lib/esm/api/templates" },
+      ],
+    }),
     peerDepsExternal(),
     resolve(),
     commonjs(),
