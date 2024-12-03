@@ -7,6 +7,7 @@ export * from "./input";
 export * from "./interval";
 export * from "./lambdaValue";
 export * from "./number";
+export * from "./pluralize";
 export * from "./promise";
 export * from "./string";
 export * from "./timeout";

@@ -10,8 +10,14 @@ import typescript from "rollup-plugin-typescript2";
 const pluginsBase = [
   copy({
     targets: [
-      { src: "src/api/templates/**/*", dest: "lib/cjs/api/templates" },
-      { src: "src/api/templates/**/*", dest: "lib/esm/api/templates" },
+      {
+        src: "src/node-utils/api/templates/**/*",
+        dest: "lib/cjs/node-utils/api/templates",
+      },
+      {
+        src: "src/node-utils/api/templates/**/*",
+        dest: "lib/esm/node-utils/api/templates",
+      },
     ],
   }),
   peerDepsExternal(),
@@ -58,21 +64,7 @@ const config = defineConfig([
     input: "src/node-utils/index.ts",
     output: output,
     external: /node_modules/,
-    plugins: [
-      copy({
-        targets: [
-          {
-            src: "src/node-utils/api/templates/**/*",
-            dest: "lib/cjs/node-utils/api/templates",
-          },
-          {
-            src: "src/node-utils/api/templates/**/*",
-            dest: "lib/esm/node-utils/api/templates",
-          },
-        ],
-      }),
-      ...pluginsBase,
-    ],
+    plugins: [...pluginsBase],
   },
 ]);
 
