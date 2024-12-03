@@ -24,8 +24,12 @@ export const pluralize = (
     result = params.zero;
   } else if (mod10 === 1 && mod100 !== 11 && params.one !== undefined) {
     result = params.one;
-  } else if (mod10 === 2 && mod100 !== 12 && params.two !== undefined) {
-    result = params.two;
+  } else if (
+    mod10 === 2 &&
+    mod100 !== 12 &&
+    (params.two !== undefined || params.few !== undefined)
+  ) {
+    result = params.two ?? params.few!;
   } else if (
     mod10 >= 3 &&
     mod10 <= 4 &&
