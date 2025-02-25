@@ -1,22 +1,36 @@
 import "reflect-metadata";
 
-import { inject, injectable, named, optional, tagged } from "inversify";
+import {
+  inject,
+  injectable,
+  interfaces,
+  named,
+  optional,
+  tagged,
+} from "inversify";
 import decorators from "inversify-inject-decorators";
 import shortid from "shortid";
 
 import { iocContainer } from "./container";
 
+type TDecoratorMode = "named" | "tagged" | "unknown";
+
 /**
  * Параметры декоратора службы.
  */
-export interface IServiceDecoratorParams {}
+export interface IServiceDecoratorParams<
+  M extends TDecoratorMode = TDecoratorMode,
+> {
+  mode?: M;
+}
 
 /**
- * Опции по умолчанию для декоратора с тегами IoC.
+ * Опции по умолчанию для декоратора IoC.
  */
 export interface IIoCTaggedDecoratorDefaultOptions {
   inSingleton?: boolean;
-  optional?: boolean;
+  // use only for getInstance or for inject
+  optional?: true;
 }
 
 /**
@@ -35,27 +49,22 @@ export interface IIoCTaggedDecoratorOptions
   tagged: { key: string; value: string | number };
 }
 
-type IIoCDecoratorOptions<M extends "named" | "tagged" | unknown> =
-  M extends "named"
-    ? IIoCNamedDecoratorOptions
-    : M extends "tagged"
-    ? IIoCTaggedDecoratorOptions
-    : IIoCTaggedDecoratorDefaultOptions;
+type IIoCDecoratorOptions<M extends TDecoratorMode> = M extends "named"
+  ? IIoCNamedDecoratorOptions
+  : M extends "tagged"
+  ? IIoCTaggedDecoratorOptions
+  : IIoCTaggedDecoratorDefaultOptions;
 
-type TGetInstanceOptions<M extends "named" | "tagged" | unknown> =
-  M extends "named"
-    ? Omit<IIoCNamedDecoratorOptions, keyof IIoCTaggedDecoratorDefaultOptions>
-    : M extends "tagged"
-    ? Omit<IIoCTaggedDecoratorOptions, keyof IIoCTaggedDecoratorDefaultOptions>
-    : undefined;
+type TGetInstanceOptions<M extends TDecoratorMode> = M extends "named"
+  ? Omit<IIoCNamedDecoratorOptions, "inSingleton">
+  : M extends "tagged"
+  ? Omit<IIoCTaggedDecoratorOptions, "inSingleton">
+  : IIoCTaggedDecoratorDefaultOptions;
 
 /**
  * Интерфейс декоратора IoC.
  */
-export interface IoCServiceDecorator<
-  T,
-  M extends "named" | "tagged" | unknown,
-> {
+export interface IoCServiceDecorator<T, M extends TDecoratorMode> {
   readonly Tid: string;
 
   (options?: IIoCDecoratorOptions<M>): (
@@ -64,12 +73,42 @@ export interface IoCServiceDecorator<
     index?: number | undefined,
   ) => void;
 
-  getInstance(options?: TGetInstanceOptions<M>): T;
+  getInstance<Options extends TGetInstanceOptions<M>>(
+    options?: Options,
+  ): Options extends { optional: true } ? T | undefined : T;
 
   toConstantValue(
     value: T,
     options?: IIoCDecoratorOptions<M>,
   ): IoCServiceDecorator<T, M>;
+
+  toDynamicValue(
+    value: (context: interfaces.Context) => T,
+    options?: IIoCDecoratorOptions<M>,
+  ): IoCServiceDecorator<T, M>;
+
+  toFactory<
+    Args extends any[],
+    Return extends (...args: Args) => ((...args: Args) => T) | T,
+  >(
+    provider: (context: interfaces.Context) => Return,
+    options?: IIoCDecoratorOptions<M>,
+  ): IoCServiceDecorator<Return, M>;
+
+  toProvider<
+    Args extends any[],
+    Return extends (
+      ...args: Args
+    ) => ((...args: Args) => Promise<T>) | Promise<T>,
+  >(
+    provider: (context: interfaces.Context) => Return,
+    options?: IIoCDecoratorOptions<M>,
+  ): IoCServiceDecorator<Return, M>;
+
+  toConstructor<Args extends any[]>(
+    constructor: new (...args: Args) => T,
+    options?: IIoCDecoratorOptions<M>,
+  ): IoCServiceDecorator<new (...args: Args) => T, M>;
 }
 
 const isNamedOptions = (opts: any): opts is IIoCNamedDecoratorOptions => {
@@ -88,24 +127,43 @@ const { lazyInject, lazyInjectNamed, lazyInjectTagged } =
  *
  * @param id - Идентификатор службы.
  * @param options - Опции декоратора (опционально).
- * @returns Экземпляр службы.
+ * @returns Экземпляр службы или undefined, если не найдено и опция optional установлена.
  */
-export const getServiceInstance = <T, M>(
+export const getServiceInstance = <
+  T,
+  M extends TDecoratorMode,
+  Options extends TGetInstanceOptions<M>,
+  R = Options extends { optional: true } ? T | undefined : T,
+>(
   id: string,
-  options?: TGetInstanceOptions<M>,
-) => {
+  options?: Options,
+): R => {
+  const isOptional = options?.optional ?? false;
+
   if (isNamedOptions(options)) {
-    return iocContainer.getNamed<T>(id, options.named);
-  }
-  if (isTaggedOptions(options)) {
-    return iocContainer.getTagged<T>(
-      id,
-      options.tagged.key,
-      options.tagged.value,
-    );
+    const isBound = iocContainer.isBoundNamed(id, options.named);
+
+    return (
+      isBound || !isOptional
+        ? iocContainer.getNamed<R>(id, options.named)
+        : undefined
+    ) as R;
   }
 
-  return iocContainer.get<T>(id);
+  if (isTaggedOptions(options)) {
+    const { key, value } = options.tagged;
+    const isBound = iocContainer.isBoundTagged(id, key, value);
+
+    return (
+      isBound || !isOptional
+        ? iocContainer.getTagged<R>(id, key, value)
+        : undefined
+    ) as R;
+  }
+
+  const isBound = iocContainer.isBound(id);
+
+  return (isBound || !isOptional ? iocContainer.get<R>(id) : undefined) as R;
 };
 
 /**
@@ -117,8 +175,8 @@ export const getServiceInstance = <T, M>(
  */
 function createServiceDecorator<
   TInterface,
-  M extends "named" | "tagged" | unknown = unknown,
->(): IoCServiceDecorator<TInterface, M> {
+  M extends TDecoratorMode = "unknown",
+>(_params?: IServiceDecoratorParams<M>): IoCServiceDecorator<TInterface, M> {
   const name: string = shortid();
 
   /**
@@ -183,7 +241,7 @@ function createServiceDecorator<
         // При использовании на классе
         injectable()(target);
 
-        let binding = iocContainer.bind<TInterface>(name).to(target);
+        const binding = iocContainer.bind<TInterface>(name).to(target);
 
         if (options?.inSingleton) {
           binding.inSingletonScope();
@@ -206,8 +264,14 @@ function createServiceDecorator<
    * @param options - Опции декоратора (исключая IIoCTaggedDecoratorDefaultOptions).
    * @returns Экземпляр службы.
    */
-  serviceDecoratorFactory.getInstance = (options?: TGetInstanceOptions<M>) =>
-    getServiceInstance<TInterface, M>(name, options);
+  serviceDecoratorFactory.getInstance = <
+    Options extends TGetInstanceOptions<M>,
+    R = Options extends { optional: true }
+      ? TInterface | undefined
+      : TInterface,
+  >(
+    options?: Options,
+  ) => getServiceInstance<TInterface, M, Options, R>(name, options);
 
   /**
    * Связывает константное значение с декоратором службы.
@@ -220,20 +284,116 @@ function createServiceDecorator<
     value: TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    let binding = iocContainer.bind<TInterface>(name).toConstantValue(value);
+    const binding = iocContainer.bind(name).toConstantValue(value);
 
     if (isNamedOptions(options)) {
       binding.whenTargetNamed(options.named);
     } else if (isTaggedOptions(options)) {
       binding.whenTargetTagged(options.tagged.key, options.tagged.value);
     } else {
-      iocContainer.rebind<TInterface>(name).toConstantValue(value);
+      iocContainer.rebind(name).toConstantValue(value);
     }
 
     return serviceDecoratorFactory;
   };
 
-  return serviceDecoratorFactory;
+  /**
+   * Связывает динамическое значение с декоратором службы.
+   *
+   * @param value - Функция, возвращающая значение.
+   * @param options - Опции декоратора.
+   * @returns Декоратор службы.
+   */
+  serviceDecoratorFactory.toDynamicValue = (
+    value: (context: interfaces.Context) => TInterface,
+    options?: IIoCDecoratorOptions<M>,
+  ) => {
+    const binding = iocContainer.bind(name).toDynamicValue(value);
+
+    if (isNamedOptions(options)) {
+      binding.whenTargetNamed(options.named);
+    } else if (isTaggedOptions(options)) {
+      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+    } else {
+      iocContainer.rebind(name).toDynamicValue(value);
+    }
+
+    return serviceDecoratorFactory;
+  };
+
+  /**
+   * Связывает динамическое значение с декоратором службы.
+   *
+   * @param factory - Фабрика.
+   * @param options - Опции декоратора.
+   * @returns Декоратор службы.
+   */
+  serviceDecoratorFactory.toFactory = (
+    factory: interfaces.FactoryCreator<TInterface>,
+    options?: IIoCDecoratorOptions<M>,
+  ) => {
+    const binding = iocContainer.bind(name).toFactory(factory);
+
+    if (isNamedOptions(options)) {
+      binding.whenTargetNamed(options.named);
+    } else if (isTaggedOptions(options)) {
+      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+    } else {
+      iocContainer.rebind(name).toFactory(factory);
+    }
+
+    return serviceDecoratorFactory;
+  };
+
+  /**
+   * Связывает динамическое значение с декоратором службы.
+   *
+   * @param provider - Провайдер.
+   * @param options - Опции декоратора.
+   * @returns Декоратор службы.
+   */
+  serviceDecoratorFactory.toProvider = (
+    provider: interfaces.ProviderCreator<TInterface>,
+    options?: IIoCDecoratorOptions<M>,
+  ) => {
+    const binding = iocContainer.bind(name).toProvider(provider);
+
+    if (isNamedOptions(options)) {
+      binding.whenTargetNamed(options.named);
+    } else if (isTaggedOptions(options)) {
+      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+    } else {
+      iocContainer.rebind(name).toProvider(provider);
+    }
+
+    return serviceDecoratorFactory;
+  };
+
+  /**
+   * Связывает динамическое значение с декоратором службы.
+   *
+   * @param constructor - Конструктор класса.
+   * @param options - Опции декоратора.
+   * @returns Декоратор службы.
+   */
+  serviceDecoratorFactory.toConstructor = (
+    constructor: new (...args: any[]) => TInterface,
+    options?: IIoCDecoratorOptions<M>,
+  ) => {
+    const binding = iocContainer.bind(name).toConstructor(constructor);
+
+    if (isNamedOptions(options)) {
+      binding.whenTargetNamed(options.named);
+    } else if (isTaggedOptions(options)) {
+      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+    } else {
+      iocContainer.rebind(name).toConstructor(constructor);
+    }
+
+    return serviceDecoratorFactory;
+  };
+
+  return serviceDecoratorFactory as IoCServiceDecorator<TInterface, M>;
 }
 
 export { createServiceDecorator };
