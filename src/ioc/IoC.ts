@@ -166,6 +166,14 @@ export const getServiceInstance = <
   return (isBound || !isOptional ? iocContainer.get<R>(id) : undefined) as R;
 };
 
+export const iocBind = <T>(id: string) => {
+  if (iocContainer.isBound(id)) {
+    return iocContainer.rebind(id);
+  }
+
+  return iocContainer.bind<T>(id);
+};
+
 /**
  * Создает декоратор службы.
  *
@@ -241,7 +249,7 @@ function createServiceDecorator<
         // При использовании на классе
         injectable()(target);
 
-        const binding = iocContainer.bind<TInterface>(name).to(target);
+        const binding = iocBind<TInterface>(name).to(target);
 
         if (options?.inSingleton) {
           binding.inSingletonScope();
@@ -282,14 +290,12 @@ function createServiceDecorator<
     value: TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocContainer.bind(name).toConstantValue(value);
+    const binding = iocBind(name).toConstantValue(value);
 
     if (isNamedOptions(options)) {
       binding.whenTargetNamed(options.named);
     } else if (isTaggedOptions(options)) {
       binding.whenTargetTagged(options.tagged.key, options.tagged.value);
-    } else {
-      iocContainer.rebind(name).toConstantValue(value);
     }
 
     return serviceDecoratorFactory;
@@ -306,14 +312,12 @@ function createServiceDecorator<
     value: (context: interfaces.Context) => TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocContainer.bind(name).toDynamicValue(value);
+    const binding = iocBind(name).toDynamicValue(value);
 
     if (isNamedOptions(options)) {
       binding.whenTargetNamed(options.named);
     } else if (isTaggedOptions(options)) {
       binding.whenTargetTagged(options.tagged.key, options.tagged.value);
-    } else {
-      iocContainer.rebind(name).toDynamicValue(value);
     }
 
     return serviceDecoratorFactory;
@@ -330,14 +334,12 @@ function createServiceDecorator<
     factory: interfaces.FactoryCreator<TInterface>,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocContainer.bind(name).toFactory(factory);
+    const binding = iocBind(name).toFactory(factory);
 
     if (isNamedOptions(options)) {
       binding.whenTargetNamed(options.named);
     } else if (isTaggedOptions(options)) {
       binding.whenTargetTagged(options.tagged.key, options.tagged.value);
-    } else {
-      iocContainer.rebind(name).toFactory(factory);
     }
 
     return serviceDecoratorFactory;
@@ -354,14 +356,12 @@ function createServiceDecorator<
     provider: interfaces.ProviderCreator<TInterface>,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocContainer.bind(name).toProvider(provider);
+    const binding = iocBind(name).toProvider(provider);
 
     if (isNamedOptions(options)) {
       binding.whenTargetNamed(options.named);
     } else if (isTaggedOptions(options)) {
       binding.whenTargetTagged(options.tagged.key, options.tagged.value);
-    } else {
-      iocContainer.rebind(name).toProvider(provider);
     }
 
     return serviceDecoratorFactory;
@@ -378,14 +378,12 @@ function createServiceDecorator<
     constructor: new (...args: any[]) => TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocContainer.bind(name).toConstructor(constructor);
+    const binding = iocBind(name).toConstructor(constructor);
 
     if (isNamedOptions(options)) {
       binding.whenTargetNamed(options.named);
     } else if (isTaggedOptions(options)) {
       binding.whenTargetTagged(options.tagged.key, options.tagged.value);
-    } else {
-      iocContainer.rebind(name).toConstructor(constructor);
     }
 
     return serviceDecoratorFactory;
