@@ -1,10 +1,6 @@
 import "reflect-metadata";
 
-import {
-  Container as InversifyContainer,
-  inject as Inject,
-  injectable as Injectable,
-} from "inversify";
+import { inject as Inject, injectable as Injectable } from "inversify";
 import getDecorators from "inversify-inject-decorators";
 import shortid from "shortid";
 

@@ -1,3 +1,3 @@
-import { Container as InversifyContainer } from "inversify/lib/container/container";
+import { Container as InversifyContainer } from "inversify";
 
 export const iocContainer = new InversifyContainer();
