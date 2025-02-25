@@ -241,7 +241,7 @@ function createServiceDecorator<
         // При использовании на классе
         injectable()(target);
 
-        const binding = iocContainer.rebind<TInterface>(name).to(target);
+        const binding = iocContainer.bind<TInterface>(name).to(target);
 
         if (options?.inSingleton) {
           binding.inSingletonScope();
