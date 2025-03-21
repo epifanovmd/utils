@@ -83,7 +83,7 @@ export interface IApiService<
       | void
       | InternalAxiosRequestConfig
       | Promise<void | InternalAxiosRequestConfig>,
-  ): void;
+  ): () => void;
 
   onResponse(
     callback: (
@@ -92,7 +92,7 @@ export interface IApiService<
       | void
       | ApiResponse<any, E, EBody>
       | Promise<void | ApiResponse<any, E, EBody>>,
-  ): void;
+  ): () => void;
 
   onError(
     callback: (
@@ -101,7 +101,7 @@ export interface IApiService<
       | void
       | ApiResponse<any, E, EBody>
       | Promise<void | ApiResponse<any, E, EBody>>,
-  ): void;
+  ): () => void;
 
   get<R = any, P = any>(
     endpoint: string,

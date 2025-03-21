@@ -1,13 +1,7 @@
 import "reflect-metadata";
 
-import {
-  inject,
-  injectable,
-  interfaces,
-  named,
-  optional,
-  tagged,
-} from "inversify";
+import { ResolutionContext } from "@inversifyjs/core";
+import { inject, injectable, named, optional, tagged } from "inversify";
 import decorators from "inversify-inject-decorators";
 import shortid from "shortid";
 
@@ -83,7 +77,7 @@ export interface IoCServiceDecorator<T, M extends TDecoratorMode> {
   ): IoCServiceDecorator<T, M>;
 
   toDynamicValue(
-    value: (context: interfaces.Context) => T,
+    value: (context: ResolutionContext) => T,
     options?: IIoCDecoratorOptions<M>,
   ): IoCServiceDecorator<T, M>;
 
@@ -91,7 +85,7 @@ export interface IoCServiceDecorator<T, M extends TDecoratorMode> {
     Args extends any[],
     Return extends (...args: Args) => ((...args: Args) => T) | T,
   >(
-    provider: (context: interfaces.Context) => Return,
+    provider: (context: ResolutionContext) => Return,
     options?: IIoCDecoratorOptions<M>,
   ): IoCServiceDecorator<Return, M>;
 
@@ -101,14 +95,9 @@ export interface IoCServiceDecorator<T, M extends TDecoratorMode> {
       ...args: Args
     ) => ((...args: Args) => Promise<T>) | Promise<T>,
   >(
-    provider: (context: interfaces.Context) => Return,
+    provider: (context: ResolutionContext) => Return,
     options?: IIoCDecoratorOptions<M>,
   ): IoCServiceDecorator<Return, M>;
-
-  toConstructor<Args extends any[]>(
-    constructor: new (...args: Args) => T,
-    options?: IIoCDecoratorOptions<M>,
-  ): IoCServiceDecorator<new (...args: Args) => T, M>;
 }
 
 const isNamedOptions = (opts: any): opts is IIoCNamedDecoratorOptions => {
@@ -141,22 +130,22 @@ export const getServiceInstance = <
   const isOptional = options?.optional ?? false;
 
   if (isNamedOptions(options)) {
-    const isBound = iocContainer.isBoundNamed(id, options.named);
+    const isBound = iocContainer.isBound(id, { name: options.named });
 
     return (
       isBound || !isOptional
-        ? iocContainer.getNamed<R>(id, options.named)
+        ? iocContainer.get<R>(id, { name: options.named })
         : undefined
     ) as R;
   }
 
   if (isTaggedOptions(options)) {
     const { key, value } = options.tagged;
-    const isBound = iocContainer.isBoundTagged(id, key, value);
+    const isBound = iocContainer.isBound(id, { tag: { key, value } });
 
     return (
       isBound || !isOptional
-        ? iocContainer.getTagged<R>(id, key, value)
+        ? iocContainer.get<R>(id, { tag: { key, value } })
         : undefined
     ) as R;
   }
@@ -168,7 +157,7 @@ export const getServiceInstance = <
 
 export const iocBind = <T>(id: string) => {
   if (iocContainer.isBound(id)) {
-    return iocContainer.rebind(id);
+    // return iocContainer.bind(id);
   }
 
   return iocContainer.bind<T>(id);
@@ -255,9 +244,9 @@ function createServiceDecorator<
           binding.inSingletonScope();
         }
         if (isNamedOptions(options)) {
-          binding.whenTargetNamed(options.named);
+          binding.whenNamed(options.named);
         } else if (isTaggedOptions(options)) {
-          binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+          binding.whenTagged(options.tagged.key, options.tagged.value);
         }
       }
     };
@@ -293,9 +282,9 @@ function createServiceDecorator<
     const binding = iocBind(name).toConstantValue(value);
 
     if (isNamedOptions(options)) {
-      binding.whenTargetNamed(options.named);
+      binding.whenNamed(options.named);
     } else if (isTaggedOptions(options)) {
-      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+      binding.whenTagged(options.tagged.key, options.tagged.value);
     }
 
     return serviceDecoratorFactory;
@@ -309,15 +298,15 @@ function createServiceDecorator<
    * @returns Декоратор службы.
    */
   serviceDecoratorFactory.toDynamicValue = (
-    value: (context: interfaces.Context) => TInterface,
+    value: (context: ResolutionContext) => TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
     const binding = iocBind(name).toDynamicValue(value);
 
     if (isNamedOptions(options)) {
-      binding.whenTargetNamed(options.named);
+      binding.whenNamed(options.named);
     } else if (isTaggedOptions(options)) {
-      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+      binding.whenTagged(options.tagged.key, options.tagged.value);
     }
 
     return serviceDecoratorFactory;
@@ -331,15 +320,15 @@ function createServiceDecorator<
    * @returns Декоратор службы.
    */
   serviceDecoratorFactory.toFactory = (
-    factory: interfaces.FactoryCreator<TInterface>,
+    factory: (context: ResolutionContext) => TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocBind(name).toFactory(factory);
+    const binding = iocBind(name).toFactory(factory as never);
 
     if (isNamedOptions(options)) {
-      binding.whenTargetNamed(options.named);
+      binding.whenNamed(options.named);
     } else if (isTaggedOptions(options)) {
-      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+      binding.whenTagged(options.tagged.key, options.tagged.value);
     }
 
     return serviceDecoratorFactory;
@@ -353,37 +342,15 @@ function createServiceDecorator<
    * @returns Декоратор службы.
    */
   serviceDecoratorFactory.toProvider = (
-    provider: interfaces.ProviderCreator<TInterface>,
+    provider: (context: ResolutionContext) => TInterface,
     options?: IIoCDecoratorOptions<M>,
   ) => {
-    const binding = iocBind(name).toProvider(provider);
+    const binding = iocBind(name).toProvider(provider as never);
 
     if (isNamedOptions(options)) {
-      binding.whenTargetNamed(options.named);
+      binding.whenNamed(options.named);
     } else if (isTaggedOptions(options)) {
-      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
-    }
-
-    return serviceDecoratorFactory;
-  };
-
-  /**
-   * Связывает динамическое значение с декоратором службы.
-   *
-   * @param constructor - Конструктор класса.
-   * @param options - Опции декоратора.
-   * @returns Декоратор службы.
-   */
-  serviceDecoratorFactory.toConstructor = (
-    constructor: new (...args: any[]) => TInterface,
-    options?: IIoCDecoratorOptions<M>,
-  ) => {
-    const binding = iocBind(name).toConstructor(constructor);
-
-    if (isNamedOptions(options)) {
-      binding.whenTargetNamed(options.named);
-    } else if (isTaggedOptions(options)) {
-      binding.whenTargetTagged(options.tagged.key, options.tagged.value);
+      binding.whenTagged(options.tagged.key, options.tagged.value);
     }
 
     return serviceDecoratorFactory;
