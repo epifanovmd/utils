@@ -102,6 +102,7 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
 
   public get isLoadingMoreAllowed() {
     return (
+      !this.isEmpty &&
       (this._state === ListCollectionLoadState.READY ||
         this._state === ListCollectionLoadState.ERROR) &&
       !this._isEndReached
