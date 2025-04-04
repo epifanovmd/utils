@@ -69,6 +69,7 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
         _state: observable,
         isLoadingAllowed: computed,
         isLoading: computed,
+        isRefreshing: computed,
         isLoadingMoreAllowed: computed,
         isLoadingMore: computed,
         isReady: computed,
@@ -93,6 +94,10 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
 
   public get isLoading() {
     return this._state === ListCollectionLoadState.LOADING;
+  }
+
+  public get isRefreshing() {
+    return this._state === ListCollectionLoadState.REFRESHING;
   }
 
   public get isLoadingMoreAllowed() {
