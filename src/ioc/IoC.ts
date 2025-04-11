@@ -7,7 +7,7 @@ import shortid from "shortid";
 
 import { iocContainer } from "./container";
 
-type TDecoratorMode = "named" | "tagged" | "unknown";
+export type TDecoratorMode = "named" | "tagged" | "unknown";
 
 /**
  * Параметры декоратора службы.
