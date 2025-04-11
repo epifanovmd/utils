@@ -10,12 +10,6 @@ enum DataHolderState {
   ERROR = "ERROR",
 }
 
-interface IDataHolderError {
-  type?: string;
-  code?: string;
-  msg: string;
-}
-
 export interface IDataHolderState {
   isLoading: boolean;
   isError: boolean;
@@ -24,8 +18,10 @@ export interface IDataHolderState {
   isEmpty: boolean;
 }
 
-export class DataHolder<T> implements IDataHolderState {
-  public error?: IDataHolderError = undefined;
+export class DataHolder<T, E extends Error | string = string>
+  implements IDataHolderState
+{
+  public error?: string = undefined;
   private _d: LambdaValue<T | undefined> = undefined;
   private _state: DataHolderState = DataHolderState.INITIALIZATION;
 
@@ -111,8 +107,8 @@ export class DataHolder<T> implements IDataHolderState {
     return this;
   };
 
-  public setError = (error: IDataHolderError) => {
-    this.error = error;
+  public setError = (error: E) => {
+    this.error = error instanceof Error ? error.message : error;
     this._state = DataHolderState.ERROR;
 
     return this;

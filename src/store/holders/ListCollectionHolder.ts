@@ -10,12 +10,6 @@ export enum ListCollectionLoadState {
   LOADING_MORE = "LOADING_MORE",
 }
 
-interface IDataHolderError {
-  type?: string;
-  code?: string;
-  msg: string;
-}
-
 type Collection<T> = T[];
 
 // eslint-disable-next-line symbol-description
@@ -48,8 +42,13 @@ interface IUpdateOptions {
   replace?: boolean;
 }
 
-export class ListCollectionHolder<Data, Args = any> implements IListEvents {
-  public error?: IDataHolderError = undefined;
+export class ListCollectionHolder<
+  Data,
+  Args = any,
+  E extends Error | string = string,
+> implements IListEvents
+{
+  public error?: string = undefined;
   public d: Collection<Data> = [];
   private _isEndReached: boolean = false;
   private _state: ListCollectionLoadState =
@@ -169,8 +168,8 @@ export class ListCollectionHolder<Data, Args = any> implements IListEvents {
     this._setState(ListCollectionLoadState.READY);
   };
 
-  public setError = (error: IDataHolderError) => {
-    this.error = error;
+  public setError = (error: E) => {
+    this.error = error instanceof Error ? error.message : error;
     this._setState(ListCollectionLoadState.ERROR);
 
     return this;

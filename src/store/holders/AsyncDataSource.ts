@@ -21,7 +21,7 @@ export class AsyncDataSource<
 
     if (res.error) {
       if (!res.isCanceled) {
-        this.setError({ msg: res.error.toString() });
+        this.setError(res.error.message);
       }
     } else if (res.data) {
       this.setData(res.data);
